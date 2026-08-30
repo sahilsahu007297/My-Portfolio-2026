@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import resumePdf from "../assets/Sahil-Sahu-Resume.pdf"
+import resumePdf from "../Assets/Sahil-Sahu-Resume.pdf"
 
 interface ResumeModalProps {
   onClose: () => void

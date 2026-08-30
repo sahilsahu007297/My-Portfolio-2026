@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import projectShowcaseVideo from "../../assets/projectshowcase.mp4"
+import projectShowcaseVideo from "../../Assets/projectshowcase.mp4"
 
 // The showcase continues the charcoal ground of the section above it, scales a
 // framed video up from the centre while two halves of the title glide in from

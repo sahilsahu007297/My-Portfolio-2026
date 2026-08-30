@@ -1,11 +1,11 @@
 import { useLayoutEffect, ReactNode } from "react"
 import { useNavigate, useParams } from "react-router"
 import CustomCursor from "./CustomCursor"
-import canactVideo from "../assets/Canact.mp4"
-import meridianVideo from "../assets/Meridian.mp4"
-import northstarImage from "../assets/northstar.png"
-import logiflowImage from "../assets/logiflow.jpg"
-import teamioImage from "../assets/teamio.png"
+import canactVideo from "../Assets/Canact.mp4"
+import meridianVideo from "../Assets/Meridian.mp4"
+import northstarImage from "../Assets/northstar.png"
+import logiflowImage from "../Assets/logiflow.jpg"
+import teamioImage from "../Assets/teamio.png"
 
 const url = (id: string, w = 1800) =>
   `https://images.unsplash.com/${id}?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=82&w=${w}`
