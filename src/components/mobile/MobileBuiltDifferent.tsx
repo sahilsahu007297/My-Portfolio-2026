@@ -92,7 +92,7 @@ export default function MobileBuiltDifferent() {
   return (
     <section ref={sectionRef} aria-label="Built different" className="relative w-full bg-black">
       <div className="sticky top-0 h-[100dvh] w-full overflow-hidden pointer-events-none z-10">
-        <div ref={frameRef} className="absolute inset-0 flex h-full w-full items-center justify-center bg-[#0f0f12]">
+        <div ref={frameRef} className="absolute inset-0 flex h-full w-full items-center justify-center bg-[#0f0f12] text-[#f7f6f2]">
           {PHRASES.map((phrase, phraseIndex) => (
             <h2
               key={phrase}
