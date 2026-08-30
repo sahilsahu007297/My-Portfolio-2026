@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+
+@font-face {
+  font-family: "Space Grotesk:Bold";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://static.figma.com/font/SpaceGrotesk_wght__1") format("woff2");
+}
+
+
+:root {
+  --page-bg: #f1f0ec;
+  --ink: #111111;
+  --taupe: #a49b8d;
+  --asterisk-red: #e43d30;
+}
+
+html {
+  background-color: var(--page-bg);
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--page-bg);
+}
+
+/* Hide scrollbar until scrolling */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Fine-pointer cursor: a compact editorial dot, never rendered on touch. */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: white;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transform: translate3d(-20px, -20px, 0);
+  transition: opacity 160ms ease, width 160ms ease, height 160ms ease;
+  will-change: transform;
+}
+
+.custom-cursor[data-visible="true"] {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+
+/* Venetian preloader — tall blinds drop from above, then open sideways. */
+.venetian-preloader {
+  /* Keep the actual page fully covered until the final blind has finished. */
+  background: var(--page-bg);
+}
+
+.venetian-preloader__blind {
+  position: absolute;
+  inset-block: 0;
+  z-index: 1;
+  background: var(--ink);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.venetian-preloader__choice {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  color: var(--page-bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1) 80ms;
+}
+
+.venetian-preloader__choice.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.venetian-preloader__name {
+  margin: 0;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.venetian-preloader__actions {
+  display: grid;
+  width: min(100%, 31rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.venetian-preloader__actions button {
+  min-height: 7.25rem;
+  border: 1px solid color-mix(in srgb, var(--page-bg) 72%, transparent);
+  background: transparent;
+  padding: 1.25rem;
+  color: var(--page-bg);
+  font: inherit;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 480ms cubic-bezier(0.22, 1, 0.36, 1), transform 480ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease, color 180ms ease;
+}
+
+.venetian-preloader__choice.is-visible .venetian-preloader__name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.venetian-preloader__choice.is-visible .venetian-preloader__actions button {
+  animation-duration: 720ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+.venetian-preloader__choice.is-visible .venetian-preloader__actions button:nth-child(1) {
+  animation-name: venetian-choice-in-left;
+  animation-delay: 100ms;
+}
+
+.venetian-preloader__choice.is-visible .venetian-preloader__actions button:nth-child(2) {
+  animation-name: venetian-choice-in-right;
+  animation-delay: 210ms;
+}
+
+@keyframes venetian-choice-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-4.5rem, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes venetian-choice-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(4.5rem, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.venetian-preloader__actions button:hover,
+.venetian-preloader__actions button:focus-visible {
+  background: var(--page-bg);
+  color: var(--ink);
+  outline: none;
+}
+
+@keyframes venetian-blind-drop {
+  from { transform: translateY(-110%) scaleX(1); }
+  to { transform: translateY(0) scaleX(1); }
+}
+
+@keyframes venetian-blind-open {
+  from { transform: translateY(0) scaleX(1); }
+  to { transform: translateY(0) scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venetian-preloader__blind,
+  .venetian-preloader__choice {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+
+  .venetian-preloader__actions button {
+    transition: none;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .venetian-preloader__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .venetian-preloader__actions button {
+    min-height: 5.5rem;
+  }
+}
+
+
+.font-imported-space-grotesk {
+  font-family: "Space Grotesk:Bold", "Space Grotesk", sans-serif;
+  font-weight: 700;
+}
+
+
+/* Looping "PROJECTS" frame (tricks.de-style). Two copies sit end to end and
+   translate by half their length, so the strip scrolls seamlessly forever. */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+.mq-x { animation: mq-x 34s linear infinite; }
+.mq-x-rev { animation: mq-x 34s linear infinite reverse; }
+.mq-y { animation: mq-y 34s linear infinite; }
+.mq-y-rev { animation: mq-y 34s linear infinite reverse; }
+@keyframes mq-x { to { transform: translateX(-50%); } }
+@keyframes mq-y { to { transform: translateY(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-x, .mq-x-rev, .mq-y, .mq-y-rev {
+    animation-duration: 0s !important;
+  }
+}
+
+
+/* The hero asterisk is intentionally unique: it rotates in place without
+   changing its position in the lockup. */
+.hero-asterisk {
+  --taupe: var(--asterisk-red);
+  animation: hero-asterisk-orbit 4.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+@keyframes hero-asterisk-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-asterisk {
+    animation: none;
+  }
+}
+
+
+/* Scroll panel after the services cards. It starts fully below the viewport,
+   so its new charcoal ground physically takes over the frame as you scroll. */
+.built-different-frame {
+  clip-path: circle(0% at 50% 0%);
+  opacity: 0;
+  will-change: clip-path;
+}
+
+.built-different-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* Extra vertical room so descenders (p, g, y) and the blur reveal are not
+     clipped by the mask's overflow. Negative margin keeps line-height intact. */
+  padding: 0.16em 0.012em 0.2em;
+  margin: -0.16em 0 -0.2em;
+}
+
+.built-different-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 110%, 0);
+  will-change: transform, opacity, filter;
+}
+
+.built-different-space {
+  display: inline-block;
+  width: 0.24em;
+}
+
+.built-different-copy {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .built-different-frame {
+    clip-path: circle(150% at 50% 0%) !important;
+    opacity: 1 !important;
+  }
+
+  .built-different-letter,
+  .built-different-copy {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .built-different-title:not(:first-of-type) {
+    display: none !important;
+  }
+}
+
+
+/* --- Work showcase (converging title + looping service reel) --- */
+.work-shot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+.work-shot[data-active="true"] {
+  opacity: 1;
+}
+.work-shot-label {
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Elements the scroll loop drives directly */
+.work-title-left,
+.work-title-right,
+.work-figure,
+.work-caption {
+  will-change: transform, opacity;
+}
+
+/* Number reel + project reel share smooth vertical travel */
+.work-reel {
+  will-change: transform;
+}
+
+/* Footer asterisk — slow, calm rotation echoing the hero mark. */
+.footer-mark {
+  animation: hero-asterisk-orbit 12s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-mark {
+    animation: none;
+  }
+  .work-shot {
+    transition: none;
+  }
+  .work-title-left,
+  .work-title-right,
+  .work-figure,
+  .work-caption {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

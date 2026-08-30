@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Image Sequence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700;900&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            height: 1500vh;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #dark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        #philosophy-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        #philosophy-wrap h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            color: #D5CEC4;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            will-change: transform, opacity;
+            white-space: nowrap;
+            -webkit-text-stroke: 2px #D5CEC4;
+            paint-order: stroke fill;
+        }
+
+        .ptr {
+            position: fixed;
+            z-index: 4;
+            pointer-events: none;
+            will-change: transform, opacity;
+            max-width: 400px;
+            opacity: 0;
+        }
+
+        .ptr .p-num {
+            font-weight: 300;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.25em;
+            margin-bottom: 8px;
+        }
+
+        .ptr .p-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: #fff;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .ptr .p-quote {
+            font-weight: 300;
+            font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.65);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .ptr.right {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="sequence-canvas"></canvas>
+    <div id="dark-overlay"></div>
+    <div id="philosophy-wrap">
+        <h1>THE PHILOSOPHY</h1>
+    </div>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById('sequence-canvas');
+            const ctx = canvas.getContext('2d', { alpha: false });
+            const FC = 300;
+            const imgs = [];
+            for (let i = 1; i <= FC; i++) {
+                const img = new Image();
+                img.src = `ezgif-frame-${String(i).padStart(3, '0')}.jpg`;
+                imgs.push(img);
+            }
+
+            const overlay = document.getElementById('dark-overlay');
+            const philoWrap = document.getElementById('philosophy-wrap');
+            const philoH1 = philoWrap.querySelector('h1');
+
+            // Pointer data
+            const PD = [
+                { n: '01', t: 'OBSERVE', q: '"Everything starts with curiosity."' },
+                { n: '02', t: 'QUESTION', q: '"Why does it work this way?"' },
+                { n: '03', t: 'UNDERSTAND', q: '"Look beneath the interface."' },
+                { n: '04', t: 'CONNECT', q: '"Find the relationship between people, product, and business."' },
+                { n: '05', t: 'DEFINE', q: '"Turn complexity into a problem worth solving."' },
+                { n: '06', t: 'EXPLORE', q: '"Imagine more than one way forward."' },
+                { n: '07', t: 'BUILD', q: '"Give ideas structure."' },
+                { n: '08', t: 'DESIGN', q: '"Make the complex feel obvious."' },
+                { n: '09', t: 'LAUNCH', q: '"Put the work into the real world."' },
+                { n: '10', t: 'LEARN', q: '"Measure. Learn. Evolve."' },
+            ];
+
+            // Pointer screen positions (alternating sides)
+            const PP = [
+                { left: '5vw', bottom: '14vh' },
+                { right: '5vw', top: '16vh' },
+                { left: '5vw', top: '20vh' },
+                { right: '5vw', bottom: '16vh' },
+                { left: '5vw', bottom: '32vh' },
+                { right: '5vw', top: '28vh' },
+                { left: '5vw', top: '16vh' },
+                { right: '5vw', bottom: '20vh' },
+                { left: '5vw', bottom: '14vh' },
+                { right: '5vw', top: '20vh' },
+            ];
+
+            // Build pointer DOM
+            const pEls = PD.map((d, i) => {
+                const el = document.createElement('div');
+                el.className = 'ptr' + (PP[i].right ? ' right' : '');
+                for (const [k, v] of Object.entries(PP[i])) el.style[k] = v;
+                el.innerHTML = `<div class="p-num">${d.n} — ${d.t}</div><div class="p-title">${d.t}</div><div class="p-quote">${d.q}</div>`;
+                document.body.appendChild(el);
+                return el;
+            });
+
+            // Scroll phases
+            const RISE_END = 0.04;   // 0-4% : text rises up
+            const ZOOM_END = 0.09;   // 4-9% : text zooms & overlay fades
+            const SEQ_START = 0.09;  // 9-100% : sequence plays
+
+            let sf = 0; // scroll fraction
+            window.addEventListener('scroll', () => {
+                const st = window.scrollY;
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                sf = max > 0 ? Math.max(0, Math.min(1, st / max)) : 0;
+            }, { passive: true });
+
+            function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+            function easeIn(t) { return t * t * t; }
+
+            let initDone = false, lastFrame = -1, tgt = 0;
+
+            function tick() {
+                // --- INTRO PHASE 1: text rises ---
+                if (sf <= RISE_END) {
+                    const p = sf / RISE_END;
+                    const e = easeOut(p);
+                    philoH1.style.transform = `translateY(${(1 - e) * 100}vh)`;
+                    philoH1.style.opacity = e;
+                    philoWrap.style.display = 'flex';
+                    overlay.style.opacity = '0.7';
+                    tgt = 0;
+                    hidePointers();
+                }
+                // --- INTRO PHASE 2: text zooms out, overlay fades ---
+                else if (sf <= ZOOM_END) {
+                    const p = (sf - RISE_END) / (ZOOM_END - RISE_END);
+                    const e = easeIn(p);
+                    philoH1.style.transform = `scale(${1 + e * 22})`;
+                    philoH1.style.opacity = (1 - e);
+                    philoWrap.style.display = 'flex';
+                    overlay.style.opacity = (0.7 * (1 - e)).toFixed(3);
+                    tgt = 0;
+                    hidePointers();
+                }
+                // --- SEQUENCE PHASE ---
+                else {
+                    philoWrap.style.display = 'none';
+                    overlay.style.opacity = '0';
+                    const sp = (sf - SEQ_START) / (1 - SEQ_START);
+                    tgt = Math.min(FC - 1, Math.floor(sp * FC));
+                    updatePointers(sp);
+                }
+
+                // Draw canvas frame
+                const img = imgs[tgt];
+                if (img && img.complete && img.naturalWidth) {
+                    if (!initDone) {
+                        canvas.width = img.naturalWidth;
+                        canvas.height = img.naturalHeight;
+                        initDone = true;
+                    }
+                    if (lastFrame !== tgt) {
+                        ctx.drawImage(img, 0, 0);
+                        lastFrame = tgt;
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+
+            function hidePointers() {
+                for (const el of pEls) el.style.opacity = '0';
+            }
+
+            function updatePointers(sp) {
+                const count = PD.length;
+                const seg = 1 / (count + 2); // segment size with padding
+                for (let i = 0; i < count; i++) {
+                    const start = seg * (i + 1);
+                    const end = start + seg * 0.9;
+                    const fadeIn = start + seg * 0.15;
+                    const fadeOut = end - seg * 0.15;
+                    let opacity = 0, ty = 20;
+
+                    if (sp >= start && sp <= end) {
+                        if (sp < fadeIn) {
+                            const t = (sp - start) / (fadeIn - start);
+                            opacity = easeOut(t);
+                            ty = (1 - easeOut(t)) * 20;
+                        } else if (sp > fadeOut) {
+                            const t = (sp - fadeOut) / (end - fadeOut);
+                            opacity = 1 - easeIn(t);
+                            ty = easeIn(t) * -15;
+                        } else {
+                            opacity = 1;
+                            ty = 0;
+                        }
+                    }
+                    pEls[i].style.opacity = opacity.toFixed(3);
+                    pEls[i].style.transform = `translateY(${ty}px)`;
+                }
+            }
+
+            tick();
+        })();
+    </script>
+</body>
+
+</html>

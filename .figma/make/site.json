@@ -1,0 +1,10 @@
+{
+  "description": "Create stunning landing pages with customizable designs, interactive elements, and engaging mouse effects to enhance user experience and drive conversions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
