@@ -19,7 +19,11 @@
 
 html {
   background-color: var(--page-bg);
-  scroll-snap-type: y mandatory;
+}
+@media (min-width: 768px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
 }
 
 body {
