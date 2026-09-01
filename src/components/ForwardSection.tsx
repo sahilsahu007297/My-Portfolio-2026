@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import myImage from "../assets/myimage1.png";
-import bottomImg1 from "../assets/bottom_img1.png";
-import bottomImg3 from "../assets/bottom_img3.png";
-import bottomImg4 from "../assets/bottom_img4.png";
+import myImage from "../Assets/myimage1.png";
+import bottomImg1 from "../Assets/bottom_img1.png";
+import bottomImg3 from "../Assets/bottom_img3.png";
+import bottomImg4 from "../Assets/bottom_img4.png";
 
 interface Props {
   indiaTime: string
