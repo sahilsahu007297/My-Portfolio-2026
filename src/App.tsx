@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react"
 import { RouterProvider } from "react-router"
 import { router } from "./routes"
-import CustomCursor from "./components/CustomCursor"
+import Lenis from "lenis"
 import VenetianPreloader from "./components/VenetianPreloader"
 import ResumeModal from "./components/ResumeModal"
+import TextRevealSection from "./components/TextRevealSection"
 import Services from "./components/Services"
 import BuiltDifferent from "./components/BuiltDifferent"
 import WorkShowcase from "./components/WorkShowcase"
 import WorkList from "./components/WorkList"
 import Footer from "./components/Footer"
 import HeroSequenceSection from "./components/ImageSequenceSection"
+import HeroSection from "./components/HeroSection"
+import ForwardSection from "./components/ForwardSection"
 import MobileHeroSequenceSection from "./components/mobile/MobileHeroSequenceSection"
+import MobileHeroSection from "./components/mobile/MobileHeroSection"
 import MobileServices from "./components/mobile/MobileServices"
 import MobileBuiltDifferent from "./components/mobile/MobileBuiltDifferent"
 import MobileWorkShowcase from "./components/mobile/MobileWorkShowcase"
@@ -31,6 +35,30 @@ export function Home() {
   const [isResumeOpen, setIsResumeOpen] = useState(false)
   const [soundEnabled, setSoundEnabled] = useState(false)
 
+  // Initialize Lenis for globally smooth, subtle scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.8, // slows down the wheel speed
+      touchMultiplier: 1.5,
+    })
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
   useEffect(() => {
     const updateClock = () => setIndiaTime(formatIndiaTime())
     updateClock()
@@ -43,15 +71,12 @@ export function Home() {
       window.history.scrollRestoration = "manual"
     }
     
-    // If there's a hash (like #projects), let the browser handle it or scroll to it manually
+    // Always force the page to start at the very top for the cinematic intro
+    window.scrollTo(0, 0)
+    
+    // Clear any hash from the URL so it doesn't cause auto-scrolling on reload
     if (window.location.hash) {
-      const id = window.location.hash.substring(1)
-      setTimeout(() => {
-        const el = document.getElementById(id)
-        if (el) el.scrollIntoView()
-      }, 0)
-    } else {
-      window.scrollTo(0, 0)
+      window.history.replaceState(null, "", window.location.pathname)
     }
   }, [])
 
@@ -77,12 +102,13 @@ export function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--page-bg)] text-[var(--ink)]">
-      <CustomCursor />
+    <div className="min-h-screen bg-[var(--page-bg)] text-[var(--ink)] relative">
       <VenetianPreloader />
       {isResumeOpen && <ResumeModal onClose={() => setIsResumeOpen(false)} />}
 
-      {/* Sticky Sound Toggle */}
+      {/* Content wrapper with z-10 so it sits above any global backgrounds */}
+      <div className="relative z-10">
+        {/* Sticky Sound Toggle */}
       <button
         onClick={toggleSound}
         data-cursor-hover
@@ -100,31 +126,65 @@ export function Home() {
 
       {/* Desktop View */}
       <div className="hidden md:block">
-        {/* Unified hero + image sequence — one canvas, no seams */}
-        <HeroSequenceSection
-          indiaTime={indiaTime}
-          onResumeClick={() => setIsResumeOpen(true)}
-        />
+        <div className="relative z-30">
+          <HeroSection
+            indiaTime={indiaTime}
+            onResumeClick={() => setIsResumeOpen(true)}
+          />
+          <ForwardSection 
+            indiaTime={indiaTime}
+            onResumeClick={() => setIsResumeOpen(true)}
+          />
+        </div>
 
-        {/* Scroll-driven services: colored number cards + rising service cards */}
-        <Services />
-        <BuiltDifferent />
-        <WorkShowcase />
-        <WorkList />
-        <Footer />
+        <div className="relative z-20">
+          {/* Image sequence and philosophy */}
+          <HeroSequenceSection
+            indiaTime={indiaTime}
+            onResumeClick={() => setIsResumeOpen(true)}
+          />
+        </div>
+
+        <div className="relative z-30 bg-black">
+          <TextRevealSection />
+          {/* Scroll-driven services: colored number cards + rising service cards */}
+          <Services />
+          <BuiltDifferent />
+          <WorkShowcase />
+          <WorkList />
+          <Footer />
+        </div>
       </div>
 
       {/* Mobile View */}
       <div className="block md:hidden">
-        <MobileHeroSequenceSection
-          indiaTime={indiaTime}
-          onResumeClick={() => setIsResumeOpen(true)}
-        />
-        <MobileServices />
-        <MobileBuiltDifferent />
-        <MobileWorkShowcase />
-        <MobileWorkList />
-        <MobileFooter />
+        <div className="relative z-30">
+          <MobileHeroSection
+            indiaTime={indiaTime}
+            onResumeClick={() => setIsResumeOpen(true)}
+          />
+          <ForwardSection 
+            indiaTime={indiaTime}
+            onResumeClick={() => setIsResumeOpen(true)}
+          />
+        </div>
+
+        <div className="relative z-20">
+          <MobileHeroSequenceSection
+            indiaTime={indiaTime}
+            onResumeClick={() => setIsResumeOpen(true)}
+          />
+        </div>
+
+        <div className="relative z-30 bg-black">
+          <TextRevealSection />
+          <MobileServices />
+          <MobileBuiltDifferent />
+          <MobileWorkShowcase />
+          <MobileWorkList />
+          <MobileFooter />
+        </div>
+      </div>
       </div>
     </div>
   )

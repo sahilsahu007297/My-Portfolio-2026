@@ -20,11 +20,6 @@
 html {
   background-color: var(--page-bg);
 }
-@media (min-width: 768px) {
-  html {
-    scroll-snap-type: y mandatory;
-  }
-}
 
 body {
   font-family: "Inter", system-ui, sans-serif;
@@ -47,34 +42,7 @@ body {
 }
 
 
-/* Fine-pointer cursor: a compact editorial dot, never rendered on touch. */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: white;
-  mix-blend-mode: difference;
-  pointer-events: none;
-  z-index: 99999;
-  opacity: 0;
-  transform: translate3d(-20px, -20px, 0);
-  transition: opacity 160ms ease, width 160ms ease, height 160ms ease;
-  will-change: transform;
-}
 
-.custom-cursor[data-visible="true"] {
-  opacity: 1;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .has-custom-cursor,
-  .has-custom-cursor * {
-    cursor: none !important;
-  }
-}
 
 
 /* Venetian preloader — tall blinds drop from above, then open sideways. */
@@ -216,10 +184,6 @@ body {
 
   .venetian-preloader__actions button {
     transition: none;
-  }
-
-  .custom-cursor {
-    display: none;
   }
 }
 

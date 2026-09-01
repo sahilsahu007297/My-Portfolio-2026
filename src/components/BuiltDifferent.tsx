@@ -36,7 +36,8 @@ export default function BuiltDifferent() {
 
       const vh = window.innerHeight || 1
       const total = Math.max(section.offsetHeight - vh, 1)
-      const local = clamp((window.scrollY - section.offsetTop) / total)
+      const rect = section.getBoundingClientRect()
+      const local = clamp(-rect.top / total)
 
       // 1. Begin the iris at the instant Services clears, with a small opening
       // already visible, then give it a longer, slower cinematic expansion.

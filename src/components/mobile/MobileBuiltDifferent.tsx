@@ -33,7 +33,8 @@ export default function MobileBuiltDifferent() {
 
       const vh = window.innerHeight || 1
       const total = Math.max(section.offsetHeight - vh, 1)
-      const local = clamp((window.scrollY - section.offsetTop) / total)
+      const rect = section.getBoundingClientRect()
+      const local = clamp(-rect.top / total)
 
       const pos = local * 5
       const cover = easeInOutQuad(clamp(pos))

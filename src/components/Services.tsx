@@ -59,6 +59,7 @@ const SERVICES: Service[] = [
 export default function Services() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const colRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     let raf = 0
@@ -69,7 +70,8 @@ export default function Services() {
         if (!wrapper) return
         const vh = window.innerHeight || 1
         const total = Math.max(wrapper.offsetHeight - vh, 1)
-        const local = Math.min(Math.max(window.scrollY - wrapper.offsetTop, 0), total)
+        const rect = wrapper.getBoundingClientRect()
+        const local = Math.min(Math.max(-rect.top, 0), total)
         const p = local / total
 
         const n = SERVICES.length
@@ -85,6 +87,17 @@ export default function Services() {
           
           // From completely off-screen (150%) to attached (0)
           card.style.transform = `translateY(${((1 - eased) * 150).toFixed(2)}%)`
+        })
+
+        // Enable hover effects only when ALL cards are attached (pos >= N)
+        const isAllAttached = pos >= n - 0.05
+        colRefs.current.forEach((col) => {
+          if (!col) return
+          if (isAllAttached) {
+            col.classList.add("group", "hover:scale-[1.04]", "hover:-rotate-2")
+          } else {
+            col.classList.remove("group", "hover:scale-[1.04]", "hover:-rotate-2")
+          }
         })
       })
     }
@@ -107,7 +120,18 @@ export default function Services() {
         <div className="flex h-full flex-col px-3 py-4 md:px-4 md:py-5">
           <div className="grid h-full grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5 lg:gap-4 pointer-events-auto">
             {SERVICES.map((s, i) => (
-              <div key={s.num} className="flex h-full min-h-0 flex-col">
+              <div 
+                key={s.num} 
+                ref={(el) => {
+                  colRefs.current[i] = el
+                }}
+                className="relative flex h-full min-h-0 flex-col cursor-pointer transition-transform duration-500"
+              >
+                {/* Glow layer */}
+                <div 
+                  className="absolute inset-0 rounded-[1.75rem] opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-2xl -z-10"
+                  style={{ backgroundColor: s.color }}
+                />
                 {/* Top card — only the TOP HALF of the number is visible, sitting
                     at the card's bottom edge (the seam). */}
                 <div
@@ -132,12 +156,12 @@ export default function Services() {
                   <span className={`${numberClass} top-0 -translate-y-1/2`}>
                     {s.num}
                   </span>
-                  <div className="flex h-full flex-col px-5 pb-5 pt-[4.5rem] md:px-6 md:pt-24 lg:px-8 lg:pt-32 lg:pb-8">
-                    <h3 className="font-['Impact',sans-serif] text-4xl tracking-normal md:text-5xl lg:text-[2.75vw]">
+                  <div className="flex h-full flex-col px-4 pb-4 pt-12 md:px-5 md:pt-16 lg:px-6 lg:pt-24 lg:pb-6">
+                    <h3 className="font-['Impact',sans-serif] text-3xl tracking-normal md:text-4xl lg:text-[2.2vw]">
                       {s.title}
                     </h3>
                     <p
-                      className="mt-4 text-base font-medium leading-snug md:text-lg lg:mt-6 lg:text-xl lg:leading-relaxed"
+                      className="mt-3 text-sm font-medium leading-snug md:text-base lg:mt-5 lg:text-[1.1vw] lg:leading-relaxed"
                       style={{ color: s.fg, opacity: 0.9 }}
                     >
                       {s.intro}

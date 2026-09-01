@@ -119,7 +119,8 @@ export default function WorkList() {
       if (!section) return
       const vh = window.innerHeight || 1
       const total = Math.max(section.offsetHeight - vh, 1)
-      const local = clamp((window.scrollY - section.offsetTop) / total)
+      const rect = section.getBoundingClientRect()
+      const local = clamp(-rect.top / total)
 
       // Use strictly linear tracking (no easing) so the scroll list matches
       // the user's physical scroll exactly. This prevents "glitchy" acceleration.

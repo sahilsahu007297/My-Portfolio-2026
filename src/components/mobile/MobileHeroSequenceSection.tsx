@@ -114,52 +114,35 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
 
       const vh = window.innerHeight || 1
       const total = Math.max(section.offsetHeight - vh, 1)
-      const localScroll = Math.max(0, window.scrollY - section.offsetTop)
+      const rect = section.getBoundingClientRect()
+      const localScroll = Math.max(0, -rect.top)
       
-      // Total snaps = 14. Max scroll = 14 * 100vh.
-      const pos = (localScroll / total) * 14
+      // Total snaps = 24. Max scroll = 24 * 100vh.
+      const pos = (localScroll / total) * 24
 
       let targetFrame = 0
 
-      /* ── Hero card: shrink + exit (pos 0 to 1) ── */
-      if (hero) {
-        if (pos === 0) {
-          hero.style.transform = "none"
-          hero.style.borderRadius = "0px"
-        } else {
-          const p = clamp(pos)
-          const p1 = Math.min(1, p / 0.55)
-          const p2 = Math.max(0, (p - 0.55) / 0.45)
-          const scale = 1 - p1 * 0.62
-          const radius = p1 * 28
-          const translateY = -p2 * 120
-          hero.style.transform = `translateY(${translateY}vh) scale(${scale})`
-          hero.style.borderRadius = `${radius}px`
-        }
-      }
-
-      /* ── Dark overlay: starts light, deepens as hero clears ── */
+      /* ── Dark overlay: starts light, fades out ── */
       if (overlay) {
-        if (pos <= 1) {
-          const p = clamp(pos)
-          overlay.style.opacity = `${(0.3 + p * 0.4).toFixed(3)}`
-        } else if (pos <= 3) {
-          // Fade overlay back out as philosophy text zooms (pos 2 to 3)
-          const zp = clamp(pos - 2)
+        if (pos <= 0) {
+          overlay.style.opacity = "0.7"
+        } else if (pos <= 2) {
+          // Fade overlay back out as philosophy text zooms
+          const zp = clamp(pos - 1)
           overlay.style.opacity = `${(0.7 * (1 - easeIn(zp))).toFixed(3)}`
         } else {
           overlay.style.opacity = "0"
         }
       }
 
-      /* ── Philosophy text (pos 1 to 3) ── */
-      if (pos <= 1) {
+      /* ── Philosophy text (pos 0 to 2) ── */
+      if (pos < 0) {
         if (philoWrap) philoWrap.style.display = "none"
         targetFrame = 0
         hidePointers()
-      } else if (pos <= 2) {
-        // Text rises from below (pos 1 to 2)
-        const p = clamp(pos - 1)
+      } else if (pos <= 1) {
+        // Text rises from below (pos 0 to 1)
+        const p = clamp(pos)
         const e = easeOut(p)
         if (philoH1) {
           philoH1.style.transform = `translateY(${(1 - e) * 100}vh)`
@@ -168,22 +151,22 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
         if (philoWrap) philoWrap.style.display = "flex"
         targetFrame = 0
         hidePointers()
-      } else if (pos <= 3) {
-        // Text zooms (pos 2 to 3)
-        const p = clamp(pos - 2)
+      } else if (pos <= 2) {
+        // Text zooms (pos 1 to 2)
+        const p = clamp(pos - 1)
         const e = easeIn(p)
         if (philoH1) {
-          philoH1.style.transform = `scale(${1 + e * 60}, ${1 + e * 120})`
+          philoH1.style.transform = `scale(${1 + e * 60})`
           const fadeP = clamp((p - 0.75) / 0.25)
           philoH1.style.opacity = `${1 - fadeP}`
         }
         if (philoWrap) philoWrap.style.display = "flex"
         targetFrame = 0
         hidePointers()
-      } else if (pos <= 13) {
-        /* ── Image sequence plays (pos 3 to 13) ── */
+      } else if (pos <= 24) {
+        /* ── Image sequence plays (pos 2 to 24) ── */
         if (philoWrap) philoWrap.style.display = "none"
-        const sp = clamp((pos - 3) / 10)
+        const sp = clamp((pos - 2) / 22)
         targetFrame = Math.min(FRAME_COUNT - 1, Math.floor(sp * FRAME_COUNT))
         updatePointers(pos)
       } else {
@@ -193,15 +176,7 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
         hidePointers()
       }
 
-      /* ── Black curtain slides up at the end (pos 13 to 14) ── */
-      if (curtain) {
-        if (pos >= 13) {
-          const cp = easeOut(clamp(pos - 13))
-          curtain.style.transform = `translateY(${(1 - cp) * 100}%)`
-        } else {
-          curtain.style.transform = "translateY(100%)"
-        }
-      }
+
 
       /* ── Draw frame ── */
       const img = imagesRef.current[targetFrame]
@@ -226,20 +201,20 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
 
     function updatePointers(pos: number) {
       for (let i = 0; i < POINTER_DATA.length; i++) {
-        // Pointer i is active when pos is around (i + 4).
-        const pTarget = i + 4
+        // Pointer i is active when pos is around (i * 2 + 4).
+        const pTarget = i * 2 + 4
         let opacity = 0
         let ty = 30
 
-        if (pos > pTarget - 1 && pos < pTarget + 1) {
+        if (pos > pTarget - 1.5 && pos < pTarget + 1.5) {
           if (pos < pTarget) {
-            // entering (pTarget - 1 to pTarget)
-            const t = pos - (pTarget - 1)
+            // entering (pTarget - 1.5 to pTarget)
+            const t = (pos - (pTarget - 1.5)) / 1.5
             opacity = easeIn(t)
             ty = (1 - easeOut(t)) * 40
           } else {
-            // exiting (pTarget to pTarget + 1)
-            const t = pos - pTarget
+            // exiting (pTarget to pTarget + 1.5)
+            const t = (pos - pTarget) / 1.5
             opacity = 1 - easeOut(t)
             ty = easeIn(t) * -20
           }
@@ -273,72 +248,19 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
   return (
     <section ref={sectionRef} className="relative bg-black">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* z-0: Canvas — the ONLY image source for the entire section */}
+        {/* z-0: Canvas — the ONLY image source for the entire app sequence */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="fixed inset-0 h-full w-full object-cover pointer-events-none"
           style={{ zIndex: 0 }}
         />
 
         {/* z-1: Dark overlay */}
         <div
           ref={overlayRef}
-          className="pointer-events-none absolute inset-0 bg-black"
-          style={{ zIndex: 1, opacity: 0.3 }}
+          className="pointer-events-none fixed inset-0 bg-black"
+          style={{ zIndex: 1, opacity: 0.7 }}
         />
-
-        {/* z-2: Hero card — opaque, shrinks and exits on scroll */}
-        <div
-          ref={heroRef}
-          className="absolute inset-0 flex origin-center flex-col overflow-hidden bg-[var(--page-bg)] will-change-transform"
-          style={{ zIndex: 2 }}
-        >
-          {/* Top navigation */}
-          <header className="flex items-center justify-between px-6 py-4 text-[15px] font-semibold tracking-tight">
-            <div>Sahil Sahu</div>
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="flex flex-col gap-[5px] p-2"
-                aria-label="Toggle menu"
-              >
-                <div className={`h-[2px] w-6 bg-[var(--ink)] transition-transform ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-                <div className={`h-[2px] w-6 bg-[var(--ink)] transition-opacity ${isMenuOpen ? "opacity-0" : ""}`} />
-                <div className={`h-[2px] w-6 bg-[var(--ink)] transition-transform ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
-              </button>
-              
-              {isMenuOpen && (
-                <div className="absolute right-0 top-full mt-2 flex min-w-[160px] flex-col rounded-2xl border border-[var(--ink)]/20 bg-[var(--page-bg)] p-3 shadow-xl z-50">
-                  <a href="#about" onClick={() => setIsMenuOpen(false)} className="py-2.5 text-base font-medium border-b border-[var(--ink)]/10 text-center">About</a>
-                  <a href="#contact" onClick={(e) => {
-                    e.preventDefault();
-                    setIsMenuOpen(false);
-                    setTimeout(() => {
-                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-                    }, 50)
-                  }} className="py-2.5 text-base font-medium border-b border-[var(--ink)]/10 text-center">Contact</a>
-                  <button type="button" onClick={() => { onResumeClick(); setIsMenuOpen(false); }} className="py-2.5 text-base font-medium text-center">Resume</button>
-                </div>
-              )}
-            </div>
-          </header>
-
-          <div className="h-px w-full bg-[var(--ink)]/85" />
-
-          {/* Interactive waves band */}
-          <div className="relative w-full grow overflow-hidden border-b border-[var(--ink)]/85">
-            <Waves strokeColor="#111111" spacing={9} />
-          </div>
-
-          {/* Oversized name lockup */}
-          <div className="relative flex w-full items-center gap-4 overflow-hidden px-4 py-12 md:px-6">
-            <Asterisk className="hero-asterisk h-[12vw] w-[12vw] shrink-0 max-h-16 max-w-16" />
-            <h1 className="whitespace-nowrap text-[12vw] font-extrabold leading-[0.85] tracking-tighter">
-              I&rsquo;m Sahil Sahu
-            </h1>
-          </div>
-        </div>
 
         {/* z-3: THE PHILOSOPHY heading */}
         <div
@@ -348,23 +270,17 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
         >
           <h1
             ref={h1Ref}
-            className="whitespace-nowrap font-['Space_Grotesk',sans-serif] font-bold uppercase tracking-[0.1em] text-[#D5CEC4] will-change-[transform,opacity]"
+            className="whitespace-nowrap font-['Space_Grotesk',sans-serif] font-black uppercase tracking-[0.05em] text-white text-center will-change-[transform,opacity]"
             style={{
-              fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-              WebkitTextStroke: "2px #D5CEC4",
-              paintOrder: "stroke fill",
+              fontSize: "clamp(1.2rem, 4.5vw, 5.5rem)",
+              lineHeight: 1.1,
             }}
           >
-            THE WORKFLOW
+            THE OPERATING SYSTEM
           </h1>
         </div>
 
-        {/* z-5: Black curtain — seamless wipe into Services */}
-        <div
-          ref={curtainRef}
-          className="pointer-events-none absolute inset-0 bg-black will-change-transform"
-          style={{ zIndex: 5, transform: "translateY(100%)" }}
-        />
+
 
         {/* z-4: Philosophy pointer cards */}
         {POINTER_DATA.map((d, i) => (
@@ -397,8 +313,8 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
       
       {/* Invisible Snap Points */}
       <div className="relative z-0 -mt-[100vh] pointer-events-none">
-        {/* 15 total snap points representing the 15 distinct states */}
-        {Array.from({ length: 15 }).map((_, i) => (
+        {/* 25 total snap points representing the 25 distinct states (0 to 24) */}
+        {Array.from({ length: 25 }).map((_, i) => (
           <div key={i} className="h-screen w-full snap-center" />
         ))}
       </div>

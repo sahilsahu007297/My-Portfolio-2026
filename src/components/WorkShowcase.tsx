@@ -38,10 +38,11 @@ export default function WorkShowcase() {
       if (!section) return
       const vh = window.innerHeight || 1
       const total = Math.max(section.offsetHeight - vh, 1)
-      const local = clamp((window.scrollY - section.offsetTop) / total)
-
+      const rect = section.getBoundingClientRect()
+      const local = Math.min(Math.max(-rect.top, 0), total)
+      const p = local / total
       // Total snaps = 3. Max scroll = 2. pos goes from 0 to 2.
-      const pos = local * 2
+      const pos = p * 2
 
       // 1. Converge the two title halves + scale the figure up from centre.
       // pos 0 to 1

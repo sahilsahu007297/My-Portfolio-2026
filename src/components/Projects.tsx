@@ -114,7 +114,8 @@ export default function Projects() {
       const vw = window.innerWidth || 1
       const vh = window.innerHeight || 1
       const total = wrapper.offsetHeight - vh
-      const local = clamp(window.scrollY - wrapper.offsetTop, 0, total)
+      const rect = wrapper.getBoundingClientRect()
+      const local = clamp(-rect.top, 0, total)
       const p = total > 0 ? local / total : 0
 
       const fillP = clamp(p / 0.34)
