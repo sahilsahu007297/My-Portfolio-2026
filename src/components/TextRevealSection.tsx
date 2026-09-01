@@ -97,7 +97,7 @@ export default function TextRevealSection() {
                   return (
                     <span 
                       key={wIdx} 
-                      ref={el => wordsRef.current[idx] = el}
+                      ref={el => { wordsRef.current[idx] = el }}
                       className="inline-block mx-[0.15em] opacity-10 will-change-[opacity,transform] my-[0.1em]"
                       style={{ transform: "translateY(20px)" }}
                     >
