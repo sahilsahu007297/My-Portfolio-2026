@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { RouterProvider } from "react-router"
 import { router } from "./routes"
+// @ts-ignore
 import Lenis from "lenis"
 import VenetianPreloader from "./components/VenetianPreloader"
 import ResumeModal from "./components/ResumeModal"
