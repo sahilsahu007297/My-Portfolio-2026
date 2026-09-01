@@ -1,7 +1,8 @@
 {
-  "description": "Create stunning landing pages with customizable designs, interactive elements, and engaging mouse effects to enhance user experience and drive conversions.",
+  "title": "Sahil Sahu | UX Designer",
+  "description": "Sahil Sahu - UX Designer solving complex business problems and creating sustainable, beautiful digital experiences.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,
