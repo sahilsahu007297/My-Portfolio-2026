@@ -3,6 +3,7 @@ import myImage from "../Assets/myimage1.png";
 import bottomImg1 from "../Assets/bottom_img1.png";
 import bottomImg3 from "../Assets/bottom_img3.png";
 import bottomImg4 from "../Assets/bottom_img4.png";
+import logo from "../Assets/Sahil-Sahu-Logo.png";
 
 interface Props {
   indiaTime: string
@@ -146,7 +147,10 @@ export default function ForwardSection({ indiaTime, onResumeClick }: Props) {
         >
           {/* Navbar applied to this section as requested */}
           <header className="absolute top-0 left-0 w-full z-50 grid grid-cols-2 items-center px-6 py-4 text-[15px] font-semibold tracking-tight md:grid-cols-5 md:px-8 text-black">
-            <div className="md:pr-6">Sahil Sahu</div>
+            <div className="md:pr-6 flex items-center gap-3">
+              <img src={logo} alt="Sahil Sahu Logo" className="h-12 md:h-14 w-auto object-contain" />
+              <span>Sahil Sahu</span>
+            </div>
             <a 
               href="#about" 
               onClick={(e) => {

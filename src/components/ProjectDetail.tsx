@@ -6,6 +6,7 @@ import meridianVideo from "../Assets/Meridian.mp4"
 import northstarImage from "../Assets/northstar.png"
 import logiflowImage from "../Assets/logiflow.jpg"
 import teamioImage from "../Assets/teamio.png"
+import logo from "../Assets/Sahil-Sahu-Logo.png"
 
 const url = (id: string, w = 1800) =>
   `https://images.unsplash.com/${id}?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=82&w=${w}`
@@ -116,7 +117,10 @@ export default function ProjectDetail() {
         <button type="button" data-cursor-hover onClick={goBack} className="transition-opacity hover:opacity-55 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111111]">
           ← Back
         </button>
-        <span>Sahil Sahu</span>
+        <span className="flex items-center gap-3">
+          <img src={logo} alt="Sahil Sahu Logo" className="h-10 md:h-12 w-auto object-contain" />
+          <span>Sahil Sahu</span>
+        </span>
         <span className="hidden text-black/45 sm:block">Selected work / {project.id}</span>
       </header>
 

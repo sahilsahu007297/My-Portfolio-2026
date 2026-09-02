@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import Waves from "../Waves"
+import logo from "../../Assets/Sahil-Sahu-Logo.png"
 
 // Taupe asterisk / flower mark.
 function Asterisk({ className = "" }: { className?: string }) {
@@ -83,7 +84,10 @@ export default function MobileHeroSection({ indiaTime, onResumeClick }: Props) {
         >
           {/* Top navigation */}
           <header className="flex items-center justify-between px-6 py-4 text-[15px] font-semibold tracking-tight">
-            <div>Sahil Sahu</div>
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Sahil Sahu Logo" className="h-12 w-auto object-contain" />
+              <span>Sahil Sahu</span>
+            </div>
             <div className="relative">
               <button
                 type="button"
