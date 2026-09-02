@@ -88,7 +88,7 @@ function playCurtainSound(blindCount: number, staggerDelay: number) {
     oscillator.frequency.setValueAtTime(210 - index * 8, time)
     oscillator.frequency.exponentialRampToValueAtTime(110, time + 0.16)
     gain.gain.setValueAtTime(0.0001, time)
-    gain.gain.exponentialRampToValueAtTime(0.035, time + 0.018)
+    gain.gain.exponentialRampToValueAtTime(0.15, time + 0.018)
     gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.16)
     oscillator.connect(gain).connect(context.destination)
     oscillator.start(time)

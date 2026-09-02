@@ -16,16 +16,16 @@ const POINTER_DATA = [
 ]
 
 const POINTER_POS: React.CSSProperties[] = [
-  { left: "8vw", top: "40vh", textAlign: "left" },
-  { left: 0, right: 0, margin: "0 auto", top: "40vh", textAlign: "center" },
-  { right: "8vw", top: "40vh", textAlign: "right" },
-  { left: "8vw", top: "40vh", textAlign: "left" },
-  { left: 0, right: 0, margin: "0 auto", top: "40vh", textAlign: "center" },
-  { right: "8vw", top: "40vh", textAlign: "right" },
-  { left: "8vw", top: "40vh", textAlign: "left" },
-  { left: 0, right: 0, margin: "0 auto", top: "40vh", textAlign: "center" },
-  { right: "8vw", top: "40vh", textAlign: "right" },
-  { left: 0, right: 0, margin: "0 auto", top: "40vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
+  { left: 0, right: 0, margin: "0 auto", bottom: "8vh", textAlign: "center" },
 ]
 
 const FRAME_COUNT = 300
@@ -258,7 +258,7 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
         {/* z-1: Dark overlay */}
         <div
           ref={overlayRef}
-          className="pointer-events-none fixed inset-0 bg-black"
+          className="pointer-events-none fixed inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"
           style={{ zIndex: 1, opacity: 0.7 }}
         />
 
@@ -315,7 +315,7 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
       <div className="relative z-0 -mt-[100vh] pointer-events-none">
         {/* 25 total snap points representing the 25 distinct states (0 to 24) */}
         {Array.from({ length: 25 }).map((_, i) => (
-          <div key={i} className="h-screen w-full snap-center" />
+          <div key={i} className="h-screen w-full" />
         ))}
       </div>
     </section>

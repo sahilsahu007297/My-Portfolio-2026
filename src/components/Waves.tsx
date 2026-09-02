@@ -257,16 +257,18 @@ export default function Waves(props: WavesProps) {
         if (!containerRef.current || !svgRef.current) return
 
         boundingRef.current = containerRef.current.getBoundingClientRect()
-        const { width, height } = boundingRef.current
+        const width = containerRef.current.offsetWidth
+        const height = containerRef.current.offsetHeight
 
         svgRef.current.style.width = `${width}px`
         svgRef.current.style.height = `${height}px`
     }
 
     const setLines = () => {
-        if (!svgRef.current || !boundingRef.current) return
+        if (!svgRef.current || !containerRef.current) return
 
-        const { width, height } = boundingRef.current
+        const width = containerRef.current.offsetWidth
+        const height = containerRef.current.offsetHeight
         linesRef.current = []
 
         pathsRef.current.forEach((path) => path.remove())

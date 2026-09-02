@@ -178,7 +178,7 @@ export default function Services() {
       <div className="relative z-0 -mt-[100vh] pointer-events-none">
         {/* N + 1 snap points to give 1 initial state + N card rise states */}
         {Array.from({ length: SERVICES.length + 1 }).map((_, i) => (
-          <div key={i} className="h-screen w-full snap-center" />
+          <div key={i} className="h-screen w-full" />
         ))}
       </div>
     </section>

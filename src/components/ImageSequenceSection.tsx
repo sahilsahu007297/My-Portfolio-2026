@@ -314,7 +314,7 @@ export default function HeroSequenceSection({ indiaTime, onResumeClick }: Props)
       <div className="relative z-0 -mt-[100vh] pointer-events-none">
         {/* 25 total snap points representing the 25 distinct states (0 to 24) */}
         {Array.from({ length: 25 }).map((_, i) => (
-          <div key={i} className="h-screen w-full snap-center" />
+          <div key={i} className="h-screen w-full" />
         ))}
       </div>
     </section>

@@ -199,7 +199,7 @@ export default function ForwardSection({ indiaTime, onResumeClick }: Props) {
                 <div className="text-[14vw] md:text-[12vw] font-black leading-[0.85] text-black w-full text-center relative -left-[10%] md:-left-[20%] mt-2 md:mt-4">
                   WAY
                 </div>
-                <div className="text-[14vw] md:text-[12vw] font-black leading-[0.85] text-transparent w-full text-center relative left-[5%] mt-2 md:mt-4">
+                <div className="text-[14vw] md:text-[12vw] font-black leading-[0.85] text-black w-full text-center relative left-[5%] mt-2 md:mt-4">
                   FORWARD
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function ForwardSection({ indiaTime, onResumeClick }: Props) {
               <img 
                 src={myImage}
                 alt="Sahil Sahu"
-                className="absolute top-[15vh] md:top-[16vh] z-20 w-auto h-[55vh] md:h-[70vh] object-contain drop-shadow-2xl"
+                className="absolute top-[25vh] md:top-[25vh] z-20 w-auto h-[45vh] md:h-[55vh] object-contain drop-shadow-2xl"
                 style={{ 
                   transform: `translate(${mousePos.x * 5}px, ${mousePos.y * 5}px)`,
                   transition: 'transform 0.1s ease-out',
@@ -217,21 +217,6 @@ export default function ForwardSection({ indiaTime, onResumeClick }: Props) {
                 }}
               />
 
-              {/* Foreground Text Layer (Solid Black FORWARD) */}
-              <div 
-                className="absolute top-[18vh] md:top-[22vh] w-full flex flex-col items-center z-30 pointer-events-none"
-                style={{ transform: `translate(${mousePos.x * -10}px, ${mousePos.y * -10}px)` }}
-              >
-                <div className="text-[14vw] md:text-[12vw] font-black leading-[0.85] w-full text-center relative -left-[5%] md:-left-[10%] opacity-0">
-                  I FIND THE
-                </div>
-                <div className="text-[14vw] md:text-[12vw] font-black leading-[0.85] w-full text-center relative -left-[10%] md:-left-[20%] mt-2 md:mt-4 opacity-0">
-                  WAY
-                </div>
-                <div className="text-[14vw] md:text-[12vw] font-black leading-[0.85] text-black w-full text-center relative left-[5%] mt-2 md:mt-4">
-                  FORWARD
-                </div>
-              </div>
 
               {/* Gradient to hide any remaining artifacts */}
               <div className="absolute bottom-0 left-0 w-full h-[10vh] bg-gradient-to-t from-[#F1F0EC] via-[#F1F0EC]/90 to-transparent z-30 pointer-events-none" />
@@ -321,7 +306,7 @@ export default function ForwardSection({ indiaTime, onResumeClick }: Props) {
       {/* Invisible Snap Points */}
       <div className="absolute inset-0 z-0 pointer-events-none flex flex-col">
         {Array.from({ length: snapPointsCount }).map((_, i) => (
-          <div key={i} className="h-screen w-full snap-start shrink-0" />
+          <div key={i} className="h-screen w-full shrink-0" />
         ))}
       </div>
     </section>
