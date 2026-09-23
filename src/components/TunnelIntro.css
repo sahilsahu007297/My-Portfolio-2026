@@ -1,0 +1,10 @@
+.workflow-tunnel { position:relative; height:480vh; color:#edf2e9; }
+.workflow-tunnel__stage { position:sticky; top:0; height:100svh; display:grid; place-items:center; overflow:hidden; perspective:1000px; }
+.workflow-tunnel__title { text-align:center; padding:28px; width:100%; will-change:transform,opacity,filter; }
+.workflow-tunnel__eyebrow { display:block; margin-bottom:30px; font:10px monospace; text-transform:uppercase; letter-spacing:.25em; color:#bed7cd; }
+.workflow-tunnel h2 { font-size:clamp(52px,8.4vw,132px); line-height:.99; font-weight:400; letter-spacing:-.065em; text-shadow:0 3px 35px #0009; }
+.workflow-tunnel h2 em { font-family:Georgia,serif; font-weight:400; color:#d4e3ce; }
+.workflow-tunnel p { margin-top:28px; color:#abbeb5; font-size:12px; letter-spacing:.06em; }
+.workflow-tunnel__cue { display:block; margin-top:30px; color:#abc8b5; font-size:20px; }
+@media(max-width:767px) { .workflow-tunnel { height:400vh; }.workflow-tunnel h2 { font-size:clamp(46px,12vw,74px); }.workflow-tunnel__eyebrow { font-size:8px; letter-spacing:.15em; } }
+@media(prefers-reduced-motion:reduce) { .workflow-tunnel { height:85svh; }.workflow-tunnel__stage { position:relative; height:85svh; }.workflow-tunnel__title { opacity:1!important; transform:none!important; filter:none!important; } }

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import Waves from "./Waves"
-import logo from "../Assets/Sahil-Sahu-Logo.png"
+import MountainTerrain from "./MountainTerrain"
 
 // Taupe asterisk / flower mark.
 function Asterisk({ className = "" }: { className?: string }) {
@@ -78,19 +77,18 @@ export default function HeroSection({ indiaTime, onResumeClick }: Props) {
       <div className="sticky top-0 h-screen w-full overflow-hidden flex justify-center items-center">
         <div
           ref={heroRef}
-          className="absolute inset-0 flex origin-center flex-col overflow-hidden bg-[var(--page-bg)] will-change-transform"
+          className="absolute inset-0 flex origin-center flex-col overflow-hidden bg-black text-white will-change-transform"
           style={{ zIndex: 2 }}
         >
           {/* Top navigation */}
-          <header className="grid grid-cols-2 items-center px-6 py-4 text-[15px] font-semibold tracking-tight md:grid-cols-5 md:px-8">
+          <header className="relative z-10 shrink-0 min-h-[72px] grid grid-cols-2 items-center px-6 py-4 text-[15px] font-semibold tracking-tight md:grid-cols-5 md:px-8">
             <div className="md:pr-6 flex items-center gap-3">
-              <img src={logo} alt="Sahil Sahu Logo" className="h-12 md:h-14 w-auto object-contain" />
               <span>Sahil Sahu</span>
             </div>
             <a
               href="#about"
               data-cursor-hover
-              className="hidden border-l border-[var(--ink)]/85 px-6 text-center transition-opacity hover:opacity-55 md:block"
+              className="hidden border-l border-white/25 px-6 text-center transition-opacity hover:opacity-55 md:block"
             >
               About
             </a>
@@ -101,7 +99,7 @@ export default function HeroSection({ indiaTime, onResumeClick }: Props) {
                 e.preventDefault()
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
               }}
-              className="hidden border-l border-[var(--ink)]/85 px-6 text-center transition-opacity hover:opacity-55 md:block"
+              className="hidden border-l border-white/25 px-6 text-center transition-opacity hover:opacity-55 md:block"
             >
               Contact&nbsp;&nbsp;&nbsp;
             </a>
@@ -109,12 +107,12 @@ export default function HeroSection({ indiaTime, onResumeClick }: Props) {
               type="button"
               data-cursor-hover
               onClick={onResumeClick}
-              className="hidden border-l border-[var(--ink)]/85 px-6 text-center transition-opacity hover:opacity-55 md:block"
+              className="hidden border-l border-white/25 px-6 text-center transition-opacity hover:opacity-55 md:block"
             >
               Resume
             </button>
             <div
-              className="flex items-center justify-end gap-2 border-l border-[var(--ink)]/85 pl-6 tabular-nums"
+              className="flex items-center justify-end gap-2 border-l border-white/25 pl-6 tabular-nums"
               aria-label={`Indian Standard Time: ${indiaTime}`}
             >
               <time dateTime={new Date().toLocaleTimeString("en-GB", { timeZone: "Asia/Kolkata", hour12: false })}>
@@ -124,24 +122,19 @@ export default function HeroSection({ indiaTime, onResumeClick }: Props) {
             </div>
           </header>
 
-          <div className="h-px w-full bg-[var(--ink)]/85" />
+          <div className="h-px w-full bg-white/20" />
 
-          {/* Interactive waves band */}
-          <div className="relative w-full grow overflow-hidden border-b border-[var(--ink)]/85">
-            <Waves strokeColor="#111111" spacing={9} />
-          </div>
+          <div className="relative min-h-0 flex-1 overflow-hidden">
+            <MountainTerrain />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.3),transparent_70%)]" />
 
-          {/* Oversized name lockup */}
-          <div className="relative flex flex-col items-start justify-between gap-6 overflow-hidden px-6 py-8 md:flex-row md:items-center md:px-8">
-            <div className="flex items-center gap-6">
-              <Asterisk className="hero-asterisk h-16 w-16 shrink-0 md:h-24 md:w-24" />
-              <h1 className="whitespace-nowrap text-[15vw] font-extrabold leading-[0.85] tracking-tighter md:text-[13vw]">
-                I am Sahil
-              </h1>
-            </div>
-            <p className="max-w-[520px] self-end text-right text-[17px] font-semibold leading-[1.6] text-[var(--ink)] opacity-80 md:text-[22px] md:leading-[1.45]">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 px-6 text-center pointer-events-none">
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/55">UX designer & creative thinker</p>
+            <h1 className="text-[clamp(3rem,8vw,9rem)] font-extrabold leading-[0.95] tracking-[-0.06em] text-white">I'm Sahil Sahu.</h1>
+            <p className="max-w-[660px] text-sm md:text-lg leading-relaxed text-white/85 [text-shadow:0_2px_14px_#000,0_0_6px_#000]">
               I design at the intersection of people, problems, and possibility. A UX designer who likes complex problems, breaks them apart and reaches to a conclusion no matter what.
             </p>
+          </div>
           </div>
         </div>
       </div>

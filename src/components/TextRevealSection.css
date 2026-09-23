@@ -1,0 +1,6 @@
+.particle-outro { position: relative; z-index: 20; height: 500vh; color: white; }
+.particle-outro__stage { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 7vw; overflow: hidden; }
+.particle-outro__text { max-width: 960px; text-align: center; font-size: clamp(16px,1.9vw,28px); line-height: 1.75; font-weight: 500; will-change: transform,opacity; }
+.particle-outro__text p + p { margin-top: 32px; }
+.particle-outro__text span { display: inline-block; margin: 0 .14em; opacity: .13; }
+@media(prefers-reduced-motion:reduce) { .particle-outro { height: auto; } .particle-outro__stage { position: relative; height: auto; min-height: 100vh; } .particle-outro__text { transform: none !important; opacity: 1 !important; } .particle-outro__text span { opacity: 1 !important; transform: none !important; } }

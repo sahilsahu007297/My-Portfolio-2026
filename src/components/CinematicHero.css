@@ -1,0 +1,94 @@
+.cinematic-hero { position: relative; z-index: 30; height: 650vh; color: #edf1f5; background: #03060a; }
+.cinematic-hero__stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.cinematic-nav { height: 72px; position: relative; z-index: 40; display: grid; grid-template-columns: 1fr 1.6fr 1fr; align-items: center; gap: 24px; padding: 0 32px; border-bottom: 1px solid #ffffff13; background: #03060a; font-size: 13px; }
+.cinematic-nav > a { font-weight: 600; letter-spacing: -.03em; }
+.cinematic-nav nav { display: flex; align-items: center; justify-content: space-around; }
+.cinematic-nav time { text-align: right; font-size: 12px; font-variant-numeric: tabular-nums; }
+.cinematic-nav time span { opacity: .4; }
+.cinematic-nav a,.cinematic-nav button { transition: opacity .25s; }
+.cinematic-nav a:hover,.cinematic-nav button:hover { opacity: .6; }
+.cinematic-hero__surface { position: absolute; inset: 72px 0 0; overflow: hidden; }
+.mountain-flight { position: absolute; inset: 0; }
+.mountain-flight canvas { display: block; width: 100%; height: 100%; }
+.cinematic-hero__veil { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 46%,#03060a44,transparent 65%); pointer-events: none; }
+.cinematic-hero__entrance { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 1.8s ease .5s; }
+.is-entered .cinematic-hero__entrance { opacity: 1; }
+.cinematic-hero__intro { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px; text-align: center; gap: 28px; }
+.cinematic-eyebrow { font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: #aab8c7; }
+.cinematic-hero h1 { font-family: "Manrope", "Inter", sans-serif; font-size: clamp(42px,7.8vw,132px); font-weight: 500; letter-spacing: -.065em; line-height: 1.1; color: #cbd5df; background: linear-gradient(110deg,#8896a5 15%,#b9c5d0 35%,#fff 46%,#dce7f0 49%,#fff 51%,#a5b3c2 62%,#8794a2 85%); background-size: 260% 100%; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: name-reflection 9s ease-in-out infinite; }
+@keyframes name-reflection { 0%,100%{background-position: 100% 50%} 50%{background-position: 0% 50%} }
+.cinematic-hero__description { font-size: clamp(14px,1.2vw,18px); line-height: 1.8; max-width: 630px; color: #c5cdd6; text-shadow: 0 2px 14px #03060a; }
+.cinematic-hero__scroll { position: absolute; bottom: 32px; font: 9px monospace; text-transform: uppercase; letter-spacing: .22em; color: #90a0af; }
+.cinematic-hero__scroll span { display: block; margin-top: 12px; }
+.cinematic-hero__bio { position: absolute; left: 7vw; bottom: 12%; opacity: 0; max-width: 310px; will-change: transform,opacity,filter; }
+.cinematic-hero__bio h3 { font-family: "Manrope","Inter",sans-serif; font-size: clamp(22px,2.2vw,38px); line-height: 1.2; font-weight: 500; letter-spacing: -.03em; margin: 14px 0 18px; }
+.cinematic-hero__bio > p:last-child { color: #b6c3ce; font-size: 13px; line-height: 1.8; }
+.particle-entry { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity .85s ease,visibility .85s; }
+.particle-entry.is-opening { opacity: 0; visibility: hidden; pointer-events: none; }
+.particle-entry__name { position: absolute; top: 12%; font-size: 10px; letter-spacing: .25em; color: #c3cbd5; }
+.particle-entry__name span { opacity: .38; }
+.particle-entry__sound { width: 144px; height: 144px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; border: 1px solid #dceaff66; background: radial-gradient(circle,#e2edff0d,#adcfff03); box-shadow: 0 0 35px #8bbdff13,inset 0 0 32px #adceff0d; animation: entry-breath 5s ease-in-out infinite; transition: background .35s, transform .35s; }
+.particle-entry__sound svg { width: 32px; height: 32px; color: #e0e9f5; }
+.particle-entry__sound span { font-size: 9px; letter-spacing: .06em; color: #c1cddb; }
+.particle-entry__sound:hover { background: #c2dcff12; transform: scale(1.035); }
+.particle-entry__sound:focus-visible { outline: 1px solid #dbe8f8; outline-offset: 8px; }
+@keyframes entry-breath { 50% {box-shadow: 0 0 50px #8bbdff24,inset 0 0 32px #adceff14;} }
+.particle-entry__quiet { margin-top: 32px; font-size: 11px; letter-spacing: .035em; color: #8e9baa; padding: 10px; transition: color .25s; }
+.particle-entry__quiet:hover { color: #fff; }
+.particle-entry__hint { position: absolute; bottom: 9%; font-size: 10px; letter-spacing: .08em; color: #647586; }
+.cinematic-hero__fallback-portrait { display: none; }
+.has-fallback .cinematic-hero__fallback-portrait { display: block; position: absolute; height: 65%; bottom: 0; left: 50%; transform: translateX(-50%); opacity: .65; }
+.is-waiting.has-fallback .cinematic-hero__fallback-portrait { display: none; }
+@media(max-width:767px){
+ .cinematic-nav { padding: 0 20px; grid-template-columns: 1fr auto; gap: 10px; font-size: 11px; }
+ .cinematic-nav nav { gap: 20px; }
+ .cinematic-nav time { display: none; }
+ .cinematic-hero__intro { padding: 24px; gap: 22px; }
+ .cinematic-hero__description { max-width: 340px; font-size: 13px; }
+ .cinematic-eyebrow { font-size: 8px; }
+ .cinematic-hero__bio { left: 24px; right: 24px; bottom: 4%; text-align: center; max-width: none; }
+ .cinematic-hero__bio h3 { font-size: 22px; margin: 8px 0; }
+ .cinematic-hero__bio > p:last-child { font-size: 11px; }
+ .particle-entry__sound { width: 130px; height: 130px; }
+ .particle-entry__hint { font-size: 8px; }
+}
+@media(prefers-reduced-motion:reduce){
+ .cinematic-hero { height: 220vh; }
+ .cinematic-hero h1,.particle-entry__sound { animation: none; }
+ .cinematic-hero__entrance,.particle-entry { transition-duration: .1s; transition-delay: 0s; }
+}
+
+/* The startup has no navigation chrome; reveal it with the entered scene. */
+.cinematic-nav { transition: opacity 1.2s ease; }
+.cinematic-hero:not(.is-ready) .cinematic-nav { opacity: 0; visibility: hidden; }
+.cinematic-hero__surface { transition: none; }
+.cinematic-hero:not(.is-ready) .cinematic-hero__surface { top: 0; }
+.is-waiting .cinematic-hero__surface { background: radial-gradient(ellipse at 18% 18%,#17233866,transparent 58%),radial-gradient(ellipse at 80% 70%,#17203844,transparent 60%); }
+.is-waiting .mountain-flight { opacity: .95; }
+
+.cinematic-hero__bio { border-left: 1px solid #dce8ff40; padding-left: 22px; }
+.cinematic-hero__bio h3 { letter-spacing: -.055em; }
+.cinematic-hero__bio .cinematic-eyebrow { letter-spacing: .4em; }
+@media(min-width:768px) { .cinematic-hero__bio { left: 7%; bottom: 8%; } }
+@media(max-width:767px) { .cinematic-hero__bio { border-left: 0; padding-left: 0; } }
+
+.flow-word { display:inline-block; overflow:hidden; vertical-align:bottom; }
+.flow-word [data-flow-char] { display:inline-block; will-change:transform; }
+.hover-letters { pointer-events:auto; }
+.hover-letters > span { transition:color 1.2s ease,text-shadow 1.2s ease; }
+.hover-letters > span:hover { color:#eeeae0; text-shadow:0 0 9px #f3eee322; transition-duration:.12s; }
+.flight-headings { position:absolute; inset:0; pointer-events:none; display:grid; place-items:center; perspective:1000px; perspective-origin:50% 50%; transform-style:preserve-3d; }
+.flight-heading { position:absolute; max-width:90%; text-align:center; font-size:clamp(28px,6vw,92px); font-weight:400; line-height:1.16; letter-spacing:-.05em; opacity:0; overflow:hidden; white-space:pre-wrap; }
+.flight-heading span { display:inline-block; white-space:pre; will-change:transform; }
+@media(prefers-reduced-motion:reduce) { .flight-heading span { transform:none!important; } }
+
+.bio-line { display:block; overflow:hidden; }.bio-line > span { display:block; will-change:transform; }
+
+.flight-heading { overflow:visible; will-change:transform,opacity,filter; backface-visibility:hidden; }
+
+/* Editorial serif typography throughout the mountain introduction and scroll story. */
+.cinematic-hero h1 { font-family:Georgia,"Times New Roman",serif; font-weight:400; letter-spacing:-.055em; }
+.flight-heading { width:min(1080px,88vw); max-width:88vw; white-space:normal; }
+.flight-heading h2 { font-family:Georgia,"Times New Roman",serif; font-size:clamp(40px,6.6vw,100px); font-weight:400; line-height:1.08; letter-spacing:-.045em; text-wrap:balance; }
+.flight-heading p { max-width:580px; margin:28px auto 0; font-family:Georgia,"Times New Roman",serif; font-size:clamp(16px,1.5vw,21px); font-weight:400; line-height:1.65; letter-spacing:0; color:#c2cec9; text-wrap:pretty; }
+@media(max-width:767px) { .flight-heading h2 { font-size:clamp(37px,10vw,58px); }.flight-heading p { margin-top:22px; font-size:16px; } }

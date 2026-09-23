@@ -1,3 +1,4 @@
+import QuietOrbit from "../QuietOrbit"
 import { useEffect, useRef, useState } from "react"
 
 // Closing footer: a near-black slab that answers the white work list above.
@@ -72,6 +73,7 @@ export default function MobileFooter() {
       className="relative z-10 overflow-hidden bg-[#0e0e10] text-[#f5f4f0] snap-start"
       aria-label="Footer"
     >
+      <QuietOrbit />
       {/* Big call-to-action lockup */}
       <div className="px-6 pt-16 md:px-12 md:pt-24">
         <div className="flex items-start gap-4 md:gap-7">

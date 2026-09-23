@@ -1,10 +1,6 @@
 import { useEffect, useRef } from "react"
+import "./Services.css"
 
-// Services section modeled on the bolddesign.framer.website process cards:
-// a row of columns on a black canvas, each split into a tall TOP card holding a
-// giant number and a BOTTOM card holding the heading + copy, in the same color.
-// The number cards sit ready on load; as the section scrolls the text cards rise
-// up one-by-one to meet their number card above.
 type Service = {
   num: string
   color: string
@@ -56,130 +52,113 @@ const SERVICES: Service[] = [
   },
 ]
 
+const clamp = (value: number) => Math.min(1, Math.max(0, value))
+
 export default function Services() {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const colRefs = useRef<(HTMLDivElement | null)[]>([])
+  const wrapperRef = useRef<HTMLElement>(null)
+  const periodRef = useRef<HTMLSpanElement>(null)
+  const dropRef = useRef<HTMLDivElement>(null)
+  const introRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const slideRefs = useRef<(HTMLElement | null)[]>([])
 
   useEffect(() => {
-    let raf = 0
-    const onScroll = () => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => {
-        const wrapper = wrapperRef.current
-        if (!wrapper) return
-        const vh = window.innerHeight || 1
-        const total = Math.max(wrapper.offsetHeight - vh, 1)
-        const rect = wrapper.getBoundingClientRect()
-        const local = Math.min(Math.max(-rect.top, 0), total)
-        const p = local / total
+    const wrapper = wrapperRef.current
+    if (!wrapper) return
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let frame = 0
 
-        const n = SERVICES.length
-        // Pos goes from 0 to N. 
-        // 0 = all down. 1 = first up. 2 = second up.
-        const pos = p * n
-
-        cardRefs.current.forEach((card, i) => {
-          if (!card) return
-          // Each card rises precisely over 1 unit of pos (which corresponds to exactly 1 snap block)
-          const rise = Math.min(1, Math.max(0, pos - i))
-          const eased = 1 - Math.pow(1 - Math.min(1, Math.max(0, rise)), 2)
-          
-          // From completely off-screen (150%) to attached (0)
-          card.style.transform = `translateY(${((1 - eased) * 150).toFixed(2)}%)`
-        })
-
-        // Enable hover effects only when ALL cards are attached (pos >= N)
-        const isAllAttached = pos >= n - 0.05
-        colRefs.current.forEach((col) => {
-          if (!col) return
-          if (isAllAttached) {
-            col.classList.add("group", "hover:scale-[1.04]", "hover:-rotate-2")
-          } else {
-            col.classList.remove("group", "hover:scale-[1.04]", "hover:-rotate-2")
-          }
-        })
+    const render = () => {
+      frame = 0
+      if (!wrapper.getClientRects().length || reducedMotion.matches) return
+      const viewport = window.innerHeight
+      const top = wrapper.getBoundingClientRect().top
+      const progress = clamp(-top / Math.max(1, wrapper.offsetHeight - viewport))
+      // The reference holds its intro for the first fifth of the pinned scroll.
+      const travel = clamp((progress - 0.16) / 0.62)
+      const introProgress = clamp((viewport - top) / (viewport * 2))
+      const introOpacity = clamp(introProgress / 0.5) * (1 - clamp((introProgress - 0.85) / 0.15))
+      if (introRef.current) {
+        introRef.current.style.opacity = String(introOpacity)
+        introRef.current.style.transform = `scale(${0.95 + introProgress * 0.1})`
+      }
+      const width = wrapper.clientWidth
+      const slideWidth = slideRefs.current[0]?.offsetWidth || width * 0.7
+      const end = (width - slideWidth) / 2 - slideWidth * (SERVICES.length - 1)
+      const x = width + (end - width) * travel
+      if (trackRef.current) trackRef.current.style.transform = `translate3d(${x}px, 0, 0)`
+      const drop = clamp((progress - .82) / .18)
+      if (periodRef.current && dropRef.current) {
+        const rect = periodRef.current.getBoundingClientRect()
+        const size = Math.max(6, rect.height * .14)
+        const falling = clamp(drop / .55)
+        const expand = clamp((drop - .48) / .48)
+        const startX = rect.left + rect.width / 2
+        const startY = rect.bottom - rect.height * .17
+        const cx = startX + (width * .5 - startX) * falling
+        const cy = startY + (viewport * .72 - startY) * falling * falling
+        const diameter = size + Math.hypot(width, viewport) * 2.3 * expand * expand
+        dropRef.current.style.cssText = `opacity:${drop>0?1:0};width:${diameter}px;height:${diameter}px;left:${cx}px;top:${cy}px`
+        periodRef.current.style.visibility = drop>0 ? "hidden" : "visible"
+      }
+      slideRefs.current.forEach((slide, index) => {
+        if (!slide) return
+        const visible = x + index * slideWidth < width * 0.85
+        slide.dataset.visible = String(visible)
       })
+
     }
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(render)
+    }
+    const observer = new ResizeObserver(schedule)
+    observer.observe(wrapper)
+    window.addEventListener("scroll", schedule, { passive: true })
+    window.addEventListener("resize", schedule)
+    reducedMotion.addEventListener("change", schedule)
+    schedule()
     return () => {
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
-      cancelAnimationFrame(raf)
+      cancelAnimationFrame(frame)
+      observer.disconnect()
+      window.removeEventListener("scroll", schedule)
+      window.removeEventListener("resize", schedule)
+      reducedMotion.removeEventListener("change", schedule)
     }
   }, [])
 
-  const numberClass =
-    "pointer-events-none absolute left-1/2 -translate-x-1/2 font-['Impact',sans-serif] text-[11rem] leading-none tracking-normal md:text-[16rem] lg:text-[13vw]"
-
   return (
-    <section ref={wrapperRef} className="relative z-10 bg-black">
-      <div className="sticky top-0 h-screen overflow-hidden bg-black pointer-events-none">
-        <div className="flex h-full flex-col px-3 py-4 md:px-4 md:py-5">
-          <div className="grid h-full grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5 lg:gap-4 pointer-events-auto">
-            {SERVICES.map((s, i) => (
-              <div 
-                key={s.num} 
-                ref={(el) => {
-                  colRefs.current[i] = el
-                }}
-                className="relative flex h-full min-h-0 flex-col cursor-pointer transition-transform duration-500"
-              >
-                {/* Glow layer */}
-                <div 
-                  className="absolute inset-0 rounded-[1.75rem] opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-2xl -z-10"
-                  style={{ backgroundColor: s.color }}
-                />
-                {/* Top card — only the TOP HALF of the number is visible, sitting
-                    at the card's bottom edge (the seam). */}
-                <div
-                  className="relative h-[22%] overflow-hidden rounded-[1.75rem]"
-                  style={{ background: s.color, color: s.fg }}
-                >
-                  <span className={`${numberClass} bottom-0 translate-y-1/2`}>
-                    {s.num}
-                  </span>
-                </div>
-
-                {/* Bottom card — carries the BOTTOM HALF of the number at its top
-                    edge. Rises on scroll until it attaches to the top card and
-                    the two halves complete the full number. */}
-                <div
-                  ref={(el) => {
-                    cardRefs.current[i] = el
-                  }}
-                  className="relative min-h-0 flex-1 overflow-hidden rounded-[1.75rem] will-change-transform"
-                  style={{ background: s.color, color: s.fg }}
-                >
-                  <span className={`${numberClass} top-0 -translate-y-1/2`}>
-                    {s.num}
-                  </span>
-                  <div className="flex h-full flex-col px-4 pb-4 pt-12 md:px-5 md:pt-16 lg:px-6 lg:pt-24 lg:pb-6">
-                    <h3 className="font-['Impact',sans-serif] text-3xl tracking-normal md:text-4xl lg:text-[2.2vw]">
-                      {s.title}
-                    </h3>
-                    <p
-                      className="mt-3 text-sm font-medium leading-snug md:text-base lg:mt-5 lg:text-[1.1vw] lg:leading-relaxed"
-                      style={{ color: s.fg, opacity: 0.9 }}
-                    >
-                      {s.intro}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <section ref={wrapperRef} className="services-method" aria-label="My services">
+      <div className="services-method__stage">
+        <div ref={introRef} className="services-method__intro">
+          <span className="services-method__eyebrow">[ My services ]</span>
+          <h2>What I do.</h2>
+          <p className="services-method__summary">Design. Build. Improve. Strategize. Design systems.</p>
+          <span className="services-method__hint">Scroll to explore</span>
         </div>
-      </div>
-
-      {/* Invisible Snap Points */}
-      <div className="relative z-0 -mt-[100vh] pointer-events-none">
-        {/* N + 1 snap points to give 1 initial state + N card rise states */}
-        {Array.from({ length: SERVICES.length + 1 }).map((_, i) => (
-          <div key={i} className="h-screen w-full" />
-        ))}
+        <div ref={trackRef} className="services-method__track">
+          {SERVICES.map((service, index) => (
+            <article
+              key={service.num}
+              ref={(node) => { slideRefs.current[index] = node }}
+              className="services-method__slide"
+              data-visible={index === 0 ? "true" : "false"}
+              aria-label={`${service.num}. ${service.title}`}
+            >
+              <span className="services-method__number" aria-hidden="true" style={{ color: index === 0 ? "#FCF2E5" : service.color }}>{service.num}</span>
+              <div className="services-method__content">
+                <h3 aria-label={service.title}>
+                  {Array.from(service.title).map((letter, letterIndex) => (
+                    <span key={letterIndex} aria-hidden="true" style={{ transitionDelay: `${letterIndex * 60}ms` }}>{letter === " " ? "\u00a0" : letter}</span>
+                  ))}
+                  <span ref={index===4?periodRef:undefined} aria-hidden="true">.</span>
+                </h3>
+                <div className="services-method__rule" />
+                <p>{service.intro}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div ref={dropRef} className="services-method__drop" aria-hidden="true" />
       </div>
     </section>
   )

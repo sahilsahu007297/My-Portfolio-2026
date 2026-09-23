@@ -1,0 +1,32 @@
+
+.forward-process { position:relative; z-index:30; height:420vh; background:#101916; color:#edf2e9; --line-progress:0; --icon-reveal:1; }
+.forward-process__stage { position:sticky; top:0; min-height:100svh; display:flex; align-items:center; justify-content:center; padding:60px 7vw; }
+.forward-process__steps { position:relative; width:min(640px,80vw); margin-left:40px; }
+.forward-process__steps::before,.forward-process__steps::after { content:""; position:absolute; top:22px; bottom:22px; left:0; width:1px; background:#ffffff20; }
+.forward-process__steps::after { background:#bbd3ad; transform:scaleY(var(--line-progress)); transform-origin:top; }
+.process-step { position:relative; padding:0 0 14px 64px; }
+.process-step h3 { position:relative; color:#6c7970; font-size:clamp(32px,4.7vw,68px); font-weight:400; line-height:1.15; letter-spacing:-.05em; transition:color .5s; }
+.process-step.is-active h3 { color:#edf2e9; }
+.process-step__index { position:absolute; left:-108px; top:50%; font:11px monospace; letter-spacing:0; }
+.process-step__dot { position:absolute; left:-67px; top:50%; width:7px; height:7px; border-radius:50%; background:#627466; transition:background .5s; }
+.is-active .process-step__dot { background:#c8dfb8; box-shadow:0 0 16px #c8dfb833; }
+.process-step__panel { display:grid; grid-template-rows:0fr; opacity:0; transition:grid-template-rows .65s cubic-bezier(.2,.8,.2,1),opacity .4s; }
+.process-step__panel > div { overflow:hidden; }
+.is-active .process-step__panel { grid-template-rows:1fr; opacity:1; }
+.process-step__panel p { padding-top:18px; max-width:480px; color:#b9c5be; font-size:15px; line-height:1.7; }
+.process-glyph { display:block; width:240px; height:175px; margin:20px auto; color:#bbd3ad; overflow:visible; }
+.process-glyph > * { transform-box:view-box; transform-origin:50% 50%; stroke-dasharray:1; stroke-dashoffset:calc(1 - var(--icon-reveal)); }
+.is-active .process-glyph { transform:translateY(calc((1 - var(--icon-reveal))*16px)); opacity:var(--icon-reveal); }
+.is-active .process-glyph > * { animation:glyph-drift 9s ease-in-out infinite alternate; }
+.process-glyph > :nth-child(even) { animation-direction:alternate-reverse; animation-delay:-3s; }
+.process-glyph--2 > * { animation-name:glyph-stack!important; }
+@keyframes glyph-drift { to { rotate:25deg; } }
+@keyframes glyph-stack { to { translate:0 -5px; } }
+@media(max-width:767px) { .forward-process__stage { padding:40px 8vw; }.forward-process__steps { width:100%; margin-left:25px; }.process-step { padding-left:28px; }.process-step__index { left:-56px; font-size:9px; }.process-step__dot { left:-31px; }.process-step__panel p { font-size:13px; }.process-glyph { height:145px; width:190px; } }
+@media(prefers-reduced-motion:reduce) { .forward-process { height:auto; }.forward-process__stage { position:relative; }.process-step__panel { grid-template-rows:1fr; opacity:1; transition:none; }.process-step h3 { color:#edf2e9; }.process-glyph,.process-glyph > * { animation:none!important; transform:none!important; opacity:1!important; stroke-dashoffset:0; } }
+
+/* Animate the entire glyph so authored SVG rotation centers stay intact. */
+.is-active .process-glyph > * { animation:none!important; }
+.is-active .process-glyph { animation:glyph-orbit 9s ease-in-out infinite alternate; transform-origin:center; }
+@keyframes glyph-orbit { from { rotate:-5deg; } to { rotate:8deg; } }
+@media(prefers-reduced-motion:reduce) { .is-active .process-glyph { animation:none; } }
