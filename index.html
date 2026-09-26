@@ -7,10 +7,22 @@
     <meta name="description" content="Sahil Sahu - UX Designer solving complex business problems and creating sustainable, beautiful digital experiences." />
     <title>Sahil-Sahu</title>
     <link rel="icon" type="image/png" href="/src/Assets/Sahil-Sahu-Logo.png" />
+    <style>
+      #startup-loader { position: fixed; inset: 0; z-index: 2147483647; display: grid; place-items: center; background: #03060a; opacity: 1; transition: opacity .55s ease, visibility .55s ease; }
+      #startup-loader.is-ready { opacity: 0; visibility: hidden; pointer-events: none; }
+      .startup-loader__circle { position: relative; isolation: isolate; width: 144px; aspect-ratio: 1; overflow: hidden; border: 1px solid #d9d9d9; border-radius: 50%; background: #050505; display: grid; place-items: center; }
+      .startup-loader__fill { position: absolute; z-index: 0; inset: 0; border-radius: inherit; background: #d9d9d9; transform: scaleY(0); transform-origin: bottom; animation: startup-loader-fill 1.2s cubic-bezier(.22,1,.36,1) forwards; }
+      .startup-loader__label { position: relative; z-index: 1; color: #fff; font: 10px Georgia, serif; letter-spacing: .06em; mix-blend-mode: difference; }
+      @keyframes startup-loader-fill { to { transform: scaleY(1); } }
+      @media (prefers-reduced-motion: reduce) { .startup-loader__fill { animation-duration: .15s; } #startup-loader { transition-duration: .1s; } }
+    </style>
     <!-- figma:head-end -->
   </head>
   <body>
     <!-- figma:body-start -->
+    <div id="startup-loader" role="status" aria-label="Loading portfolio">
+      <div class="startup-loader__circle"><span class="startup-loader__fill"></span><span class="startup-loader__label">Loading</span></div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <!-- figma:body-end -->

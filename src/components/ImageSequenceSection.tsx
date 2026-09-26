@@ -13,6 +13,8 @@ export default function HeroSequenceSection(_props: { indiaTime: string; onResum
       const section = sectionRef.current
       if (!section || !section.getClientRects().length || reduced.matches) return
       const progress = Math.max(0, -section.getBoundingClientRect().top / window.innerHeight)
+      const reveal = section.querySelector<HTMLElement>(".jet-reveal-copy")
+      if (reveal) { const p = progress - 15; reveal.style.opacity = String(Math.max(0,Math.min(1,p*2))*Math.max(0,Math.min(1,(17.2-progress)*2))) }
       cards.current.forEach((card, i) => {
         if (!card) return
         const local = progress - (i * 1.4 + 0.8)
@@ -40,12 +42,14 @@ export default function HeroSequenceSection(_props: { indiaTime: string; onResum
       <div className="particle-sequence__stage">
         {POINTER_DATA.map((point, i) => (
           <div className="particle-sequence__copy" key={point.n} ref={el => { cards.current[i] = el }}>
-            <span>{point.n} / {String(POINTER_DATA.length).padStart(2, "0")}</span>
+
             <h2>{point.t}</h2>
             <p>{point.q}</p>
           </div>
         ))}
       </div>
+      <div className="jet-reveal-copy"><h2>And now,<br/><em>possibility takes flight.</em></h2></div>
+      <p className="sr-only">A particle aircraft rises gently and scatters, revealing the workflow.</p>
     </section>
   )
 }

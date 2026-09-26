@@ -4,3 +4,6 @@
 .particle-outro__text p + p { margin-top: 32px; }
 .particle-outro__text span { display: inline-block; margin: 0 .14em; opacity: .13; }
 @media(prefers-reduced-motion:reduce) { .particle-outro { height: auto; } .particle-outro__stage { position: relative; height: auto; min-height: 100vh; } .particle-outro__text { transform: none !important; opacity: 1 !important; } .particle-outro__text span { opacity: 1 !important; transform: none !important; } }
+
+.particle-outro__heading { font:400 clamp(36px,5vw,76px)/1.1 Georgia,serif; letter-spacing:-.045em; margin-bottom:36px; color:#dce9e2; }
+@media(max-width:767px) { .particle-outro__text { font-size:15px; line-height:1.55; }.particle-outro__heading { margin-bottom:24px; } }

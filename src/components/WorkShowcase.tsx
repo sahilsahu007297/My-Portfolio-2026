@@ -26,9 +26,14 @@ export default function WorkShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.5
-    }
+    const video=videoRef.current
+    if(!video)return
+    const reduced=matchMedia("(prefers-reduced-motion: reduce)")
+    let visible=false
+    const sync=()=>{if(visible&&!document.hidden&&!reduced.matches)void video.play().catch(()=>{});else video.pause()}
+    const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync()})
+    observer.observe(video);document.addEventListener("visibilitychange",sync);reduced.addEventListener("change",sync)
+    return()=>{observer.disconnect();video.pause();document.removeEventListener("visibilitychange",sync);reduced.removeEventListener("change",sync)}
   }, [])
 
   useEffect(() => {
@@ -113,7 +118,7 @@ export default function WorkShowcase() {
             <video
               ref={videoRef}
               src={projectShowcaseVideo}
-              autoPlay
+              preload="none"
               loop
               muted
               playsInline

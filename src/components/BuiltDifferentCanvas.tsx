@@ -43,12 +43,13 @@ export default function BuiltDifferentCanvas({ progress }: { progress: RefObject
         }`})
       scene.add(new T.Mesh(geometry,material))
       let frame=0,last=0,time=0,visible=false,targetX=.5,targetY=.5,strength=0
+      const pointerTarget=new T.Vector2()
       const reduced=matchMedia("(prefers-reduced-motion: reduce)")
       const render=(now:number)=>{
         frame=0;if(disposed||!visible||document.hidden||reduced.matches)return
         const dt=Math.min((now-(last||now))/1000,.05);last=now;time+=dt
         material.uniforms.uTime.value=time;material.uniforms.uProgress.value=progress.current
-        material.uniforms.uMouse.value.lerp(new T.Vector2(targetX,targetY),1-Math.exp(-dt*8))
+        material.uniforms.uMouse.value.lerp(pointerTarget.set(targetX,targetY),1-Math.exp(-dt*8))
         strength*=Math.exp(-dt*1.5)
         material.uniforms.uStrength.value+=(strength-material.uniforms.uStrength.value)*(1-Math.exp(-dt*6))
         renderer.render(scene,camera);frame=requestAnimationFrame(render)

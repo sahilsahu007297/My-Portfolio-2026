@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import atmoSound from "../Assets/Sound for Portfolio Website .m4a"
+import atmoSound from "../../.figma/portfolio sound.mp3"
 
 interface VenetianPreloaderProps {
   blindCount?: number

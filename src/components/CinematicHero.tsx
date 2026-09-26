@@ -8,6 +8,7 @@ const clamp=(n:number)=>Math.max(0,Math.min(1,n))
 export default function CinematicHero({indiaTime,onResumeClick,onEntered}:{indiaTime:string;onResumeClick:()=>void;onEntered:()=>void}) {
   const enteredCallback=useRef(onEntered);enteredCallback.current=onEntered
   const section=useRef<HTMLElement>(null)
+  const stage=useRef<HTMLDivElement>(null)
   const introduction=useRef<HTMLDivElement>(null)
   const progress=useRef(0)
   const enteredAt=useRef(window.portfolioEntered ? performance.now()-4000 : Infinity)
@@ -25,7 +26,7 @@ export default function CinematicHero({indiaTime,onResumeClick,onEntered}:{india
   useEffect(()=>{
     if(phase!=="opening")return
     let frame=0,start=0
-    const duration=matchMedia("(prefers-reduced-motion: reduce)").matches?120:2100
+    const duration=matchMedia("(prefers-reduced-motion: reduce)").matches?120:3400
     const animate=(now:number)=>{
       if(!start)start=now
       entry.current=clamp((now-start)/duration)
@@ -44,15 +45,9 @@ export default function CinematicHero({indiaTime,onResumeClick,onEntered}:{india
       progress.current=p
       const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches
       const out=clamp(p/.22)
-      section.current.querySelectorAll<HTMLElement>(".flight-heading").forEach((heading,i)=>{
-        const local=(p-(.30+i*.135))/.135
-        const ready=reduced?1:clamp((performance.now()-enteredAt.current-3000)/700)
-        const enter=clamp(local/.48),leave=clamp((local-.76)/.24),ease=1-Math.pow(1-enter,3)
-        heading.style.opacity=String(ready*enter*enter*(1-leave))
-        heading.style.transform=reduced?"none":`translate3d(0,${(1-ease)*18}px,${-1100*(1-ease)+leave*180}px)`
-        heading.style.filter=reduced?"none":`blur(${(1-ease)*9+leave*3}px)`
-        heading.style.visibility=local>0&&local<1?"visible":"hidden"
-      })
+      // Dissolve the pinned viewport before its containing section can slide away.
+      const handoff=clamp((p-.925)/.07)
+      if(stage.current){stage.current.style.opacity=String(1-handoff*handoff*(3-2*handoff));stage.current.style.visibility=handoff>=1?"hidden":"visible"}
       if(introduction.current){introduction.current.style.opacity=String(1-out);introduction.current.style.transform=`translateY(${reduced?0:-out*25}px)`;introduction.current.style.filter=`blur(${out*5}px)`}
     }
     const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)}
@@ -63,7 +58,7 @@ export default function CinematicHero({indiaTime,onResumeClick,onEntered}:{india
   const enter=(sound:boolean)=>{if(phase!=="choice")return;setPortfolioSound(sound);if(sound)void playEntrySound();setPhase("opening")}
   const goAbout=(e:React.MouseEvent)=>{e.preventDefault();const el=section.current;if(el)window.scrollTo({top:el.offsetTop+(el.offsetHeight-innerHeight)*.375,behavior:"smooth"})}
   return <section ref={section} className={`cinematic-hero ${phase==="ready"?"is-ready":""} ${phase==="choice"?"is-waiting":"is-entered"} ${fallback?"has-fallback":""}`}>
-    <div className="cinematic-hero__stage">
+    <div ref={stage} className="cinematic-hero__stage">
       <header className="cinematic-nav" inert={phase!=="ready"}>
         <a href="#" aria-label="Sahil Sahu, home">Sahil Sahu</a>
         <nav aria-label="Main navigation"><a href="#about" onClick={goAbout}>About</a><a href="#contact">Contact</a><button onClick={onResumeClick}>Resume</button></nav>
@@ -93,7 +88,6 @@ export default function CinematicHero({indiaTime,onResumeClick,onEntered}:{india
         </div>
         {phase!=="ready" && <div className={`particle-entry ${phase==="opening"?"is-opening":""}`} role="dialog" aria-modal="true" aria-label="Choose your portfolio experience" data-lenis-prevent>
           <button ref={soundButton} className="particle-entry__sound" onClick={()=>enter(true)} disabled={phase!=="choice"} aria-label="Enter with sound">
-            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 13h5l6-5v16l-6-5H6z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/><path d="M21 11c3 3 3 7 0 10m4-14c5 5 5 13 0 18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
             <span>Enter with sound</span>
           </button>
           <button className="particle-entry__quiet" onClick={()=>enter(false)} disabled={phase!=="choice"}>Enter without sound</button>

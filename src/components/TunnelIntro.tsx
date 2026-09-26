@@ -1,36 +1,36 @@
 import { useEffect, useRef } from "react"
 import "./TunnelIntro.css"
-
+const STORY = ["Now, let me tell you a story.", "Once upon a time,", "a question took shape.", "Could a fighter jet move", "with the air,", "instead of against it?", "Less drag. More possibility."]
 export default function TunnelIntro() {
   const section=useRef<HTMLElement>(null)
-  const title=useRef<HTMLDivElement>(null)
   useEffect(()=>{
+    const el=section.current!, reduced=matchMedia("(prefers-reduced-motion: reduce)")
+    const headings=Array.from(el.querySelectorAll<HTMLElement>(".story-heading"))
     let frame=0
-    const reduced=matchMedia("(prefers-reduced-motion: reduce)")
     const update=()=>{
       frame=0
-      const el=section.current!,rect=el.getBoundingClientRect()
-      const p=Math.max(0,Math.min(1,-rect.top/Math.max(1,el.offsetHeight-innerHeight)))
-      const appear=Math.max(0,Math.min(1,(innerHeight-rect.top)/(innerHeight*.65)))
-      const fade=Math.max(0,Math.min(1,(p-.43)/.23))
-      if(title.current){
-        title.current.style.opacity=String(reduced.matches?1:appear*(1-fade))
-        title.current.style.transform=reduced.matches?"none":`translate3d(0,${fade*-24}px,${-130*(1-appear)+p*130}px)`
-        title.current.style.filter=reduced.matches?"none":`blur(${fade*8}px)`
-      }
+      if(reduced.matches)return
+      const p=Math.max(0,Math.min(1,-el.getBoundingClientRect().top/Math.max(1,el.offsetHeight-innerHeight)))
+      headings.forEach((heading,i)=>{
+        const start=i===0?.015:.21+(i-1)*.108,duration=i===0?.18:.105
+        const t=(p-start)/duration
+        const approach=Math.max(0,Math.min(1,t/.44))
+        const exit=Math.max(0,Math.min(1,(t-.68)/.32))
+        const scale=.55+approach*.45+exit*exit*1.8
+        // Move the complete heading past the top edge before hiding it. Never
+        // magnify wrapped lines into isolated fragments in the viewport centre.
+        const y=-exit*exit*(innerHeight*.65+heading.offsetHeight*scale*.5+48)
+        const opacity=t>=0&&t<1?Math.min(1,t*7):0
+        heading.style.opacity=String(opacity)
+        heading.style.transform=`translate(-50%,-50%) translate3d(0,${y}px,0) scale(${scale})`
+        heading.style.visibility=opacity>0?"visible":"hidden"
+      })
     }
     const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)}
-    window.addEventListener("scroll",schedule,{passive:true});window.addEventListener("resize",schedule);reduced.addEventListener("change",schedule);update()
+    update();window.addEventListener("scroll",schedule,{passive:true});window.addEventListener("resize",schedule);reduced.addEventListener("change",schedule)
     return()=>{cancelAnimationFrame(frame);window.removeEventListener("scroll",schedule);window.removeEventListener("resize",schedule);reduced.removeEventListener("change",schedule)}
   },[])
-  return <section ref={section} data-particle-tunnel className="workflow-tunnel" aria-label="Explore my workflow">
-    <div className="workflow-tunnel__stage">
-      <div ref={title} className="workflow-tunnel__title">
-        <span className="workflow-tunnel__eyebrow">A little deeper into the process</span>
-        <h2>Keep exploring<br/><em>my workflow.</em></h2>
-        <p>Follow the curiosity.</p>
-        <span className="workflow-tunnel__cue" aria-hidden="true">↓</span>
-      </div>
-    </div>
+  return <section ref={section} data-particle-tunnel className="workflow-tunnel" aria-label="A story about the design process">
+    <div className="workflow-tunnel__stage">{STORY.map(line=><h2 key={line} className="story-heading">{line}</h2>)}</div>
   </section>
 }

@@ -8,66 +8,53 @@ export function particleShapes(count: number) {
   const sphere = (r:number) => new T.SphereGeometry(r,48,32)
   const ring = (r:number,t:number) => new T.TorusGeometry(r,t,16,80)
   const turned = (profile:number[][]) => new T.LatheGeometry(profile.map(([y,r])=>new T.Vector2(r,y)),80)
-  for (let shape=0;shape<11;shape++) {
+  for (let shape=0;shape<12;shape++) {
     const parts:T.BufferGeometry[]=[]
     const add=(g:T.BufferGeometry,x=0,y=0,z=0,rx=0,ry=0,rz=0) => {
       g.rotateX(rx);g.rotateY(ry);g.rotateZ(rz);g.translate(x,y,z);parts.push(g)
     }
     if(shape===0) add(sphere(1.5))
-    if(shape===1) {
-      add(ring(.98,.15),-.3,.35)
-      add(new T.CylinderGeometry(.14,.17,1.5,24),.85,-.85,0,0,0,Math.PI/4)
-      add(sphere(.17),1.38,-1.38)
-      // A shallow convex lens gives the magnifier a filled, dimensional center.
-      const lens=sphere(.86);lens.scale(1,1,.1);add(lens,-.3,.35)
+    const panel=(outline:number[][],depth=.09)=>{
+      const path=new T.Shape();outline.forEach(([x,y],i)=>i?path.lineTo(x,y):path.moveTo(x,y));path.closePath()
+      const g=new T.ExtrudeGeometry(path,{depth,bevelEnabled:true,bevelSize:.025,bevelThickness:.025,bevelSegments:2,steps:1});g.translate(0,0,-depth/2);return g
     }
-    if(shape===2) {
-      add(turned([[-1.65,0],[-1.65,.83],[-1.58,.9],[-1.45,.9],[-1.37,.82],[-1.32,.65],[-1.22,.65],[-1.15,.72],[-1.06,.68],[-.94,.49],[-.7,.36],[-.3,.25],[.05,.26],[.28,.36],[.36,.48],[.46,.51],[.56,.45],[.63,.26],[.76,.22],[.8,0]]))
-      add(sphere(.51),0,1.08)
+    const wing=(side:number,scale=1)=>{const g=panel([[.22,1.35],[2.85,-.95],[2.25,-1.25],[1.35,-.85],[.45,-1.3]],.075);g.scale(side*scale,scale,scale);return g}
+    const engine=(x:number,y=0,scale=1)=>{
+      const g=new T.CylinderGeometry(.23,.3,1.7,48,8,true);g.scale(scale,scale,scale);add(g,x,y,-.10)
+      add(ring(.25*scale,.045*scale),x,y-.85*scale,-.1,Math.PI/2)
+      for(let j=0;j<12;j++)add(new T.BoxGeometry(.035*scale,.35*scale,.12*scale),x+Math.cos(j*Math.PI/6)*.15*scale,y-.75*scale,-.1+Math.sin(j*Math.PI/6)*.15*scale,0,j*Math.PI/6,.2)
     }
-    if(shape===3) {
-      add(sphere(1.25))
-      for(let j=-2;j<=2;j++){const lat=j*Math.PI/6;add(ring(1.28*Math.cos(lat),.025),0,1.28*Math.sin(lat),0,Math.PI/2)}
-      add(ring(1.3,.035));add(ring(1.3,.035),0,0,0,0,Math.PI/2)
-      add(ring(1.47,.065),0,0,0,0,0,-.3)
-      add(new T.CylinderGeometry(.15,.2,.45,24),0,-1.6)
-      add(new T.CylinderGeometry(.62,.72,.13,48),0,-1.89)
+    const blendedWing=(side:number)=>{
+      const path=new T.Shape();path.moveTo(0,2.65)
+      path.bezierCurveTo(.38,1.8,.48,1.05,1.05,.58)
+      path.bezierCurveTo(1.65,.05,2.55,-.65,3.12,-1.18)
+      path.lineTo(2.58,-1.36);path.lineTo(1.82,-1.05);path.lineTo(1.08,-1.45);path.lineTo(.42,-1.55);path.lineTo(0,-1.35);path.closePath()
+      const g=new T.ExtrudeGeometry(path,{depth:.1,bevelEnabled:true,bevelSize:.075,bevelThickness:.065,bevelSegments:3,curveSegments:28,steps:1})
+      g.translate(0,0,-.05);g.scale(side,1,1);return g
     }
-    if(shape===4){add(ring(.82,.23),-.63);add(ring(.82,.23),.63,0,0,Math.PI/2)}
-    if(shape===5){
-      add(new T.CylinderGeometry(.54,1.3,.65,8,1,false),0,.8,0,0,.2)
-      add(new T.ConeGeometry(1.3,1.9,8,1,false),0,-.47,0,Math.PI, .2)
+    const jet=()=>{
+      add(panel([[0,2.5],[.38,1.15],[.62,.25],[.62,-1.4],[.26,-1.7],[0,-1.42],[-.26,-1.7],[-.62,-1.4],[-.62,.25],[-.38,1.15]],.24))
+      add(blendedWing(1));add(blendedWing(-1));engine(-.32,-.5,.65);engine(.32,-.5,.65)
+      const canopy=sphere(1);canopy.scale(.17,.82,.15);add(canopy,0,.9,.23)
+      for(const side of [-1,1]) {
+        add(panel([[side*.42,-.65],[side*1.38,-1.55],[side*.75,-1.72],[side*.38,-1.35]],.07))
+        add(panel([[0,0],[.1,.4],[.52,-.06],[.45,-.45]],.045),side*.5,-.95,.10,0,side*.95,side*.13)
+        add(new T.BoxGeometry(.19,.58,.14),side*.38,.05,.12)
+        for(let j=0;j<5;j++)add(new T.BoxGeometry(.012,.14,.015),side*(.7+j*.23),-.38-j*.12,.065)
+      }
     }
-    if(shape===6){
-      add(new T.CylinderGeometry(1.4,1.4,.16,80),0,0,-.13,Math.PI/2)
-      add(ring(1.43,.09));add(ring(1.2,.02),0,0,.02)
-      for(let j=0;j<12;j++){const a=j*Math.PI/6;add(new T.BoxGeometry(.025,.13,.035),Math.sin(a)*1.29,Math.cos(a)*1.29,.015,0,0,-a)}
-      const needle=new T.Shape();needle.moveTo(0,1.08);needle.lineTo(.26,0);needle.lineTo(0,-1.08);needle.lineTo(-.26,0);needle.closePath()
-      add(new T.ExtrudeGeometry(needle,{depth:.08,bevelEnabled:true,bevelSize:.02,bevelThickness:.02,bevelSegments:2,steps:1}),0,0,.02,0,0,-.3)
-      add(sphere(.1),0,0,.15)
-    }
-    if(shape===7) add(new T.BoxGeometry(2.25,2.25,2.25,12,12,12),0,0,0,.22,.55)
-    if(shape===8){
-      add(new T.CylinderGeometry(.28,.28,2.7,6),0,-.1)
-      add(new T.ConeGeometry(.28,.68,6),0,1.59)
-      add(new T.CylinderGeometry(.29,.29,.18,32),0,-1.48)
-      add(new T.CylinderGeometry(.28,.28,.27,24),0,-1.7)
-      parts.forEach(p=>p.rotateZ(-.4))
-    }
-    if(shape===9){
-      add(turned([[-1.28,0],[-1.28,.39],[-1.1,.48],[-.8,.5],[.8,.5],[1,.48],[1.2,.43],[1.4,.33],[1.6,.18],[1.75,0]]))
-      add(new T.CylinderGeometry(.33,.4,.24,48),0,-1.37)
-      const fin=new T.Shape();fin.moveTo(.38,-.4);fin.lineTo(1.02,-1.15);fin.lineTo(1.02,-1.55);fin.lineTo(.4,-1.15);fin.closePath()
-      for(let j=0;j<4;j++) add(new T.ExtrudeGeometry(fin,{depth:.1,bevelEnabled:true,bevelSize:.025,bevelThickness:.025,bevelSegments:2,steps:1}),0,0,0,0,j*Math.PI/2+.3)
-      add(ring(.2,.05),0,.42,.495)
-      add(new T.CircleGeometry(.17,32),0,.42,.52)
-      add(ring(.49,.025),0,-.65,0,Math.PI/2)
-    }
-    if(shape===10){
-      add(turned([[-1.4,0],[-1.4,.72],[-1.2,.72],[-.95,.64],[-.6,.4],[-.15,.1],[.15,.1],[.6,.4],[.95,.64],[1.2,.72],[1.4,.72],[1.4,0]]))
-      for(const y of [-1.5,1.5]) add(new T.CylinderGeometry(.93,.93,.18,64),0,y)
-      for(let j=0;j<4;j++){const a=j*Math.PI/2+Math.PI/4;add(new T.CylinderGeometry(.055,.055,2.9,16),.81*Math.cos(a),0,.81*Math.sin(a))}
-    }
+    if(shape===1){add(wing(1,.7),-.8,.1);add(wing(-1,.7),.8,.1)}
+    if(shape===2){const g=panel([[0,1.8],[.8,-1.5],[0,-.95],[-.8,-1.5]],.24);add(g)}
+    if(shape===3){engine(0,0,1.5);for(let j=0;j<5;j++)add(ring(.52,.025),0,-.8+j*.4,0,Math.PI/2)}
+    if(shape===4){engine(-.7);engine(.7);add(new T.BoxGeometry(1.7,.16,.12))}
+    if(shape===5){const g=sphere(1);g.scale(.6,1.7,.45);add(g);add(ring(.65,.04),0,-.7,0,Math.PI/2)}
+    if(shape===6){add(wing(1,.85),-.3);add(wing(-1,.85),.3)}
+    if(shape===7){jet();parts.forEach(g=>g.scale(.7,.7,.7))}
+    if(shape===8){const g=sphere(1);g.scale(.75,1.5,.48);add(g);for(const x of [-.65,.65])add(new T.BoxGeometry(.06,2.4,.08),x,-.1)}
+    if(shape===9){jet();parts.forEach(g=>g.scale(.75,.75,.75))}
+    if(shape===10){engine(0,0,1.6);add(ring(.8,.06),0,-1.35,0,Math.PI/2)}
+    if(shape===11)jet()
+    parts.forEach(g=>{g.rotateX(-.48);g.rotateY(-.22);g.computeVertexNormals()})
     const triangles: {g:T.BufferGeometry;a:number;b:number;c:number;sum:number}[]=[]
     let total=0
     const va=new T.Vector3(),vb=new T.Vector3(),vc=new T.Vector3(),ab=new T.Vector3(),ac=new T.Vector3()
@@ -85,12 +72,11 @@ export function particleShapes(count: number) {
     for(let i=0;i<count;i++){
       const target=random()*total;let low=0,high=triangles.length-1
       while(low<high){const mid=(low+high)>>1;if(triangles[mid].sum<target)low=mid+1;else high=mid}
-      const {g,a,b,c}=triangles[low],p=g.attributes.position,n=g.attributes.normal
+      const {g,a,b,c}=triangles[low],p=(g.attributes.position as T.BufferAttribute).array,n=(g.attributes.normal as T.BufferAttribute).array
       const root=Math.sqrt(random()),wa=1-root,wb=root*(1-random()),wc=1-wa-wb
       for(let axis=0;axis<3;axis++){
-        const get=(attr:T.BufferAttribute|T.InterleavedBufferAttribute,j:number)=>axis===0?attr.getX(j):axis===1?attr.getY(j):attr.getZ(j)
-        positions[i*3+axis]=get(p,a)*wa+get(p,b)*wb+get(p,c)*wc
-        ns[i*3+axis]=get(n,a)*wa+get(n,b)*wb+get(n,c)*wc
+        positions[i*3+axis]=p[a*3+axis]*wa+p[b*3+axis]*wb+p[c*3+axis]*wc
+        ns[i*3+axis]=n[a*3+axis]*wa+n[b*3+axis]*wb+n[c*3+axis]*wc
       }
     }
     shapes.push(positions);normals.push(ns);parts.forEach(g=>g.dispose())

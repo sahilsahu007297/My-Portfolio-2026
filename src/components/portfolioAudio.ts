@@ -1,4 +1,4 @@
-import soundtrack from "../Assets/Sound for Portfolio Website .m4a"
+import soundtrack from "../../.figma/portfolio sound.mp3"
 
 declare global {
   interface Window {

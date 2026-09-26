@@ -46,6 +46,7 @@ export default function TextRevealSection() {
   return <section ref={containerRef} data-particle-outro className="particle-outro">
     <div className="particle-outro__stage">
       <div ref={textRef} className="particle-outro__text">
+        <h2 className="particle-outro__heading">This is how I work.</h2>
         {WORDS.map((words,p) => <p key={p}>{words.map((word,i) => <span key={i} ref={el => { wordsRef.current[(p ? WORDS[0].length : 0)+i]=el }}>{word}</span>)}</p>)}
       </div>
     </div>

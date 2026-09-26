@@ -3,15 +3,10 @@ import meridian from "../Assets/Meridian.mp4"
 import logiflow from "../Assets/logiflow.jpg"
 import teamio from "../Assets/teamio.png"
 import northstar from "../Assets/northstar.png"
+import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
+import { Link } from "react-router"
 import "./ProjectRows.css"
-import { useState, useRef } from "react"
-import { useNavigate } from "react-router"
-
-// The list picks up the warm off-white that the showcase above melted into.
-// A big index reel on the left counts through 01–05 while, on the right, tall
-// project panels slide vertically so exactly one sits in frame at a time. Both
-// reels are driven by one scroll value so the number and the panel always agree,
-// and the motion is kept slow and understated.
 
 type Project = {
   num: string
@@ -108,19 +103,46 @@ const PROJECTS: Project[] = [
 
 const MEDIA = [canact, meridian, logiflow, teamio, northstar]
 export default function WorkList() {
-  const navigate=useNavigate()
   const [active,setActive]=useState<number|null>(null)
   const preview=useRef<HTMLDivElement>(null)
-  return <section id="projects" className="project-rows" aria-label="Selected work">
-    <div className="project-rows__intro"><span>[ Selected work ]</span><p>Good questions.<br/>Meaningful outcomes.</p><span>2024 &mdash; 2026</span></div>
-    <div onMouseLeave={()=>setActive(null)}>
-      {PROJECTS.map((p,i)=><button key={p.num} className="project-row" onClick={()=>navigate(`/projects/${p.num}`)} onFocus={()=>setActive(i)} onBlur={()=>setActive(null)} onMouseEnter={()=>setActive(i)} onMouseMove={e=>{if(preview.current){preview.current.style.left=`${Math.min(innerWidth-380,Math.max(20,e.clientX+24))}px`;preview.current.style.top=`${Math.min(innerHeight-260,Math.max(20,e.clientY-130))}px`}}}>
-        <span className="project-row__number">{p.num}</span><h3>{p.title}</h3><span className="project-row__kind">{p.kind}</span><span className="project-row__year">{p.year}</span><span aria-hidden="true">&#8599;</span>
-        <div className="project-row__mobile-media">{i<2?<video src={MEDIA[i]} muted playsInline preload="metadata"/>:<img src={MEDIA[i]} alt="" loading="lazy"/>}</div>
-      </button>)}
+  const videos=useRef<(HTMLVideoElement|null)[]>([])
+  const target=useRef({x:0,y:0}),position=useRef({x:0,y:0})
+  const frame=useRef(0),last=useRef(0),initialized=useRef(false)
+  const move=(x:number,y:number)=>{
+    target.current={x:Math.max(216,Math.min(innerWidth-216,x)),y:Math.max(141,Math.min(innerHeight-141,y))}
+    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches
+    if(!initialized.current||reduced){position.current={...target.current};initialized.current=true}
+    const animate=(now:number)=>{
+      const dt=Math.min((now-(last.current||now-16))/1000,.05);last.current=now
+      const amount=reduced?1:1-Math.exp(-dt*12)
+      position.current.x+=(target.current.x-position.current.x)*amount
+      position.current.y+=(target.current.y-position.current.y)*amount
+      if(preview.current)preview.current.style.transform=`translate3d(${position.current.x}px,${position.current.y}px,0)`
+      frame.current=Math.hypot(target.current.x-position.current.x,target.current.y-position.current.y)>.1?requestAnimationFrame(animate):0
+    }
+    if(!frame.current){last.current=0;frame.current=requestAnimationFrame(animate)}
+  }
+  useEffect(()=>()=>cancelAnimationFrame(frame.current),[])
+  useEffect(()=>{
+    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches
+    videos.current.forEach((video,i)=>{if(!video)return;if(active===i&&!reduced)void video.play().catch(()=>{});else video.pause()})
+  },[active])
+  return <section id="projects" className="hover-img-container" aria-label="Selected projects">
+    <div className="hover-img-projects" onMouseLeave={()=>setActive(null)}>
+      {PROJECTS.map((project,i)=><Link key={project.num} to={`/projects/${project.num}`} className="hover-img-project"
+        onMouseEnter={e=>{setActive(i);move(e.clientX,e.clientY)}} onMouseMove={e=>move(e.clientX,e.clientY)}
+        onFocus={e=>{setActive(i);const rect=e.currentTarget.getBoundingClientRect();move(rect.left+rect.width*.62,rect.top+rect.height/2)}} onBlur={()=>setActive(null)}>
+        <h2>{project.title}</h2><p>{project.kind}</p>
+      </Link>)}
     </div>
-    <div ref={preview} className={`project-preview ${active!==null?"is-active":""}`} aria-hidden="true">
-      {active!==null && <>{active<2?<video key={active} src={MEDIA[active]} autoPlay={!matchMedia("(prefers-reduced-motion: reduce)").matches} loop muted playsInline/>:<img src={MEDIA[active]} alt=""/>}<span>{PROJECTS[active].title} &mdash; Explore project &#8599;</span></>}
-    </div>
+    {createPortal(<div ref={preview} className="hover-img-preview-position" aria-hidden="true">
+      <div className={`hover-img-thumbnail-wrapper ${active!==null?"is-active":""}`}>
+        <div className="hover-img-thumbnail-reel" style={{transform:`translateY(-${(active??0)*100}%)`}}>
+          {PROJECTS.map((project,i)=><div className="hover-img-thumbnail" key={project.num}>
+            {i<2?<video ref={el=>{videos.current[i]=el}} src={MEDIA[i]} muted loop playsInline preload="none"/>:<img src={MEDIA[i]} alt="" loading="lazy"/>}
+          </div>)}
+        </div>
+      </div>
+    </div>,document.body)}
   </section>
 }

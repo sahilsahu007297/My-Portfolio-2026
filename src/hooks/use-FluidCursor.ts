@@ -62,7 +62,7 @@ export default function fluidCursor() {
     }
     ;[dye,td]=[td,dye]
     for(let i=0;i<size;i++){
-      pixels.data[i*4]=225;pixels.data[i*4+1]=225;pixels.data[i*4+2]=225
+      pixels.data[i*4]=105;pixels.data[i*4+1]=128;pixels.data[i*4+2]=137
       pixels.data[i*4+3]=Math.min(.3,1-Math.exp(-dye[i]*.22))*255
     }
     ctx.putImageData(pixels,0,0)
@@ -78,8 +78,8 @@ export default function fluidCursor() {
     for(let step=1;step<=steps;step++){
       const px=old.x+dx*step/steps,py=old.y+dy*step/steps
       for(let yy=Math.max(1,Math.floor(py-5));yy<Math.min(height-1,py+5);yy++)for(let xx=Math.max(1,Math.floor(px-5));xx<Math.min(width-1,px+5);xx++){
-        const i=yy*width+xx,weight=Math.exp(-((xx-px)**2+(yy-py)**2)/3.5)
-        vx[i]+=dx*weight*22/steps;vy[i]+=dy*weight*22/steps;dye[i]=Math.min(5,dye[i]+weight*.65/steps)
+        const i=yy*width+xx,weight=Math.exp(-((xx-px)**2+(yy-py)**2)/5.5)
+        vx[i]+=dx*weight*29/steps;vy[i]+=dy*weight*29/steps;dye[i]=Math.min(5,dye[i]+weight*.65/steps)
       }
     }
     previous={x,y,time};activeUntil=time+3500

@@ -4,10 +4,11 @@ import { RouterProvider } from "react-router"
 import { router } from "./routes"
 // @ts-ignore
 import Lenis from "lenis"
+import "lenis/dist/lenis.css"
 import CinematicHero from "./components/CinematicHero"
 import ResumeModal from "./components/ResumeModal"
 import TextRevealSection from "./components/TextRevealSection"
-import FluidCursor from "./components/FluidCursor"
+import RippleCursor from "./components/RippleCursor"
 import TunnelIntro from "./components/TunnelIntro"
 import ParticleJourney from "./components/ParticleJourney"
 import Services from "./components/Services"
@@ -16,7 +17,7 @@ import WorkShowcase from "./components/WorkShowcase"
 import WorkList from "./components/WorkList"
 import Footer from "./components/Footer"
 import HeroSequenceSection from "./components/ImageSequenceSection"
-import ForwardSection from "./components/ForwardSection"
+
 import MobileHeroSequenceSection from "./components/mobile/MobileHeroSequenceSection"
 import MobileServices from "./components/mobile/MobileServices"
 import MobileBuiltDifferent from "./components/mobile/MobileBuiltDifferent"
@@ -40,35 +41,6 @@ export function Home() {
   const [soundEnabled, setSoundEnabled] = useState(false)
   const [entryReady, setEntryReady] = useState(window.portfolioEntered === true)
 
-  // Initialize Lenis for globally smooth, subtle scrolling
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.8, // slows down the wheel speed
-      touchMultiplier: 1.5,
-    })
-
-    if (!window.portfolioEntered) lenis.stop()
-    const startScroll = () => lenis.start()
-    window.addEventListener("portfolio:entered", startScroll)
-    let animationFrame = 0
-    function raf(time: number) {
-      lenis.raf(time)
-      animationFrame = requestAnimationFrame(raf)
-    }
-
-    animationFrame = requestAnimationFrame(raf)
-
-    return () => {
-      cancelAnimationFrame(animationFrame)
-      window.removeEventListener("portfolio:entered", startScroll)
-      lenis.destroy()
-    }
-  }, [])
 
   useEffect(() => {
     const updateClock = () => setIndiaTime(formatIndiaTime())
@@ -111,7 +83,6 @@ export function Home() {
   return (
     <div className="min-h-screen bg-black text-[var(--ink)] relative">
       <ParticleJourney />
-      <FluidCursor />
       {isResumeOpen && <ResumeModal onClose={() => setIsResumeOpen(false)} />}
 
       {/* Content wrapper with z-10 so it sits above any global backgrounds */}
@@ -135,7 +106,7 @@ export function Home() {
       </button>
 
       <CinematicHero indiaTime={indiaTime} onResumeClick={() => setIsResumeOpen(true)} onEntered={() => setEntryReady(true)} />
-      <ForwardSection />
+
       <TunnelIntro />
 
       {/* Desktop View */}
@@ -183,5 +154,55 @@ export function Home() {
 }
 
 export default function App() {
-  return <RouterProvider router={router} />
+  useEffect(() => {
+    const loader = document.getElementById("startup-loader")
+    if (!loader) return
+    const fill = loader.querySelector(".startup-loader__fill")
+    let removeTimer = 0
+    const dismiss = () => {
+      loader.classList.add("is-ready")
+      removeTimer = window.setTimeout(() => loader.remove(), 550)
+    }
+    if (fill?.getAnimations().some((animation) => animation.playState === "running")) {
+      fill.addEventListener("animationend", dismiss, { once: true })
+    } else {
+      dismiss()
+    }
+    return () => {
+      fill?.removeEventListener("animationend", dismiss)
+      window.clearTimeout(removeTimer)
+    }
+  }, [])
+
+  // Initialize Lenis for globally smooth, subtle scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.8,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: !matchMedia("(prefers-reduced-motion: reduce)").matches,
+      wheelMultiplier: 0.48, // slows down the wheel speed
+      touchMultiplier: 0.85,
+    })
+
+    if (window.location.pathname === "/" && !window.portfolioEntered) lenis.stop()
+    const startScroll = () => lenis.start()
+    window.addEventListener("portfolio:entered", startScroll)
+    let animationFrame = 0
+    function raf(time: number) {
+      lenis.raf(time)
+      animationFrame = requestAnimationFrame(raf)
+    }
+
+    animationFrame = requestAnimationFrame(raf)
+
+    return () => {
+      cancelAnimationFrame(animationFrame)
+      window.removeEventListener("portfolio:entered", startScroll)
+      lenis.destroy()
+    }
+  }, [])
+
+  return <><RouterProvider router={router} /><RippleCursor /></>
 }

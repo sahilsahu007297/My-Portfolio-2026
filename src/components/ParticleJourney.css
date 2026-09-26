@@ -1,9 +1,9 @@
 
-.particle-sequence { position: relative; height: 1600vh; color: white; }
+.particle-sequence { position: relative; height: 2320vh; color: white; }
 .particle-sequence__stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .particle-sequence__copy { position: absolute; left: 4vw; top: 39%; width: 25vw; max-width: 650px; opacity: 0; transform-origin: center; will-change: transform, opacity, filter; }
 .particle-sequence__copy span { color: #77d9bd; font: 11px monospace; letter-spacing: .3em; }
-.particle-sequence__copy h2 { margin: 20px 0; font-size: clamp(24px, 3vw, 54px); font-weight: 500; line-height: 1; letter-spacing: -.055em; }
+.particle-sequence__copy h2 { margin: 20px 0; font-size: clamp(24px, 3vw, 54px); font-weight: 500; line-height: 1.15; letter-spacing: -.04em; }
 .particle-sequence__copy p { max-width: 420px; color: #c4ceca; font-size: clamp(14px, 1.2vw, 19px); line-height: 1.6; }
 @media(max-width:767px) {
  .particle-sequence__copy { left: 8vw; top: auto; bottom: 12vh; width: 84vw; text-align: center; }
@@ -18,3 +18,13 @@
 
 @media(min-width:768px) { .particle-sequence__copy:nth-child(even) { left: auto; right: 4vw; text-align: right; } }
 @media(prefers-reduced-motion:reduce) { .particle-sequence__copy:nth-child(even) { right: auto; } }
+
+.jet-reveal-copy { position:absolute; top:1500vh; height:300vh; width:100%; text-align:center; pointer-events:none; opacity:0; }
+.jet-reveal-copy h2 { position:sticky; top:34vh; font:400 clamp(42px,6vw,96px)/1.1 Georgia,serif; letter-spacing:-.05em; color:#dce9e2; }
+.jet-reveal-copy em { color:#9fb9ae; }
+.particle-sequence__copy h2 { font-family:Georgia,serif; text-transform:none; }
+@media(prefers-reduced-motion:reduce) { .jet-reveal-copy { position:relative; top:auto; height:auto; padding:12vh 5vw; opacity:1!important; }.jet-reveal-copy h2 { position:relative; top:auto; } }
+
+.particle-sequence__copy h2 { overflow-wrap:break-word; text-wrap:balance; }
+@media(max-height:600px) and (min-width:768px) { .particle-sequence__copy { top:22%; width:29vw; }.particle-sequence__copy h2 { font-size:clamp(24px,3vw,40px); } }
+@media(max-width:767px) and (max-height:650px) { .particle-sequence__copy { bottom:6vh; }.particle-sequence__copy h2 { font-size:8vw; margin:12px 0; }.particle-sequence__copy p { font-size:13px; line-height:1.45; } }
