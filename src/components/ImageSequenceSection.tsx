@@ -21,7 +21,7 @@ export default function HeroSequenceSection(_props: { indiaTime: string; onResum
         const enter = Math.min(1, Math.max(0, local / 0.45))
         const leave = Math.min(1, Math.max(0, (local - 1) / 0.35))
         card.style.opacity = String(enter * (1 - leave))
-        card.style.transform = `translateX(${(i % 2 ? 1 : -1) * (1 - enter) * 50}px) translateY(${(1 - enter) * 25 - leave * 25}px) scale(${0.7 + enter * 0.3 + leave * 0.12})`
+        card.style.transform = `translateX(${0}px) translateY(${(1 - enter) * 25 - leave * 25}px) scale(${0.7 + enter * 0.3 + leave * 0.12})`
         card.style.filter = `blur(${(1 - enter) * 10 + leave * 6}px)`
       })
     }
@@ -43,6 +43,7 @@ export default function HeroSequenceSection(_props: { indiaTime: string; onResum
         {POINTER_DATA.map((point, i) => (
           <div className="particle-sequence__copy" key={point.n} ref={el => { cards.current[i] = el }}>
 
+            <span className="workflow-phase">{point.n} / {point.phase}</span>
             <h2>{point.t}</h2>
             <p>{point.q}</p>
           </div>

@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react"
 import "./TextRevealSection.css"
 
 const PARAGRAPHS = [
-  "I’m a UX Designer who likes to look one layer deeper—beyond screens, flows, and pixels, into the business problems that make those experiences necessary in the first place.",
-  "For me, good design isn’t just about making something easy to use. It’s about understanding why it should exist, who it should serve, how it should create value, and what makes it sustainable as a business."
+  "That flight began as scattered possibilities. Research gave it direction. Strategy gave it structure. Every small decision earned its place until the whole thing could take off. That is how I approach a product, too.",
+  "Before the pixels, I find the purpose: what people need, what the business must achieve, and where the two meet. Then I shape, test, and refine an experience that makes the next step clearer — and the brand harder to forget."
 ]
 const WORDS = PARAGRAPHS.map(p => p.split(" "))
 
@@ -46,8 +46,10 @@ export default function TextRevealSection() {
   return <section ref={containerRef} data-particle-outro className="particle-outro">
     <div className="particle-outro__stage">
       <div ref={textRef} className="particle-outro__text">
-        <h2 className="particle-outro__heading">This is how I work.</h2>
+        <h2 className="particle-outro__heading">Nothing takes flight<br /><em>by accident.</em></h2>
+        <div className="particle-outro__paragraphs">
         {WORDS.map((words,p) => <p key={p}>{words.map((word,i) => <span key={i} ref={el => { wordsRef.current[(p ? WORDS[0].length : 0)+i]=el }}>{word}</span>)}</p>)}
+        </div>
       </div>
     </div>
   </section>

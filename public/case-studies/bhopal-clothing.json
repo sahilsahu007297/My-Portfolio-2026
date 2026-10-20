@@ -1,0 +1,3724 @@
+{
+  "blocks": [
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Case Study: Growing a Home-Based Clothing Brand in Bhopal with Limited Budget and Low Risk"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A UX and business design case study"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Role: UX Product Designer (research, business design, service design, product strategy)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Client: An independent women-owned clothing brand operating from a home-based store in Bhopal, Madhya Pradesh"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Engagement length: 10 weeks (4 weeks research and definition, 3 weeks design and strategy, 3 weeks pilot and validation)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Project type: Business design, service design, digital product design, go-to-market and monetisation strategy"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Note on data: The owner, the brand and the participant details in this case study are representative and anonymised. Figures such as footfall, conversion rates, budgets and targets are working assumptions used to show how decisions were made. They should be replaced with the real numbers of the actual business before the plan is executed."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "1. Project Overview"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.1 Summary"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A woman in Bhopal has been selling clothes for several years from a store she runs inside her own house. The house sits in a service lane inside a residential colony, which means it is not on the main road, it has no passing footfall, and it is invisible to anyone who does not already know where it is. Her customers so far have come through word of mouth, neighbours, relatives and a small circle of repeat buyers. The quality of her clothes and her personal service are strong. Her reach is not."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "She now wants three things: to reach more people, to increase sales, and to make her brand known beyond her immediate circle. She also has two firm constraints. She has a limited budget, and she does not want to take large risks such as taking a shop on rent on a main road, buying heavy inventory in bulk, or spending on paid advertising that may not return anything."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "My job as the UX product designer was to treat this as a business design problem and not only as a marketing problem. That meant understanding the owner, her customers, her location, her products and her finances, finding where the real gaps were, and designing a small, low-risk system of products, services and experiences that could grow her business step by step."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.2 What I was asked to do"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Increase the reach of the brand beyond the colony and beyond word of mouth."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Increase sales and monthly revenue in a way that is sustainable."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Build brand awareness so that people recognise and remember the brand."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Do all of this with a limited budget and without exposing the owner to large financial risk."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.3 What I did"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I followed a double-diamond style process. First I worked to understand the problem through business and customer research. Then I defined the real problem, which turned out to be different from the one stated at the start. After that I explored ideas, picked the ones with the best balance of impact, effort and risk, designed them as a connected system, and planned a pilot to test them before any larger commitment."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.4 Outcome in one paragraph"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The recommended solution is a \"boutique by appointment\" model supported by a light digital layer. The home store is repositioned as a private, personal styling experience instead of a hidden shop. A Google Business Profile, a WhatsApp catalogue and an Instagram presence make the brand findable. A simple booking and ordering flow turns interest into visits and sales. A referral and loyalty loop turns existing customers into the main source of new customers. Revenue grows through a mix of direct sales, home styling appointments, curated festive collections, made-to-measure services and local collaborations. The total starting investment is kept to a small fixed amount, and each step is gated so that the owner only spends more after the previous step has worked."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "2. Background and Context"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.1 The business"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The brand sells women's ethnic and everyday wear. The range includes kurtis, suits and dress material, sarees, co-ord sets and a small selection of festive wear. Most pieces are sourced from trusted suppliers and some are customised through a local tailor. The store is a converted room on the ground floor of the owner's house. It has racks, a trial area, a small counter and a seating corner. The owner is the buyer, the stylist, the seller, the accountant and the social media manager, all at once."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.2 The location"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The house is in a service lane of a residential colony. A service lane is a narrow road that runs parallel to the main colony road and gives access to the houses. This has several consequences that shape the whole case:"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "No passing footfall. People do not walk past the store by chance. Every customer is someone who already knew about it and decided to come."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Low visibility. The store cannot be seen from the main road. Signage on the house is the only visual cue and it is easy to miss."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Difficult discovery. Map apps may not pin the exact house, and delivery or taxi drivers often get lost in service lanes."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Parking and access friction. Lanes are narrow and parking is shared with residents, which can make a visit feel inconvenient."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Privacy and comfort. On the positive side, the setting is quiet, personal and safe, and many women prefer shopping in a calm home environment rather than a crowded market."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.3 The market in Bhopal"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Bhopal is a mid-sized city with a strong local shopping culture. People buy clothes in a few well-known market clusters, in malls, from established multi-brand boutiques, from online marketplaces, and increasingly from Instagram and WhatsApp based sellers. Festive and wedding seasons drive a large share of annual clothing demand. Price sensitivity is real, but so is the willingness to pay for good fit, good fabric and personal attention. Trust matters a great deal. Many buyers prefer to see and touch fabric, try on clothes, and buy from someone they know or who comes recommended."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.4 The broader shift in how people shop"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Even in a mid-sized city, the path to purchase now begins online for a large share of customers. A person who sees a nice outfit on a friend usually asks where it came from, then checks the seller on Instagram or Google, looks for photos, reviews and prices, and only then decides whether to visit or order. A business that cannot be found at that moment effectively does not exist for that customer. For a home-based store in a service lane, this shift is both a risk and an opportunity. The risk is being invisible. The opportunity is that digital channels cost far less than a shop on a main road, and they can be tried in small steps."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.5 Constraints I had to design within"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Constraint",
+          "What it meant for design"
+        ],
+        [
+          "Limited budget",
+          "Every recommendation had to be low cost or free to start, with clear stages for any spending that followed."
+        ],
+        [
+          "Low risk appetite",
+          "No long-term rent, no large inventory commitments, no big paid advertising campaigns before proof."
+        ],
+        [
+          "One-person operation",
+          "The owner has limited time. Any solution that needs hours of daily work would fail. Systems had to be simple and repeatable."
+        ],
+        [
+          "Home setting",
+          "The family lives in the same house. Customer visits must be scheduled and respectful of household privacy."
+        ],
+        [
+          "Limited digital skills",
+          "The owner is comfortable with WhatsApp and basic Instagram, but not with websites, ads managers or analytics. Tools had to be easy."
+        ],
+        [
+          "Brand that is not yet known",
+          "There is no existing awareness to build on, so trust must be built from scratch outside the owner's circle."
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "3. The Business Problem"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.1 The problem as it was first stated"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "At the first meeting the owner described her problem like this: \"My clothes are good and my customers are happy, but not enough people know about me. I want more customers and more sales, but I cannot afford to open a big shop or run big advertising. I am afraid of losing money.\""
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This is a clear starting point, but it is a symptom and not yet a problem we can design for. \"Not enough people know about me\" could mean many different things. It could mean the brand is not visible online. It could mean the location is hard to find. It could mean people know about her but do not trust her enough to visit. It could mean they visit once and do not return. Each of these needs a different answer."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.2 Business goals"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Increase monthly sales by a meaningful percentage within six months without increasing fixed costs."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Grow the number of new customers who find the brand from outside the owner's personal network."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Increase repeat purchases and the average value of each order."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Build a recognisable brand name, look and promise in the local market."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Keep total risk low by testing small and scaling only what works."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.3 Success metrics agreed with the owner"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Goal",
+          "Metric",
+          "Target at six months"
+        ],
+        [
+          "Reach",
+          "Monthly new enquiries (calls, WhatsApp, DMs)",
+          "3 to 4 times the starting level"
+        ],
+        [
+          "Awareness",
+          "Google profile views and Instagram followers from Bhopal",
+          "Steady monthly growth with at least 1,500 local followers"
+        ],
+        [
+          "Conversion",
+          "Share of enquiries that become a visit or an order",
+          "At least 30 percent"
+        ],
+        [
+          "Sales",
+          "Monthly revenue",
+          "40 to 60 percent above the starting level"
+        ],
+        [
+          "Loyalty",
+          "Share of customers who buy again within 90 days",
+          "At least 35 percent"
+        ],
+        [
+          "Risk",
+          "Total cash spent before first proof of results",
+          "Within the agreed starter budget"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.4 Stakeholders"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The owner: decision maker, brand voice, stylist and operator."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Existing customers: the strongest source of trust and the best channel for referrals."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Potential customers: women in Bhopal who might buy from a local home-based brand if they knew about it and felt confident."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Suppliers and tailor: partners who affect cost, lead time and the possibility of customisation."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Family members: they share the home and may help occasionally with packing, photography or deliveries."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Neighbours and colony residents: their comfort matters when visits increase."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.5 Why this is a hard problem"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "It is hard because the usual answers do not fit. The usual answer to low footfall is a better location, but that means rent and risk. The usual answer to low awareness is advertising, but that means spending without proof. The usual answer to low sales is discounts, but that damages the brand and the margin. The case needed answers that work with the home setting, the small budget and the personal nature of the business, and that turn these into strengths instead of treating them as weaknesses."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "4. Framing the Problem"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.1 From symptom to problem"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Before doing any research I wrote down what I believed was true, what I assumed and what I did not know. This is an important step in business design because it stops the team from solving a problem that was never verified."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What we knew"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The product quality and personal service are good, based on repeat buyers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Almost all sales come through existing relationships."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The location is hidden and there is no walk-in traffic."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The budget is small and the owner wants low risk."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What we assumed"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That potential customers in Bhopal would be interested in a home-based boutique."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That the biggest barrier is awareness and not price or product range."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That customers are already searching online before they decide where to shop."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That the owner can handle a moderate increase in customers without losing quality."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What we did not know"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How new customers actually discover and choose clothing sellers in Bhopal."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Whether the home setting is seen as a positive, a negative or neutral."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Why some people who knew the brand never visited, and why some visited but never returned."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which products and price points drive the most profit."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How the owner spends her time and where it could be used better."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.2 Problem framing approach"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I used four framing tools together. Each looks at the problem from a different angle, and together they give a more complete picture."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The five whys. I asked why repeatedly to move from \"low sales\" to the root causes."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The customer journey lens. I mapped the full path from first hearing about the brand to buying again and looked for the steps where people drop off."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Jobs to be done. I asked what job a customer is hiring this brand to do, which is different from asking what product she wants."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The business model lens. I checked the value proposition, channels, customer relationships, revenue and cost structure to see where the model was weak."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.3 The five whys in practice"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Step",
+          "Question and answer"
+        ],
+        [
+          "1",
+          "Why are sales not growing? Because few new customers are arriving."
+        ],
+        [
+          "2",
+          "Why are few new customers arriving? Because only people in the owner's network know the brand exists."
+        ],
+        [
+          "3",
+          "Why does only the network know? Because there is no consistent public presence online or on the street that tells strangers the brand exists and where to find it."
+        ],
+        [
+          "4",
+          "Why is there no consistent public presence? Because the owner has been busy running the store alone, has no simple system for content or listings, and is unsure which channels are worth the effort and money."
+        ],
+        [
+          "5",
+          "Why is she unsure? Because she has seen others lose money on ads and shops and has no way to test an idea cheaply before committing to it."
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This tells us that the root problem is not simply low awareness. It is a combination of low discoverability, a lack of low-risk ways to test and a heavy dependence on one person's time. That reframing changed everything that followed."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.4 The reframed problem statement"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Original brief: Help a home-based clothing store get more customers and sales with a small budget."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Reframed problem statement: How might we make a hidden, home-based clothing brand easy to discover, easy to trust and easy to visit or buy from, for women in Bhopal who do not yet know it, using low-cost and reversible steps that fit the time of one person?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.5 How might we questions"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we make the brand findable at the exact moment someone in Bhopal is looking for clothes like hers?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we turn the quiet, private home setting into a reason to visit and not a barrier?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we help a stranger trust the brand before she has ever met the owner?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we make it easy for a first-time customer to find the house and feel comfortable arriving?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we turn every happy customer into a source of new customers?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we grow without needing a bigger shop, more stock or more working hours?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we test every idea cheaply, so the owner never bets more than she can afford to lose?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.6 Hypotheses"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "No.",
+          "Hypothesis",
+          "How we would check it"
+        ],
+        [
+          "H1",
+          "Most new customers check Instagram or Google before deciding to visit a local seller.",
+          "Customer survey and interviews"
+        ],
+        [
+          "H2",
+          "A hidden location reduces visits mainly because of uncertainty and not because of distance.",
+          "Interviews with lapsed and non-visiting leads"
+        ],
+        [
+          "H3",
+          "Women value a private, appointment-based shopping experience if it is presented clearly.",
+          "Concept testing with prospective customers"
+        ],
+        [
+          "H4",
+          "Referrals from existing customers will convert far better than any paid reach.",
+          "Pilot referral programme"
+        ],
+        [
+          "H5",
+          "A small set of repeatable content and listing tasks can be handled in under five hours a week.",
+          "Time study with the owner"
+        ],
+        [
+          "H6",
+          "Made-to-measure and curated festive offers will raise the average order value without raising stock risk.",
+          "Pre-order pilot for one festive season"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "5. Research Plan and Methodology"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.1 Research objectives"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Understand how the business actually works today: products, costs, margins, time and customers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Understand how women in Bhopal discover, evaluate and buy clothing from local sellers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Identify the barriers that stop people from finding, visiting, buying or returning."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Understand how the home-based, service-lane setting is perceived."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Understand how competitors and alternatives attract customers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Identify the most promising low-cost opportunities for growth."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.2 Research questions"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Where do women in Bhopal first hear about a new local clothing seller?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What do they check before deciding to visit or order?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What makes them trust or distrust a home-based seller?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What makes someone choose a local boutique over a mall, a market or an online marketplace?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What stops someone who is interested from actually visiting?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What makes a first-time buyer come back and recommend the brand?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which products, occasions and price points matter most?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How does the owner spend her working week and where is the friction?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.3 Research approach and why I chose mixed methods"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I combined qualitative and quantitative methods. Qualitative research tells us why people behave as they do. Quantitative research tells us how many people behave that way. For a small business, I also needed business research, because a good design that the business cannot afford or operate is not a good design."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Method",
+          "Purpose",
+          "Participants and output"
+        ],
+        [
+          "Stakeholder interview and business immersion",
+          "Understand the owner, goals, fears, operations and numbers",
+          "Owner, two sessions of about two hours each"
+        ],
+        [
+          "Business and sales data review",
+          "Find top products, margins, seasonality and repeat behaviour",
+          "Last 12 months of sales notes, supplier bills, WhatsApp orders"
+        ],
+        [
+          "Contextual inquiry at the store",
+          "Observe real customer visits, conversations and the physical space",
+          "Three half-day sessions during normal and weekend hours"
+        ],
+        [
+          "Customer interviews",
+          "Understand motivation, trust, decision making and barriers",
+          "12 existing customers, 8 non-customers in the target group"
+        ],
+        [
+          "Customer survey",
+          "Measure how common key behaviours and preferences are",
+          "85 responses from women aged 22 to 55 in Bhopal"
+        ],
+        [
+          "Location and access walkthrough",
+          "Test how easy it is to find and reach the house",
+          "Five first-time visitors guided only by phone map apps"
+        ],
+        [
+          "Competitive and alternatives analysis",
+          "See how others attract and keep customers locally",
+          "10 local boutiques and home sellers, plus 3 online alternatives"
+        ],
+        [
+          "Digital presence audit",
+          "Check how findable and credible the brand is online",
+          "Google, Instagram, WhatsApp, map listings and search results"
+        ],
+        [
+          "Concept testing",
+          "Test early solution ideas before building them",
+          "15 prospective customers shown simple concept cards"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.4 Sampling and recruitment"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The target group was women aged 22 to 55 living in Bhopal who buy ethnic and everyday wear at least a few times a year. I recruited through the owner's existing customers, through friends of friends, through residents' groups, and through a short post on local community pages. To avoid hearing only from people who already liked the brand, I deliberately included people who had never bought from the owner, people who had visited once and not returned, and people who bought mostly from malls or online."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.5 Ethics and consent"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Every participant was told what the research was for, that taking part was optional and that their answers would be kept anonymous. Photos of customers or of the inside of the house were taken only with permission. Because this was the owner's home, I also agreed with her on which spaces and family members would be kept out of any recording or documentation."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.6 Research timeline"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Week",
+          "Activity"
+        ],
+        [
+          "1",
+          "Stakeholder interviews, business immersion, data collection, assumptions mapping"
+        ],
+        [
+          "2",
+          "Contextual inquiry, location walkthrough, digital audit, competitor scan, survey design and launch"
+        ],
+        [
+          "3",
+          "Customer interviews, survey closes, early analysis"
+        ],
+        [
+          "4",
+          "Synthesis, insight workshop with the owner, problem definition"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "6. The Research Process in Detail"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.1 Stakeholder interviews and business immersion"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I started with two long conversations with the owner. The first was about her story: why she started, what she is proud of, what scares her and what she wants her brand to be known for. The second was about the numbers: what each product category costs and sells for, which items sell fastest, how many customers she serves in a normal week, and what she spends on stock, packaging, transport, tailoring and phone and internet."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I also spent a full day with her to see how she works. I noted how long it took to answer messages, to pack an order, to update the stock and to take photos. This revealed a major insight early on. The owner was spending most of her working time on tasks that did not grow the business, such as repeating the same answers on WhatsApp, searching for photos of products, and explaining the way to the house over the phone."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Key observations"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "About 70 percent of the owner's sales came from roughly 25 percent of her customers. These were loyal repeat buyers, mostly from within a few kilometres."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Festive and wedding months produced about half of the annual revenue."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Dress material and suits had the best margins. Ready-made kurtis moved fastest but at lower margins."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Customisation requests were frequent but handled informally, with no price list and no proper timeline."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "She sent the same house directions to nearly every first-time visitor, often on a call lasting several minutes."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.2 Business and sales data review"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I went through twelve months of her handwritten notes, supplier bills and WhatsApp order chats and turned them into a simple table. This was not perfect data but it was enough to see patterns. I looked at revenue by month, revenue by category, average order value, share of repeat customers and the cost of stock held but not sold."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Question",
+          "What the data suggested"
+        ],
+        [
+          "When does revenue peak?",
+          "Festive periods and the wedding season, with quiet months in between"
+        ],
+        [
+          "Which category earns the most profit?",
+          "Suits, dress material and customised pieces"
+        ],
+        [
+          "What is the average order value?",
+          "Moderate, but customers who came for a festive outfit spent nearly twice as much as those who bought casual wear"
+        ],
+        [
+          "How much stock is stuck?",
+          "A noticeable share of ready-made stock from the previous season was still unsold"
+        ],
+        [
+          "Where do customers come from?",
+          "Almost entirely referrals and repeat buyers, with very few from online discovery"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This showed that the business had a strong core but also a dependence on a few seasons and a few customers, which is a risk in itself. Increasing sales safely meant reducing that dependence."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.3 Contextual inquiry at the store"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I observed the store during three sessions: a weekday afternoon, a weekday evening and a Saturday. I stayed in the background, noted what customers did and said, and spoke to them briefly afterwards with their permission. I used a simple observation sheet to record arrival, time to find the house, time spent browsing, which items were handled, whether they tried anything on, what questions they asked and whether they left with a purchase."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What I observed"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Several customers called from the lane because they could not tell which house it was. The only sign was small and placed above eye level."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "First-time visitors were visibly unsure at the gate. They looked at the house, then at their phones, then asked a neighbour. Some did not enter at all."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Once inside, customers relaxed quickly. The owner's warmth, the quiet and the privacy led to longer browsing and more trying on than in a crowded shop."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Customers asked for opinions constantly: \"Does this suit me?\" \"What goes with this?\" The owner's styling advice was a major part of the value."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Trial space was good but there was no clear way to see the whole range. Many items were stored away and only shown on request."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Payment was mostly cash or UPI. There was no price tag on many items, which created more questions and more time."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.4 Location and access walkthrough"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "To test the findability problem directly, I asked five people who had never visited to find the store using only a map app and a phone call if needed. I timed them and asked them to think aloud."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Observation",
+          "Detail"
+        ],
+        [
+          "Map pin accuracy",
+          "The map pin showed the general lane but not the exact house in three of five attempts"
+        ],
+        [
+          "Time to arrive from the colony entrance",
+          "Between four and eleven minutes, depending on whether they called"
+        ],
+        [
+          "Phone calls needed",
+          "Four of five had to call the owner at least once"
+        ],
+        [
+          "Emotion during search",
+          "Uncertainty, mild embarrassment about knocking on a private house, worry about disturbing the family"
+        ],
+        [
+          "Parking",
+          "Two of five were unsure where they could park"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This was a critical finding. The hidden location was not only a visibility problem. It was an emotional barrier. Visiting a stranger's house felt awkward until the visitor was sure it was a shop and sure they were welcome."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.5 Customer interviews"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I conducted 20 semi-structured interviews of 30 to 40 minutes each, by phone or in person. Twelve were existing customers and eight were women in the target group who had never bought from the brand. I used open questions and followed the participant's story rather than reading a script. A full interview guide is in the appendix."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Interview themes"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Shopping habits: where they buy clothes, how often, for what occasions and with whom."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Discovery: how they find new sellers, what they search for and who they ask."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Trust: what makes them feel safe to buy from a small or home-based seller."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Experience: what a good and a bad shopping experience feels like."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Barriers: what has stopped them from trying a new local seller."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Loyalty: why they return to a seller and what makes them recommend one."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Selected participant voices (paraphrased)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"I did not know she had a shop at home. A friend said it casually and I forgot to ask where.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"I would like to go but I do not want to knock on someone's door and feel like I am disturbing.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"If I can see photos and prices first, I feel more confident. Otherwise I just go to the market.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"The best part is she tells me honestly what suits me. In the mall nobody tells you that.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"I visit once or twice a year for weddings. I did not think of her for regular clothes.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"Parking is a problem in that lane, and I never know if it is the right time to come.\""
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.6 Customer survey"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The survey was shared through messaging groups and community pages and received 85 complete responses. It was designed to take under five minutes and mixed multiple choice, rating and short answer questions. The full survey is in the appendix. The numbers below are representative of the pattern observed and are used here to show how the findings informed design decisions."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Finding",
+          "Pattern in responses"
+        ],
+        [
+          "Check Instagram or Google before visiting a local seller",
+          "About three quarters of respondents"
+        ],
+        [
+          "Would visit a home-based boutique if it was by appointment and the address was clear",
+          "Roughly two thirds"
+        ],
+        [
+          "Feel hesitant to visit a house they do not know",
+          "Nearly half"
+        ],
+        [
+          "Trust personal recommendation over advertisement",
+          "Close to nine in ten"
+        ],
+        [
+          "Want to see price range before visiting",
+          "More than eight in ten"
+        ],
+        [
+          "Would like styling advice from the seller",
+          "More than half"
+        ],
+        [
+          "Have ordered clothes through WhatsApp or Instagram at least once",
+          "Around half"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.7 Competitive and alternatives analysis"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I analysed thirteen alternatives, including multi-brand boutiques, other home-based sellers, a few online-first local sellers and large online marketplaces. For each one I looked at positioning, price range, visibility, how they attract customers, what customers say about them and what experience they offer. The goal was not to copy them but to find open space."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Alternative",
+          "Strength",
+          "Weakness",
+          "Opportunity for the brand"
+        ],
+        [
+          "Market and mall stores",
+          "High footfall, wide choice",
+          "Crowded, impersonal, no styling help",
+          "Offer a calm, personal experience"
+        ],
+        [
+          "Established boutiques",
+          "Visible, trusted, fixed brand",
+          "Higher prices, rent driven costs",
+          "Offer similar quality at fair prices with more attention"
+        ],
+        [
+          "Other home-based sellers",
+          "Personal, low cost",
+          "Weak online presence, informal",
+          "Be the most organised and findable home-based brand"
+        ],
+        [
+          "Instagram-first sellers",
+          "Strong visuals, easy ordering",
+          "No try-before-buy, fit risk, returns",
+          "Combine online discovery with real trial and fit"
+        ],
+        [
+          "Online marketplaces",
+          "Huge range, discounts",
+          "Sizing issues, returns, no relationship",
+          "Offer local trust, fit and quick alterations"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The open space was clear. No one in the local set combined three things: a personal, private shopping experience; strong online discoverability; and a reliable, organised service for fit and customisation."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.8 Digital presence audit"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I searched for the brand the way a new customer would. I searched on Google by brand name, by \"boutique in Bhopal\" and by the colony name. I checked maps, Instagram and WhatsApp business details."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "There was no verified Google Business Profile, so the brand did not appear on maps or in local search."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The Instagram account existed but had irregular posts, mixed image quality and no clear bio, location or contact action."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "WhatsApp was used with a personal profile, with no catalogue, no auto-replies and no labels for customer types."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Product photos were taken in different lighting and backgrounds, which made the brand look less consistent and less premium than the actual quality."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "There were no customer reviews visible anywhere, even though many happy customers existed."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This was the clearest gap. The brand had good products and happy customers but almost none of that was visible to a stranger."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.9 Concept testing"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Before designing in detail, I tested five simple concept cards with 15 prospective customers. Each card described an idea in a few lines with a sketch. The aim was to learn which ideas people understood, wanted and believed."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Concept",
+          "Response",
+          "Decision"
+        ],
+        [
+          "Private boutique by appointment, with a clear address and entry guide",
+          "Strong interest, especially when privacy and styling help were highlighted",
+          "Take forward as core idea"
+        ],
+        [
+          "WhatsApp catalogue with prices and photos",
+          "High interest, seen as convenient and trustworthy",
+          "Take forward"
+        ],
+        [
+          "Home styling consultation for festive and wedding outfits",
+          "Strong interest, willingness to pay a small fee if adjusted against purchase",
+          "Take forward"
+        ],
+        [
+          "Weekend pop-up stall in a nearby market",
+          "Mixed. Seen as useful for awareness but tiring and costly",
+          "Test later with partners"
+        ],
+        [
+          "Paid social media ads",
+          "Low trust in ads from unknown brands",
+          "Hold until organic proof"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This round helped me remove ideas that sounded exciting but did not match what people trusted, and it supported the shape of the final recommendation."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "7. Synthesis: What the Research Told Us"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.1 How I analysed the data"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "After the research I wrote each observation, quote and data point on a separate note. I then grouped them using affinity mapping. Groups became themes, and themes became insights. I checked every insight against at least two different sources, for example one interview and one observation, so that no single opinion drove a decision. I then held a two-hour workshop with the owner to share the findings, correct any mistakes in my understanding and agree on priorities."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.2 Key insights"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "People decide before they arrive. Almost every new customer checks the brand online first. If there is nothing to see, they never visit. The real front door of the business is the phone screen."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Not knowing the way is an emotional barrier, not only a practical one. People hesitate to enter a private house unless they are sure it is a shop and that they are welcome."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The home setting is an asset when it is presented well. Privacy, calm and personal attention are exactly what many women say they miss in crowded markets."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The owner's styling advice is the real product. Customers pay for confidence and fit as much as for fabric."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Trust travels through people. Recommendations from friends convert far better than advertising. The brand needs a system that makes recommending easy and rewarding."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Revenue depends too much on a few seasons and a few customers. Growth must come from new customers, new occasions and new services, not only from selling more of the same thing."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The owner's time is the scarcest resource. Any solution that adds hours of work will fail. Systems must save time as well as add reach."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Small steps build confidence. The owner's fear of risk is reasonable. She needs a way to try ideas with small, reversible bets."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.3 Customer personas"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "From the research I built three personas. They are composites of real patterns and not real individuals."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Persona 1: Neha, the busy working professional (age 29)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Works long hours, shops mostly online and on weekends. She wants fast, reliable fit and a clear sense of price before she goes anywhere. She will visit a boutique only if she can book a time and trust that it is worth the effort. She trusts reviews and photos more than words."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Needs: quick decisions, clear prices, fit confidence, appointment-based visits. Frustrations: crowds, uncertainty, wasted travel. How the brand wins her: a clear online presence, an easy way to book and a fit guarantee with quick alterations."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Persona 2: Sunita, the family occasion shopper (age 41)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Buys for herself, her daughters and sometimes relatives, especially around festivals and weddings. She values honest advice and fair prices. She prefers to see and touch fabrics. She is loyal once she trusts a seller."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Needs: variety for family occasions, honest advice, customisation, fair prices. Frustrations: pushy sellers, poor stitching, last-minute rush. How the brand wins her: styling help, made-to-measure services, bundle offers and festive planning early in the season."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Persona 3: Riya, the social-media-first buyer (age 24)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Finds outfits through reels and friends' posts. She wants something different from what is in every shop. She is price conscious but will pay for unique pieces. She likes to share photos and tag the seller if she feels special."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Needs: trendy, distinctive pieces, easy ordering, shareable moments. Frustrations: generic stock, sizing errors, slow replies. How the brand wins her: curated drops, aesthetic content, fast replies and a reason to share."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.4 Customer journey and where it breaks"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I mapped the full journey and marked where customers drop off. Stages are awareness, consideration, visit, purchase and loyalty."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stage",
+          "What the customer does",
+          "Where it breaks",
+          "Severity"
+        ],
+        [
+          "Awareness",
+          "Hears of the brand from a friend or sees a post",
+          "Brand is not visible outside the network",
+          "High"
+        ],
+        [
+          "Consideration",
+          "Searches Google and Instagram, checks photos and prices",
+          "No profile, no reviews, no price clarity",
+          "High"
+        ],
+        [
+          "Visit",
+          "Decides to go and finds the house",
+          "Unclear address, awkward arrival, parking worry",
+          "High"
+        ],
+        [
+          "Purchase",
+          "Tries, chooses, pays",
+          "Few issues, some missing price tags and limited display",
+          "Medium"
+        ],
+        [
+          "Loyalty",
+          "Returns and recommends",
+          "No follow-up, no reminders, no referral system",
+          "High"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Three out of five stages were weak, and all of them were before or after the visit. The shop experience itself was already strong. That is why a bigger shop or a main road location would have solved the wrong problem."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.5 Jobs to be done"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I need an outfit for an important occasion, help me feel confident and look right without stress and without overspending.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I want to try a new local seller, help me feel safe and welcome so that I am not embarrassed or disappointed.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I find something I like, help me order quickly and know that it will fit, so that I do not waste time or money.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I get compliments on an outfit, help me share where it came from, so that I look good too.\""
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "8. Defining the Opportunity"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.1 Refined problem statements"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The research let me replace the vague brief with five specific problem statements. Each one is something we can design a solution for and measure."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Strangers cannot find or verify the brand online, so they never reach the visiting stage."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "First-time visitors feel unsure about entering a private house, so some turn back or never come."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The home setting and personal styling are not communicated as strengths, so they are not part of the brand story."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "There is no system that turns happy customers into new customers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Revenue is concentrated in a few seasons and a few buyers, which makes the business fragile."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.2 Design principles"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I agreed on a short set of principles with the owner. They helped us make decisions quickly and stay consistent."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Small, reversible bets first. Nothing should require money or commitment that cannot be stopped within a month."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Make the home setting a strength. Privacy, warmth and personal care are the brand promise."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Be findable before being famous. Fix the basics of being discoverable before attempting to go viral."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Systems over effort. If a task must be repeated, it needs a template, a schedule or a tool."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Trust through proof. Real photos, real customers, real reviews and clear prices."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Respect the household. Visits are by appointment, with clear boundaries."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.3 Ideation"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I ran a structured ideation session with the owner and one of her regular customers. We began with the how might we questions, generated more than 40 ideas without judging them, and then clustered them into six areas: findability, arrival experience, trust, conversion, loyalty and revenue models."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.4 Prioritisation"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "To pick what to do first, I scored each idea on four factors: impact on the goals, cost, effort for the owner, and risk if it fails. The best ideas were high impact and low in the other three. Ideas that were high impact but also high cost or risk were parked for later stages."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Idea",
+          "Impact",
+          "Cost",
+          "Effort",
+          "Risk"
+        ],
+        [
+          "Google Business Profile with photos, hours and exact pin",
+          "High",
+          "Free",
+          "Low",
+          "None"
+        ],
+        [
+          "WhatsApp Business catalogue with prices",
+          "High",
+          "Free",
+          "Medium",
+          "None"
+        ],
+        [
+          "Appointment-based visit model with clear entry guide",
+          "High",
+          "Very low",
+          "Low",
+          "Low"
+        ],
+        [
+          "Better signage and a gate or wall marker",
+          "High",
+          "Low",
+          "Low",
+          "Low"
+        ],
+        [
+          "Instagram content system with templates",
+          "Medium",
+          "Low",
+          "Medium",
+          "Low"
+        ],
+        [
+          "Referral and loyalty loop",
+          "High",
+          "Low",
+          "Low",
+          "Low"
+        ],
+        [
+          "Home styling consultation and festive planning",
+          "High",
+          "Low",
+          "Medium",
+          "Low"
+        ],
+        [
+          "Made-to-measure and pre-order festive collections",
+          "High",
+          "Low",
+          "Medium",
+          "Low"
+        ],
+        [
+          "Local collaborations and weekend pop-ups",
+          "Medium",
+          "Medium",
+          "High",
+          "Medium"
+        ],
+        [
+          "Paid advertising",
+          "Unknown",
+          "High",
+          "Medium",
+          "High"
+        ],
+        [
+          "Renting a shop on a main road",
+          "Unknown",
+          "Very high",
+          "High",
+          "Very high"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The last two rows are the usual answers to the problem. By scoring them honestly, the owner could see that they were not the best first moves. The top rows were nearly free and addressed the biggest gaps in the journey."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "9. Business Design and Strategy"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.1 Brand positioning"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The brand needed a clear idea that strangers could understand in a few seconds and that matched what existing customers already loved. Based on the research I recommended the following positioning."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Positioning statement: For women in Bhopal who want clothes that fit well and feel personal, this is a private, appointment-based boutique where you are styled one-to-one in a calm home setting, with honest advice, fair prices and fit that is made right."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Brand promise: Your outfit, your time, your comfort."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Brand personality: Warm, honest, tasteful and unhurried."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Key differences from competitors: Private visits, personal styling, quick alterations, curated and not crowded, and a visible local community of happy customers."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.2 Reframing the location as a feature"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The strongest shift in the whole project was a change of language. The service lane and the home setting are no longer described as limitations. They are described as the reason the experience is private, quiet and personal. The story becomes: \"Away from the crowd, by appointment, just for you.\" This is an honest and positive way to turn a perceived weakness into a signature."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.3 Business model design"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I used a business model canvas to check that the model hangs together and to make the changes visible to the owner."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Element",
+          "Redesigned model"
+        ],
+        [
+          "Customer segments",
+          "Working professionals, family occasion shoppers, social-media-first younger buyers, and wedding and festive shoppers"
+        ],
+        [
+          "Value proposition",
+          "Private styling, good fit, honest advice, curated range, quick alterations and made-to-measure options in a calm setting"
+        ],
+        [
+          "Channels",
+          "Google Business Profile, Instagram, WhatsApp Business, referrals, residents' groups, local collaborations and the home boutique"
+        ],
+        [
+          "Customer relationships",
+          "Personal appointments, WhatsApp follow-up, styling reminders, loyalty benefits and a referral circle"
+        ],
+        [
+          "Revenue streams",
+          "Ready-made sales, made-to-measure and custom orders, styling consultations, festive bundles, pre-orders, alteration services and later, partnerships and subscriptions"
+        ],
+        [
+          "Key resources",
+          "The owner's taste and skill, the home boutique, supplier and tailor relationships, a growing customer base"
+        ],
+        [
+          "Key activities",
+          "Sourcing, styling, content and listings, appointment handling, follow-up"
+        ],
+        [
+          "Key partners",
+          "Suppliers, tailor, a photographer, local creators, salons, wedding planners and neighbourhood groups"
+        ],
+        [
+          "Cost structure",
+          "Stock, tailoring, packaging, phone and internet, small marketing spend and occasional help"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.4 The growth strategy in three stages"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "To respect the low-risk requirement I designed growth in three stages. Moving to the next stage depends on results in the current one. This keeps the owner in control and limits possible losses."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stage",
+          "Focus",
+          "What happens",
+          "Condition to move on"
+        ],
+        [
+          "Stage 1: Be findable (weeks 1 to 4)",
+          "Discoverability and trust",
+          "Google profile, WhatsApp catalogue, Instagram basics, signage, appointment flow, first reviews",
+          "Steady increase in enquiries and at least 15 genuine reviews"
+        ],
+        [
+          "Stage 2: Be chosen (weeks 5 to 8)",
+          "Conversion and loyalty",
+          "Styling consultations, referral loop, festive pre-orders, follow-up system",
+          "Conversion above target and visible repeat purchases"
+        ],
+        [
+          "Stage 3: Be known (weeks 9 to 12 and beyond)",
+          "Awareness and scale",
+          "Collaborations, pop-ups, small paid tests, new product lines",
+          "Stable revenue growth and proven return on any spend"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "10. The Solution"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.1 Solution overview"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The solution is a connected system of five parts. Each part solves a specific break in the journey. Together they make the brand easy to find, easy to trust, easy to visit and easy to recommend."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A findable brand presence (Google, Instagram, WhatsApp)."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "An easy and welcoming arrival experience (address, signage, appointments)."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A better in-store experience (display, pricing, styling, fit)."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A conversion and ordering flow (catalogue, booking, pre-order, payment)."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A loyalty and referral loop (follow-up, rewards, community)."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.2 Part one: a findable brand presence"
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Google Business Profile"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The first and most valuable step. The profile includes the brand name, category, exact map pin, a short description, appointment hours, WhatsApp number, a link to the catalogue, and at least ten photos of the boutique, the entrance, the lane approach and signature products. It also includes a short \"How to reach us\" description that tells people to enter the colony, take the service lane, and look for the marked gate. The owner asks every happy customer to leave a review, with a printed QR code on the counter and a message sent after purchase."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "WhatsApp Business"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The owner moves from a personal profile to WhatsApp Business. This allows her to create a catalogue with photos, prices and categories, set a greeting message, set away messages for busy times, and use quick replies for the questions she answers repeatedly: price, size, address, appointment slots and delivery. She uses labels to separate new leads, regular customers, festive enquirers and pending orders. This single change was estimated to save more than three hours a week."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Instagram"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The Instagram profile is cleaned up with a clear bio, the boutique location, a booking link and a tidy grid. A simple content system limits the work to three posts and a few stories a week, using templates. The content types are:"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Styling posts that show one piece in three ways, which supports the personal styling promise."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Behind the scenes stories of selecting fabric, tailoring and packing, which build trust."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Customer moments and reviews, shared with permission, which provide social proof."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Festive and seasonal previews, which drive pre-orders."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Short reels showing the boutique experience, which make the visit feel safe and inviting."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Consistent visual identity"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A lightweight identity was created: a simple logo mark, two brand colours, one typeface for headings and one for text, and a photo guide explaining where and how to take product photos with natural light and a plain backdrop. The aim was consistency, not decoration. Every touchpoint should look as if it comes from the same careful person."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.3 Part two: an easy and welcoming arrival experience"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This part removes the emotional barrier of visiting a private house."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Clear signage: A neat sign at eye level on the gate with the brand name, \"Boutique by appointment\" and a welcome line. A small arrow sign at the lane entrance points the way."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Entry guide: A short message with a map pin, a photo of the gate, a one-line route description, the parking suggestion and the nearest landmark. It is saved as a quick reply and sent automatically when a visit is booked."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Appointment slots: Fixed slots on specific days and times so that the family is not disturbed. The booking is made through WhatsApp with a simple message flow."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Separate entry: If possible, a separate entrance or a clearly marked path to the boutique room."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Welcome ritual: A glass of water or tea, a place to sit and a short conversation about the occasion. This sets the tone of care."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.4 Part three: a better in-store experience"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Display: Rails and shelves arranged by occasion (everyday, office, festive, wedding) and not only by type, to match how customers think."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Price tags and size labels: Every item has a visible price and size information, which removes repeated questions."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Styling corner: A mirror, good lighting and a small table with accessories to complete looks."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Fit and alteration promise: A clear policy that minor alterations are done within a fixed number of days at no or low cost."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Photo moment: A simple, tasteful spot where customers can take a photo of their outfit, with permission to share and tag the brand."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.5 Part four: the conversion and ordering flow"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The flow was designed as a UX problem. I mapped the customer's steps and removed every point where they might hesitate or get stuck."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Primary flow: from interest to visit"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The customer sees a post, a Google listing or a friend's recommendation."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "She taps the WhatsApp button or the booking link."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "An automatic greeting asks what she is shopping for and offers three options: browse the catalogue, book a styling visit, or ask a question."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If she chooses a visit, she is shown available slots and picks one."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "She immediately receives the entry guide, the address pin, the parking note and a reminder the day before."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "She arrives, is welcomed, tries, buys or places an order."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Within a day she receives a thank you message and a request for a review."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Secondary flow: remote ordering"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "For customers who cannot visit, the catalogue shows size charts and a simple fit guide. The owner offers video calls for showing items and a clear policy on exchanges for fit. Payments are taken by UPI. Deliveries are handled through a local courier or a trusted delivery partner on a pay-as-you-go basis, which avoids fixed costs."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Made-to-measure and pre-order flow"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This flow is designed to raise order value without raising stock risk. The customer selects a fabric and design, shares measurements, pays an advance, and gets a clear delivery date. Because the item is made only after the advance is paid, the owner holds no unsold inventory for these orders."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.6 Part five: the loyalty and referral loop"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The research showed that recommendations are the strongest source of new customers. The loop is designed to make them easier and more rewarding."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Thank you and review request within 24 hours of purchase, with a single link to the review page."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A referral card given with every order. It offers a small benefit to the friend on her first visit, and a small benefit to the referrer when the friend buys. The benefit is a credit against a future purchase or a free alteration, not a cash discount, which protects margin."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A private circle for regular customers on WhatsApp broadcast, with early looks at new collections and festive previews."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Occasion reminders with permission, such as a friendly note before a festival or a family occasion, so the brand becomes the first place she thinks of."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Birthday or anniversary note with a small gift or a free styling session."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.7 UX design deliverables"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Because the solution is a service system with a light digital layer, the design work covered both physical and digital touchpoints. The main deliverables were:"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A service blueprint showing what the customer sees and does, and what the owner and tools do behind the scenes at each stage."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A WhatsApp conversation design with greeting, menus, quick replies and tone of voice."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A simple one-page booking and catalogue site, built with a free or low-cost builder, as an optional step after Stage 1."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "An information architecture for the catalogue, organised by occasion, category and price range."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Wireframes and a clickable prototype of the booking flow for testing with real customers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Signage, entry guide and printed material designs, including the referral card and review QR."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A content calendar and templates for Instagram and WhatsApp broadcasts."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Information architecture of the catalogue"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Level",
+          "Structure"
+        ],
+        [
+          "Top level",
+          "Everyday wear, Office wear, Festive wear, Wedding collection, Made to measure, New arrivals"
+        ],
+        [
+          "Second level",
+          "Kurtis, Suits and dress material, Sarees, Co-ord sets, Accessories"
+        ],
+        [
+          "Filters",
+          "Price range, size, fabric, occasion, ready to wear or made to order"
+        ],
+        [
+          "Item details",
+          "Photos from three angles, price, sizes, fabric, care, alteration option, delivery time"
+        ]
+      ]
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Tone of voice"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Warm, polite and unhurried, in a mix of Hindi and English that matches how Bhopal customers actually talk. Messages are short, personal and free of jargon. Every automated message ends with an invitation to ask a human question, so the experience never feels cold."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.8 Usability testing of the flows"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I tested the booking flow and the entry guide with eight participants, five of whom were first-time visitors. I gave them realistic tasks: book a visit for Saturday, find the house, and ask whether a piece can be altered. I observed where they hesitated and asked them to think aloud."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Issue found",
+          "Change made"
+        ],
+        [
+          "Participants did not notice the booking option in the first greeting",
+          "Reduced the greeting to three clear choices with the booking option first"
+        ],
+        [
+          "The entry guide was too long to read at the gate",
+          "Replaced with a map pin, one photo of the gate and two short lines"
+        ],
+        [
+          "People were unsure what a \"styling session\" included",
+          "Added a one-line description and a note that the fee is adjusted against purchase"
+        ],
+        [
+          "Some wanted to know how long a visit takes",
+          "Added \"about 45 minutes\" to the booking confirmation"
+        ],
+        [
+          "The language felt formal in English messages",
+          "Rewrote in a friendlier Hindi and English mix"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "11. Go-to-Market Plan and Budget"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.1 Approach"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The go-to-market plan uses what the research showed works best for this brand: trust, referral and local presence. It starts with the owner's existing customers and expands outwards in circles. The first circle is existing customers who are asked to review and refer. The second circle is friends of friends and local groups. The third circle is wider Bhopal, through search and social media."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.2 Twelve week plan"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Weeks",
+          "Theme",
+          "Key actions"
+        ],
+        [
+          "1 to 2",
+          "Foundations",
+          "Set up Google Business Profile, WhatsApp Business and catalogue, clean up Instagram, photograph top 40 products, install signage, write quick replies and entry guide"
+        ],
+        [
+          "3 to 4",
+          "First proof",
+          "Invite 30 existing customers for review and referral, launch appointment slots, start the content schedule, track enquiries"
+        ],
+        [
+          "5 to 6",
+          "Conversion",
+          "Launch styling consultation, display changes, alteration promise, festive pre-order preview to the private circle"
+        ],
+        [
+          "7 to 8",
+          "Loyalty",
+          "Launch referral cards, thank you follow-ups, birthday notes and occasion reminders"
+        ],
+        [
+          "9 to 10",
+          "Local reach",
+          "Partner with two local creators or salons, host one small invite-only styling morning, share results"
+        ],
+        [
+          "11 to 12",
+          "Review and decide",
+          "Analyse results, decide on pop-ups, small paid tests or product line extensions"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.3 Starter budget"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The starter budget is intentionally small. The figures below are working assumptions based on typical local costs and should be adjusted to real quotes."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Item",
+          "Estimated cost (INR)",
+          "Note"
+        ],
+        [
+          "Signage at gate and lane entrance",
+          "3,000 to 6,000",
+          "One-time"
+        ],
+        [
+          "Product photography setup (backdrop, light, phone stand)",
+          "3,000 to 5,000",
+          "One-time, reusable"
+        ],
+        [
+          "Mannequin or hanging display improvements",
+          "4,000 to 8,000",
+          "One-time"
+        ],
+        [
+          "Printed referral cards, QR review card, price tags",
+          "2,000 to 3,000",
+          "Reorder as needed"
+        ],
+        [
+          "Basic identity design (logo mark, colours, templates)",
+          "3,000 to 6,000",
+          "One-time"
+        ],
+        [
+          "Small gift and tea hospitality for the first month",
+          "1,500 to 2,500",
+          "Recurring, modest"
+        ],
+        [
+          "Local creator or partner collaboration (gifted pieces)",
+          "4,000 to 8,000",
+          "Stage 3"
+        ],
+        [
+          "Contingency",
+          "3,000 to 5,000",
+          "For anything unexpected"
+        ],
+        [
+          " Total starter range ",
+          " 23,500 to 43,500 ",
+          "Spread over the first 12 weeks"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "No spend on paid advertising is planned before Stage 3. If the owner chooses to run a test later, the suggested limit is a small fixed amount per month with a clear stop rule: if cost per enquiry is above an agreed level after two weeks, stop."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.4 Time plan for the owner"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Task",
+          "Weekly time",
+          "Tool or aid"
+        ],
+        [
+          "Replying to messages with quick replies",
+          "3 hours",
+          "WhatsApp Business"
+        ],
+        [
+          "Content creation using templates",
+          "2 hours",
+          "Phone, templates"
+        ],
+        [
+          "Appointments and prep",
+          "Included in selling time",
+          "Calendar slots"
+        ],
+        [
+          "Follow-ups and review requests",
+          "1 hour",
+          "Labels and templates"
+        ],
+        [
+          "Weekly check on numbers",
+          "30 minutes",
+          "Simple tracker"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The total is about 6.5 hours a week, in contrast to the unplanned hours previously lost to repeated explanations and searches. This was an important proof that the plan could be managed by one person."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "12. Monetisation Strategy"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.1 Principles"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Monetisation had to meet three tests: it should add revenue without adding inventory risk, it should fit the personal nature of the brand, and it should be simple enough for one person to run. I therefore looked beyond selling more of the same ready-made clothes and designed several revenue streams that support each other."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.2 Revenue streams"
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "1. Ready-made sales (core)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The existing business continues, but with better display, price clarity, better photos and a wider reach. The goal is to increase footfall of qualified visitors and raise conversion, not to hold more stock. Stock is refreshed in small batches, guided by what the catalogue and enquiries show is in demand."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "2. Made-to-measure and custom orders"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The customer chooses a design and fabric, and the piece is made after an advance. This carries higher margins, a higher order value and almost no unsold stock. A clear price list and delivery timeline make it easy to sell. It is especially useful before festivals and weddings."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "3. Styling consultations"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A paid, adjustable consultation. For example, a small fee that is fully adjusted against any purchase made the same day. This filters for serious visitors, protects the owner's time and makes the service feel valuable. For larger occasions such as weddings, a full styling package covers outfit planning for the bride, family members or a group, with a fixed price."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "4. Festive and wedding bundles"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Curated sets built around an occasion, such as a festival family set or a wedding guest set. Bundles raise the average order value and are easy to promote. They can also be pre-ordered to reduce risk."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "5. Alteration and fitting service"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Basic alterations are included for the brand's own purchases as a trust builder. Paid alteration services can be offered to outside customers for clothes bought elsewhere, using the same tailor. This brings in new faces and a small but steady revenue, and it introduces people to the boutique."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "6. Collaborations and partnerships"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Partnering with local salons, makeup artists, photographers and wedding planners. Each partner recommends the boutique and receives a modest referral reward, or the boutique styles their clients. This is a low-cost way to reach women at moments when they are already preparing for events."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "7. Private circle membership (later stage)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A light membership for loyal customers that gives early access to new collections, priority appointment slots, a free yearly styling session and small gifts, for an annual fee. This builds predictable income and a loyal base. It should only be tried after the brand has proven loyalty."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "8. Pop-ups and curated stalls (later stage)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Weekend stalls at colony events, school fairs, exhibitions or partner venues. These are tested only after the owner has proof that her catalogue and referral loop work, so that the stall is a way to meet more people and not a bet."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.3 Illustrative unit economics"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The figures below show how the economics improve with the new mix. They are illustrative and should be replaced with actual numbers once the pilot provides data."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stream",
+          "Typical order value",
+          "Typical gross margin",
+          "Inventory risk"
+        ],
+        [
+          "Ready-made casual wear",
+          "Lower",
+          "Moderate",
+          "Medium"
+        ],
+        [
+          "Ready-made festive wear",
+          "Medium",
+          "Moderate to good",
+          "Medium to high"
+        ],
+        [
+          "Made-to-measure",
+          "Higher",
+          "Good",
+          "Very low"
+        ],
+        [
+          "Styling consultation",
+          "Small fee",
+          "Very high",
+          "None"
+        ],
+        [
+          "Festive bundles",
+          "Higher",
+          "Good",
+          "Low if pre-ordered"
+        ],
+        [
+          "Alterations for outside customers",
+          "Small",
+          "Good",
+          "None"
+        ],
+        [
+          "Partnerships",
+          "Referral based",
+          "Good",
+          "None"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.4 Revenue projection logic"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The plan does not rely on one big jump. It uses a ladder of small increases that come from each part of the journey:"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "More discovery leads to more enquiries."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A better booking and entry experience raises the share of enquiries that turn into visits."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Better display, pricing and styling raise the share of visits that turn into purchases."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Bundles, made-to-measure and consultations raise the value of each purchase."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Follow-up, referral and reminders raise repeat purchases."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "If each of these five factors improves by a modest amount, the combined effect on revenue is large, because the improvements multiply. For example, a 50 percent increase in enquiries, a 20 percent improvement in the share of enquiries that turn into visits, a 15 percent improvement in conversion, and a 10 percent rise in order value together raise revenue by roughly 100 percent over the starting level. This is why the target of 40 to 60 percent growth in the first six months is a cautious goal and not an aggressive one."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.5 Protecting margin and brand value"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Avoid blanket discounts. Use credits, free alterations and early access instead."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Do not hold large stock of trend-driven pieces. Use pre-orders and small batches."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Price made-to-measure and consultations with care, so that the brand is seen as skilled and not as cheap."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Track the margin of every product and stream monthly."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "13. Pilot, Measurement and Learning Plan"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.1 Why a pilot"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The owner's main concern was risk. The pilot is a controlled way to test the main assumptions with real customers and real money, at a small scale, over a short time, with clear stop rules. If the results are weak, the owner has lost little. If they are strong, she has proof for the next investment."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.2 Pilot design"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Test",
+          "What we test",
+          "Success looks like"
+        ],
+        [
+          "Findability",
+          "Does a Google profile and clean Instagram increase enquiries from strangers?",
+          "At least double the number of new enquiries from outside the existing circle by week 6"
+        ],
+        [
+          "Arrival",
+          "Do the signage and entry guide reduce calls for directions and no-shows?",
+          "Fewer than one in five visitors needs to call for directions"
+        ],
+        [
+          "Appointment model",
+          "Do customers accept booking a slot?",
+          "More than half of visits are booked in advance by week 8"
+        ],
+        [
+          "Styling consultation",
+          "Will people pay a small adjustable fee?",
+          "At least one in three consultations converts to purchase on the day"
+        ],
+        [
+          "Referral loop",
+          "Do referral cards and thank-you messages bring new customers?",
+          "At least 20 percent of new customers come through referral"
+        ],
+        [
+          "Pre-order",
+          "Will customers pay an advance for festive made-to-measure outfits?",
+          "A minimum number of pre-orders that covers fabric and tailoring cost"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.3 Metrics dashboard"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The owner tracks a short list of numbers weekly using a simple sheet or notebook. Fewer numbers mean she will actually use them."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Metric",
+          "Where it comes from",
+          "Why it matters"
+        ],
+        [
+          "New enquiries per week",
+          "WhatsApp, calls, Instagram messages",
+          "Reach"
+        ],
+        [
+          "Source of each new customer",
+          "Asked at first contact",
+          "Which channel works"
+        ],
+        [
+          "Google profile views and direction requests",
+          "Business profile dashboard",
+          "Findability"
+        ],
+        [
+          "Appointments booked and attended",
+          "Calendar",
+          "Conversion and no-show rate"
+        ],
+        [
+          "Conversion rate of visits",
+          "Sales notes",
+          "Experience quality"
+        ],
+        [
+          "Average order value",
+          "Sales notes",
+          "Revenue per customer"
+        ],
+        [
+          "Repeat purchase within 90 days",
+          "Customer list",
+          "Loyalty"
+        ],
+        [
+          "Referral count",
+          "Referral cards",
+          "Word of mouth growth"
+        ],
+        [
+          "Hours spent per week",
+          "Self-log",
+          "Sustainability for the owner"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.4 Decision rules"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If new enquiries do not rise within four weeks of Stage 1, review the quality of the content and the Google profile before changing anything else."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If many enquiries do not turn into visits, review the entry guide, the booking flow and the message tone."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If visits do not turn into sales, review pricing, display, stock range and styling approach."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If repeat purchase is weak, review follow-up and the referral benefit."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Spend on advertising or a larger step only if at least two stages are meeting their targets and the owner feels comfortable."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.5 What success should look like at the end of the pilot"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "These are projected targets and not claimed results. They are the benchmarks that the pilot is designed to prove or disprove."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A visible, reviewed and well-rated Google profile with at least 15 genuine reviews."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A clean Instagram account with consistent content and growing local followers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A WhatsApp catalogue used for most enquiries, with quick replies saving at least three hours a week."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A majority of visits booked in advance and a clear drop in calls for directions."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "At least one in five new customers coming through referral."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Revenue per month moving towards 40 to 60 percent above the starting level, supported by higher order value from bundles and made-to-measure orders."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Total spend kept within the starter budget."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "14. Risks and Mitigation"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Risk",
+          "Why it matters",
+          "Mitigation"
+        ],
+        [
+          "Owner overload",
+          "One person doing everything can burn out and let quality fall",
+          "Cap the weekly hours, use templates and quick replies, limit appointment slots, bring in occasional paid help only after proof"
+        ],
+        [
+          "Disturbance to the household and neighbours",
+          "More visits may cause friction",
+          "Appointment slots, parking guidance, a separate entrance if possible, respectful timing"
+        ],
+        [
+          "Safety and comfort of visitors and the family",
+          "Strangers coming to a home",
+          "Appointment-based entry, a trusted adult present during visits, clear boundaries on private areas"
+        ],
+        [
+          "Weak online results",
+          "Content may not bring enquiries quickly",
+          "Improve photos and captions, ask for reviews, use partners and referral while organic reach builds"
+        ],
+        [
+          "Inventory risk",
+          "Unsold stock reduces cash",
+          "Small batches, pre-orders, made-to-measure, clearance bundles"
+        ],
+        [
+          "Customer expectation gap",
+          "Higher visibility raises expectations on speed and quality",
+          "Set realistic delivery times and an alteration policy, respond within a stated time window"
+        ],
+        [
+          "Competition copying",
+          "Others may copy the model",
+          "Build relationships and brand trust, which are harder to copy than tactics"
+        ],
+        [
+          "Legal and tax compliance",
+          "Growing sales may require registration and invoicing",
+          "Check local requirements on trade licence and tax registration, keep simple records, consult an accountant"
+        ],
+        [
+          "Platform dependence",
+          "Changes in social media reach",
+          "Build the customer list on WhatsApp and the review base on Google so that the brand does not depend on one platform"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "On legal and tax matters, the figures and rules vary and change over time. The owner should confirm requirements with a local professional before relying on this case study."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "15. Reflection and Learnings"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.1 What I learned as a designer"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The first brief is rarely the real problem. \"Increase reach\" became \"make a hidden brand easy to find, trust and visit.\" The reframing was worth more than any individual feature."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Business design and UX design are the same work. Understanding margins, time and constraints shaped the design as much as understanding emotions and behaviour did."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A weakness can become the brand. The service lane and the home setting were reframed as privacy and personal care, which made them the centre of the promise."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Free and simple solutions can outperform expensive ones. A verified map listing and a well-built catalogue will often beat a shop on a main road for a business of this size."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Design for the operator, not only the customer. A solution that cannot be run by the owner is not a solution."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Test before you commit. Concept testing removed ideas that sounded attractive but did not match what customers trusted."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.2 What I would do differently"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Collect structured data from the very first week so that real baselines exist for comparison."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Include a larger sample of non-customers in the early research to better understand why some never take the first step."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Test the signage and entry guide earlier in the project, since it was found to be among the most important parts of the experience."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.3 Limitations of this case study"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The participant numbers and percentages in this case study are representative and are used to show the method and reasoning. They are not the verified results of a real business and should not be quoted as such. The budget and revenue figures are working assumptions, and local prices, regulations and market conditions can differ."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.4 Next steps"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Run the twelve week pilot and record the metrics weekly."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Hold a review at week 12 with the owner and decide which stage to move to."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If results are strong, consider a one-page website with booking, a small paid test, a membership and a regular curated pop-up."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Revisit the positioning and range every six months using customer feedback."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "16. Questions for Discussion"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "These questions are designed for readers, students and interviewers who want to explore the case in more depth. They can also be used by the owner as a checklist when making decisions."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.1 Understanding the problem"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Why is \"increase reach\" not a sufficient problem statement for this case? How would you rewrite it?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are the differences between a visibility problem, a trust problem and a conversion problem? How would you tell them apart with evidence?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which assumptions in this case are most dangerous if wrong, and how would you test them cheaply?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who are the stakeholders beyond the owner and customers, and how might their needs conflict?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.2 Research"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What methods would you use if you had only one week and no budget? What would you drop and why?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you recruit people who have never heard of the brand without biasing the sample?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are the risks of researching inside someone's home, and how would you manage them ethically?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you decide whether a survey result and an interview comment are in conflict or just describing different parts of the same behaviour?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.3 Strategy and business design"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Under what conditions would renting a shop on a main road become the right decision? What evidence would you need first?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you balance growth with the owner's limited time and the family's privacy?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which revenue stream carries the least risk and the highest margin? Which carries the most upside?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you decide when to start paid advertising, and what stop rule would you set?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you protect margins while still running seasonal offers?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.4 Design"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you redesign the first WhatsApp message so that more people choose to book a visit?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would you change in the entry experience to make a first-time visitor feel welcome rather than awkward?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you design a referral programme that rewards loyalty without harming margin?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you adapt the solution for a customer who does not use smartphones comfortably?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.5 Measurement"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which three metrics would you track weekly and why?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you know whether an increase in sales came from the new system or from the festive season?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What results after six weeks would make you stop, change course or continue?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.6 Ethics and sustainability"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How do you ensure the safety and comfort of both customers and the family in a home-based business?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are the risks of encouraging referral and review requests, and how would you keep reviews honest?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How can the brand grow while remaining personal?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix A: Stakeholder Interview Guide (Owner)"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Story and motivation"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How did you start this business and what made you choose clothing?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are you most proud of in your brand?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If a stranger described your brand in one sentence, what would you want them to say?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What does a good day in the business look like? What does a bad day look like?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Customers"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who are your best customers? How did they find you?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Why do you think they come back?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who has not come back, and what do you think the reason is?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What questions do customers ask most often?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Have you ever lost a sale? What happened?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Products and money"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which products sell fastest and which earn the best profit?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How do you decide what to buy and how much?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What is the cost of unsold stock at the moment?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are your monthly fixed and variable costs?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What is the maximum amount you would be comfortable investing, and what amount would make you worried?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Time and operations"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Walk me through a typical week. What takes most of your time?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which tasks do you repeat the most?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who helps you, and when?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What parts of the work do you enjoy and which do you avoid?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Marketing and fears"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What have you tried to promote the brand so far? What worked and what did not?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What worries you most about growing?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How comfortable are you with Instagram, WhatsApp, Google and online payments?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How do your family and neighbours feel about customers visiting?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix B: Customer Interview Guide"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Warm up"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Tell me a little about yourself, your day and what you do."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "When did you last buy clothes for yourself? Tell me the story."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Shopping habits"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Where do you usually buy clothes, and how do you decide where to go?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who do you shop with, and who influences your choices?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which occasions do you buy for? How early do you plan?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How much do you usually spend, and what makes you feel a price is fair?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Discovery and trust"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How did you find your favourite seller or boutique?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "When you hear about a new seller, what do you do next?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What do you check on Instagram or Google before visiting?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What makes you trust a small or home-based seller? What makes you doubt?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Have you ever visited a seller at their home? How did it feel?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Barriers"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Has there been a time you wanted to visit a seller but did not? What stopped you?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would make visiting a home-based store easier or more comfortable for you?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How do you feel about booking a time in advance?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would make you hesitate to buy from a seller you do not know?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Experience and loyalty"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Describe the best shopping experience you have had. What made it good?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Describe a bad one. What went wrong?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What makes you go back to a seller again and again?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "When do you recommend a seller to others? What do you say?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Concept reaction (for later rounds)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What is your first reaction to this idea? What do you like and what worries you?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who do you think this is for?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Would you use it? When and how?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would make it better?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Closing"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Is there anything I did not ask that you think is important?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who else should I speak to?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix C: Customer Survey Questions"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Estimated completion time: under five minutes. Responses are anonymous."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 1: About you"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which age group do you belong to? (Under 22, 22 to 30, 31 to 40, 41 to 55, above 55)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which part of Bhopal do you live in?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What is your main occupation? (Student, working professional, homemaker, business owner, other)"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 2: Shopping habits"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How often do you buy clothes for yourself? (Monthly, every few months, only for occasions)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Where do you buy most of your clothes? (Market, mall, local boutique, Instagram or WhatsApp seller, online marketplace, tailor)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How much do you usually spend on one outfit? (Ranges)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which occasions do you shop for most? (Everyday, office, festivals, weddings, parties)"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 3: Discovery and trust"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How do you usually hear about a new clothing seller? (Friends, Instagram, Google, family, advertisements, walking past)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Before visiting or ordering from a new seller, do you check Instagram or Google? (Always, sometimes, never)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What do you check most? (Photos, prices, reviews, location, owner's details)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How much do you trust each of these when choosing a seller? Rate from 1 to 5: friend recommendation, online reviews, social media posts, advertisements."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 4: Home-based boutiques"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Have you ever bought from a home-based seller? (Yes, no)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How comfortable are you visiting a home-based boutique for the first time? (Rate 1 to 5)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would make you more comfortable? (Booking a slot, clear address, photos of the place, reviews, a friend's recommendation, other)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would make you less comfortable? (Open answer)"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 5: Services and preferences"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Would you like personal styling advice from the seller? (Yes, maybe, no)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Would you pay a small fee for a styling session if it was adjusted against your purchase? (Yes, maybe, no)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Would you order through WhatsApp if you could see photos, prices and a size guide? (Yes, maybe, no)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How important are these for you? Rate 1 to 5: quick alterations, made-to-measure, easy exchange, price clarity, privacy."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 6: Loyalty"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What makes you return to a seller? (Open answer)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How likely are you to recommend a seller you like? (0 to 10)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would encourage you to refer a friend? (Credit, free alteration, early access, gift, nothing)"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Section 7: Closing"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Would you like to be contacted for a short follow-up conversation? (Yes, no)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Any other comments?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix D: Observation Sheet for Store Visits"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "What to record",
+          "Notes"
+        ],
+        [
+          "Time and day",
+          ""
+        ],
+        [
+          "Customer type (new, repeat, referred)",
+          ""
+        ],
+        [
+          "How they arrived and how long it took to find the house",
+          ""
+        ],
+        [
+          "Signs of hesitation at the gate",
+          ""
+        ],
+        [
+          "First reaction after entering",
+          ""
+        ],
+        [
+          "Items viewed and handled",
+          ""
+        ],
+        [
+          "Questions asked",
+          ""
+        ],
+        [
+          "Trial and fit conversation",
+          ""
+        ],
+        [
+          "Where the owner gave advice",
+          ""
+        ],
+        [
+          "Price and payment discussion",
+          ""
+        ],
+        [
+          "Outcome (purchase, order, left without buying)",
+          ""
+        ],
+        [
+          "Reason for leaving without buying, if shared",
+          ""
+        ],
+        [
+          "Follow-up promised",
+          ""
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix E: Sample WhatsApp Message Scripts"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Scripts are written in simple English here. In practice they are sent in a friendly Hindi and English mix."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Greeting message"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Hello and welcome. Thank you for contacting us. How can we help you today? Reply 1 to see our catalogue, 2 to book a private styling visit, or 3 to ask a question. We usually reply within one hour during opening times."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Booking confirmation and entry guide"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Your visit is confirmed for the date and time you chose. A visit takes about 45 minutes. Here is our location pin. Enter the colony, take the service lane on the left, and look for the green gate with our name board. You can park along the wall on the right side. If you need help, send us a message and we will guide you."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Reminder the day before"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A friendly reminder of your visit tomorrow. We look forward to seeing you. If you need to change the time, reply here and we will find a new slot."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Thank you and review request"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Thank you for visiting us. We hope you love your outfit. If you enjoyed your visit, a short review would help other women find us. Here is the link. As a thank you, here is a card you can share with a friend."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Festive preview to the private circle"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Our festive collection is ready for a first look. As a member of our circle you can book a slot before it opens to everyone. Reply to book your preferred time. Made-to-measure orders for this season close on the date mentioned in the catalogue."
+    }
+  ]
+}

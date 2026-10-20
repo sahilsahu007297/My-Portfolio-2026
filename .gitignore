@@ -21,3 +21,15 @@ logs/
 
 .vercel
 .env*
+
+# Local PDF verification dependencies.
+artifacts/case-studies/python-libs/
+
+# Local design originals and review outputs; deployable artwork lives in public/.
+/Graphic Files/
+/artifacts/
+/output/
+/public/project-posters/*.png
+/public/project-posters/canact.jpg
+/public/project-posters/meridian.jpg
+/public/portfolio-sky-4k.png

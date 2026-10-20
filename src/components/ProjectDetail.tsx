@@ -1,12 +1,12 @@
-import { useLayoutEffect, ReactNode } from "react"
-import { useNavigate, useParams } from "react-router"
+import { projectUpdates } from "./projectUpdates"
+import { ReactNode } from "react"
+import { Link, useParams } from "react-router"
+import useBackNavigation from "./useBackNavigation"
 import CustomCursor from "./CustomCursor"
 import canactVideo from "../Assets/Canact.mp4"
-import meridianVideo from "../Assets/Meridian.mp4"
-import northstarImage from "../Assets/northstar.png"
 import logiflowImage from "../Assets/logiflow.jpg"
 import teamioImage from "../Assets/teamio.png"
-import logo from "../Assets/Sahil-Sahu-Logo.png"
+import logo from "../Assets/Sahil-Sahu-Logo.webp"
 
 const url = (id: string, w = 1800) =>
   `https://images.unsplash.com/${id}?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=82&w=${w}`
@@ -24,7 +24,7 @@ const formatText = (text: string): ReactNode => {
   ))
 }
 
-const PROJECTS = [
+const EXISTING_DETAILS = [
   {
     id: "01",
     title: "CANACT",
@@ -41,17 +41,16 @@ const PROJECTS = [
   },
   {
     id: "02",
-    title: "Meridian",
-    fullTitle: "Meridian — Fintech Platform",
+    title: "Aarthik",
+    fullTitle: "Aarthik — Fintech Platform",
     client: "Fintech Startup",
     timeline: "2024",
     role: "Product Designer",
     skills: "Fintech UX\nProduct Strategy\nInterface Design",
     intro: "Designed a next-generation fintech experience to help users **understand, manage, and use their money better**.\n\nCreated an intelligent, action-oriented approach to personal finance supported by deep product research and strategic planning.",
     image: "photo-1765371513276-a74f1ecbcf7d",
-    video: meridianVideo,
     color: "#5C6667",
-    link: "https://www.figma.com/board/nN47af9lhOLQYIGnaZNt63/MERIDIAN?node-id=0-1&t=ToJA74xF9Qe4hG4J-1",
+    link: "https://aarthik-fintech-app.vercel.app/",
   },
   {
     id: "03",
@@ -84,32 +83,31 @@ const PROJECTS = [
   },
   {
     id: "05",
-    title: "NorthStar",
-    fullTitle: "NorthStar — BI & Finance",
+    title: "Looma",
+    fullTitle: "Looma — Operations & Business Dashboard",
     client: "Enterprise Financial",
     timeline: "2024",
     role: "Product Designer",
     skills: "Data Visualisation\nBusiness Intelligence\nDashboard Design",
     intro: "Designed an enterprise-grade financial command centre featuring real-time business intelligence dashboards.\n\nIntegrated live financial calculators for **CAC/LTV, break-even, and runway forecasting** to drive executive decision-making.",
     image: "photo-1784986717568-a19e6575ad91",
-    localImage: northstarImage,
+    localImage: "/project-posters/looma-mockup.webp",
     color: "#5C6667",
-    link: "https://operations-dashboard-silk.vercel.app/",
+    link: "https://looma-dashboard.vercel.app/",
   },
+{"id": "06", "title": "Algae Tree", "fullTitle": "Algae Tree — Website Redesign", "client": "Algae Tree", "timeline": "", "role": "Website Designer", "skills": "Website Redesign\nInformation Architecture\nVisual Design", "intro": "Redesigned the Algae Tree website to give its story a clearer path from first impression to exploration.\n\nThe design puts **clarity, hierarchy, and purposeful navigation** at the centre: helping visitors understand the brand, find relevant information, and know where to go next. The intended benefits are easier discovery, a more coherent brand experience, and less friction between interest and action.", "image": "", "localImage": "/project-algae.svg", "color": "#183f36", "link": "https://algaetree.vercel.app/", "noImageEffects": true, "outcome": "A clearer path from curiosity to understanding — with a brand story that has room to breathe."},{"id": "07", "title": "Talio", "fullTitle": "Talio — Website Design", "client": "Talio", "timeline": "", "role": "Website Designer", "skills": "Website Design\nProduct Communication\nResponsive UI", "intro": "Designed a website for Talio that translates a productivity product into a story people can follow.\n\nA deliberate content hierarchy brings **product value, discoverability, and a clear next step** together. The experience is designed to help prospective teams understand the offering, explore with confidence, and move from browsing to considering the product.", "image": "", "localImage": "/project-talio.svg", "color": "#30353d", "link": "https://www.talio.in/", "noImageEffects": true, "outcome": "Turn a first visit into a useful conversation: what the product offers, why it matters, and where to begin."},
 ]
+
+export const PROJECT_DETAILS = [...EXISTING_DETAILS, ...["08", "09", "10"].map(id => ({ ...EXISTING_DETAILS[5], id }))].map(project => {
+  const update = projectUpdates[project.id]
+  if (!update) return project
+  return { ...project, title: update.title, fullTitle: `${update.title} — ${update.kind}`, client: update.kind, intro: update.blurb, link: update.link, localImage: update.poster, role: update.role, skills: update.skills, outcome: update.status, noImageEffects: true }
+})
 
 export default function ProjectDetail() {
   const { projectId } = useParams()
-  const navigate = useNavigate()
-  const project = PROJECTS.find((item) => item.id === projectId) ?? PROJECTS[0]
-  const goBack = () => {
-    navigate("/#projects", { replace: true })
-  }
-
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0)
-  }, [project.id])
-
+  const goBack = useBackNavigation("/#projects")
+  const project = PROJECT_DETAILS.find((item) => item.id === projectId) ?? PROJECT_DETAILS[0]
   return (
     <main className="min-h-screen bg-white text-[#111111]">
       <CustomCursor />
@@ -127,7 +125,7 @@ export default function ProjectDetail() {
       <section className="mx-auto grid max-w-[110rem] gap-12 px-5 pb-16 pt-16 md:grid-cols-[minmax(0,1.55fr)_minmax(18rem,0.72fr)] md:px-10 md:pb-24 md:pt-24">
         <div>
           <p className="mb-7 text-xs font-semibold uppercase tracking-[0.22em] text-[#5C6667]">Case study / {project.id}</p>
-          <h1 className="max-w-5xl text-[clamp(5rem,15vw,15rem)] font-black uppercase leading-[0.74] tracking-[-0.085em]">
+          <h1 className="max-w-5xl text-[clamp(3.4rem,11vw,12rem)] font-black uppercase leading-[0.74] tracking-[-0.085em]">
             {project.title}
           </h1>
           <div className="mt-10 max-w-3xl text-xl leading-snug tracking-tight text-black/75 md:text-2xl">
@@ -137,13 +135,14 @@ export default function ProjectDetail() {
           {project.link && (
             <div className="mt-10">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#111111] px-7 py-4 text-[13px] font-semibold tracking-widest text-white uppercase transition-all hover:scale-[1.02] active:scale-[0.98]" data-cursor-hover>
-                <span>Click to view design</span>
+                <span>{project.link?.includes("figma.com") ? "Explore design" : project.id === "06" ? "Preview website" : "Visit project"}</span>
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition-transform group-hover:translate-x-1">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-3 w-3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </span>
               </a>
             </div>
           )}
+          {["02", "04", "08"].includes(project.id) && <Link to={`/case-studies/${project.id === "04" ? "teamio" : project.id === "08" ? "aangan" : "aarthik"}`} className="mt-5 inline-flex rounded-full border border-black/30 px-7 py-4 text-sm font-semibold hover:bg-black hover:text-white" data-cursor-hover>Read the case study ↗</Link>}
         </div>
 
         <dl className="grid content-end grid-cols-2 gap-x-8 gap-y-9 border-t border-black/15 pt-7 text-base md:border-t-0 md:pt-0">
@@ -168,19 +167,19 @@ export default function ProjectDetail() {
           ) : (
             <img src={project.localImage ?? url(project.image)} alt={`${project.fullTitle} project visual`} className={`aspect-[16/9] w-full object-cover ${project.noImageEffects ? '' : 'mix-blend-luminosity opacity-90'}`} />
           )}
-          <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent px-6 pb-6 pt-20 text-sm font-medium md:px-10 md:pb-9">
-            <span>{project.fullTitle}</span><span>{project.id} / 0{PROJECTS.length}</span>
+          <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/65 to-transparent text-white px-6 pb-6 pt-20 text-sm font-medium md:px-10 md:pb-9">
+            <span>{project.fullTitle}</span><span>{project.id} / {String(PROJECT_DETAILS.length).padStart(2, "0")}</span>
           </figcaption>
         </figure>
       </section>
 
       <section className="mx-auto grid max-w-[110rem] gap-6 px-5 py-20 md:grid-cols-[0.75fr_1.25fr] md:px-10 md:py-32">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#5C6667]">The outcome</p>
-        <p className="max-w-4xl text-[clamp(2rem,4vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.055em]">A deliberately focused experience, designed to make the complex feel immediate.</p>
+        <p className="max-w-4xl text-[clamp(2rem,4vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.055em]">{project.outcome ?? "A deliberately focused experience, designed to make the complex feel immediate."}</p>
       </section>
 
       <footer className="flex items-center justify-between border-t border-black/15 px-5 py-6 text-sm md:px-10">
-        <button type="button" data-cursor-hover onClick={goBack} className="hover:text-[#5C6667]">Back to all work</button>
+        <button type="button" data-cursor-hover onClick={goBack} className="hover:text-[#5C6667]">← Back</button>
         <span>© Sahil Sahu</span>
       </footer>
     </main>

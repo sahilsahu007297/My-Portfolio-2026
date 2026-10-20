@@ -1,0 +1,3187 @@
+{
+  "blocks": [
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Case Study: Fixing the Month-Three Retention Cliff on a Digital Subscription and Rental Platform"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A UX and business design case study"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Role: UX Product Designer (research, product strategy, lifecycle design, monetisation)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Client: A consumer digital subscription and rental platform in India that offers a library of rentable and streamable content on a monthly plan"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Engagement length: 14 weeks (4 weeks diagnosis, 3 weeks definition and strategy, 4 weeks design and prototyping, 3 weeks experiments and rollout)"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Project type: Retention strategy, onboarding and lifecycle design, pricing and packaging, experimentation"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Note on data: The company, its numbers and the participant details in this case study are representative and anonymised. Percentages, prices, cohort figures and targets are working assumptions used to show how decisions were made. Replace them with the real figures of the actual business before acting on them."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "1. Project Overview"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.1 Summary"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The platform runs a low-friction growth model. A new user gets a free trial, then pays a low introductory price for a short period, and then moves to the standard price. Marketing works well. Sign-ups are high, trial starts are high and the first paid month looks healthy. But the retention curve falls off a cliff around the third month. A large share of subscribers cancel or quietly stop paying exactly when the introductory phase ends, and the business is left with a leaky base that costs more to refill than it earns."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The leadership view was that the cliff was a pricing problem: users leave when the price goes up. My job was to find out whether that was true. It turned out to be only partly true. The price step-up was the moment of cancellation, but not the cause of it. Most people who left had already stopped using the product weeks earlier, and the price rise simply gave them a reason to act on a decision they had made silently."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.2 What I was asked to do"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Explain why retention drops sharply by month three."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Recommend and design changes that keep the right users longer."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Do this without destroying the growth engine that brings in sign-ups."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Protect revenue and margin, and keep the experience honest and fair to users."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.3 What I did"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I treated this as a diagnosis first and a design problem second. I combined behavioural data, cohort analysis, user research, support and review mining, and a lifecycle audit to find where and why value was lost. I then reframed the goal from \"get more sign-ups\" to \"get more users to a habit before the price changes\", designed an end-to-end lifecycle of onboarding, habit building, a transparent price transition, flexible plans and win-back, and planned a series of controlled experiments to prove each change before rolling it out."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "1.4 Outcome in one paragraph"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The recommended solution is a lifecycle redesign built around one idea: users should feel value before they are asked to pay more. It includes a personalised first-week plan that gets users to a defined activation moment, habit loops that bring them back, a value recap and a transparent price preview well before the step-up, flexible plan options such as pause, downgrade and annual, a respectful cancellation flow with real alternatives, and a win-back programme. Acquisition is also tuned so that it brings users who fit the product and not only users who like a cheap offer. The plan is tested through staged experiments with guardrails, so the company never bets the whole base on an untested change."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "2. Background and Context"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.1 The platform"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The platform gives users access to a catalogue they can stream or rent for a period, billed through a monthly subscription. Users can browse, add items to a list, consume or rent them, and manage their plan from the app or the web. The company earns money from subscription fees and from a small number of paid add-ons. The core cost drivers are content licensing or inventory, payment processing, customer support and acquisition."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.2 The commercial model and where the cliff sits"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Phase",
+          "What the user sees",
+          "Business intent"
+        ],
+        [
+          "Free trial",
+          "Full access for 14 days with a payment method added",
+          "Remove risk and let users sample the product"
+        ],
+        [
+          "Intro phase",
+          "A low price for the next two months",
+          "Build the habit while the price feels easy"
+        ],
+        [
+          "Standard phase",
+          "The regular, higher price from month three",
+          "Earn full margin from retained users"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The business logic is sound on paper. In practice the third month is where the experience breaks. The user has to decide, often without noticing that they are deciding, whether the product is worth the full price."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.3 The market"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Consumers in India now hold several digital subscriptions at once: video, music, learning, reading, fitness and more. Many people cycle through them, joining for a show or a season and leaving soon after. Low-priced offers, bundled telecom benefits and free ad-supported alternatives make switching easy. Users are also more alert to recurring charges after years of surprise renewals. In this environment, an introductory offer attracts a large number of users who are interested in the offer, not necessarily in the product. Retention depends on turning that curiosity into a habit."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "2.4 Constraints I had to design within"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Constraint",
+          "What it meant for design"
+        ],
+        [
+          "Growth targets",
+          "Sign-ups and trial starts had to stay healthy. Any change that reduced them needed a clear retention benefit."
+        ],
+        [
+          "Margin pressure",
+          "Content and acquisition costs meant discounts could not be used freely to keep users."
+        ],
+        [
+          "Engineering capacity",
+          "Changes had to be shippable in small increments and testable with experiments."
+        ],
+        [
+          "Payment rules",
+          "Recurring payments in India are governed by rules on mandates, pre-debit notifications and user consent, which shape how renewals and price changes can be handled."
+        ],
+        [
+          "Trust",
+          "The company wanted to avoid manipulative design and wanted retention that came from real value."
+        ],
+        [
+          "Data quality",
+          "Event tracking was incomplete in some parts of the app, so some questions needed qualitative evidence."
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "3. The Business Problem"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.1 The problem as it was first stated"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The product head described it this way: \"We get huge sign-ups in the free trial and the intro phase, but by month three most of them are gone. We think the price jump is killing us. Should we just keep the intro price longer?\""
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This was a reasonable guess, but extending the intro price would only move the cliff to a later date and reduce revenue in the meantime. The statement mixed a symptom (cancellations at month three), a suspected cause (price) and a proposed fix (a longer intro offer). The first task was to separate them."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.2 The numbers that defined the problem"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Using a representative cohort of one hundred thousand new sign-ups in a quarter, the funnel looked like this."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stage",
+          "Users",
+          "Share of sign-ups"
+        ],
+        [
+          "Sign-ups (trial starts)",
+          "100,000",
+          "100 percent"
+        ],
+        [
+          "Active in the first week",
+          "64,000",
+          "64 percent"
+        ],
+        [
+          "Converted to paid after trial",
+          "38,000",
+          "38 percent"
+        ],
+        [
+          "Still paying in month two",
+          "27,400",
+          "27 percent"
+        ],
+        [
+          "Still paying in month three (standard price)",
+          "11,800",
+          "12 percent"
+        ],
+        [
+          "Still paying in month six",
+          "8,300",
+          "8 percent"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Two things stand out. The drop from month two to month three is far steeper than any other step, which is the cliff. And after month three the curve flattens: those who stay beyond the price change tend to stay for a long time. This means the product has real long-term value for a particular group of users, and the challenge is to get more of the right users across the threshold."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.3 Business goals"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Raise month-three paid retention meaningfully while keeping sign-up volume healthy."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Increase the share of new users who reach a defined activation moment in the first week."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Improve the lifetime value of each cohort and shorten the time to recover acquisition cost."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Reduce wasted acquisition spend on users who are very unlikely to retain."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Retain users through value, and not through hidden charges or hard-to-cancel flows."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.4 Success metrics"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Goal",
+          "Metric",
+          "Target at six months"
+        ],
+        [
+          "Activation",
+          "Share of trial users reaching the activation moment within 7 days",
+          "From about 28 percent to about 45 percent"
+        ],
+        [
+          "Habit",
+          "Share of paid users active in at least three of the last four weeks at day 60",
+          "From about 30 percent to about 50 percent"
+        ],
+        [
+          "Retention",
+          "Paid retention at month three",
+          "From 12 percent of sign-ups to 18 percent or more"
+        ],
+        [
+          "Revenue",
+          "Cohort lifetime value over 12 months",
+          "At least 30 percent higher"
+        ],
+        [
+          "Efficiency",
+          "Payback period on acquisition cost",
+          "Shorter by at least one month"
+        ],
+        [
+          "Trust",
+          "Complaints about billing and renewal per thousand subscribers",
+          "Reduced by at least half"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.5 Stakeholders"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Product and growth teams: own sign-up and conversion numbers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Finance: owns revenue, margin and payback targets."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Content and catalogue team: owns what users find and how fresh it feels."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Engineering and data: own what can be built and measured."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Customer support: hears the complaints first and knows the real reasons people leave."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Users: trial users, intro-phase subscribers, standard-price subscribers and former subscribers."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "3.6 Why this is a hard problem"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The cliff has many possible causes that look the same on a dashboard. A user who cancels at month three might have never found value, might have found value and then lost it, might love the product but resent the price, might have joined only for one title, or might have been billed in a way that felt unfair. The right fix differs for each. Treating all of them as a pricing problem would have meant spending margin to retain users who were never going to stay."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "4. Framing the Problem"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.1 What we knew, assumed and did not know"
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What we knew"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Sign-ups and trial starts are high and acquisition works."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Cancellations cluster sharply around the first standard-price charge."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Users who stay beyond month three tend to stay for many months."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What we assumed"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That the price step-up is the main reason people leave."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That users who leave were once engaged and then lost interest because of price."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "That a longer intro offer would raise retention."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What we did not know"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How much users actually used the product between the first week and month three."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Whether leavers and stayers looked different in the first week."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Why people signed up: for the product, for one title, or for the offer."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How users felt about the price change, the notices they received and the cancel process."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which part of the experience delivered the first real moment of value."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.2 Competing hypotheses"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Instead of starting from the price theory, I wrote down every plausible cause and planned research that could prove or disprove each one. This is an important discipline. It stops a team from falling in love with the first explanation."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "No.",
+          "Hypothesis",
+          "What evidence would support it"
+        ],
+        [
+          "H1",
+          "Price step-up causes churn among otherwise engaged users",
+          "Leavers had high usage before the charge and cite price"
+        ],
+        [
+          "H2",
+          "Users never form a habit, so there is nothing to pay for at month three",
+          "Leavers show low usage from weeks two to six"
+        ],
+        [
+          "H3",
+          "The offer attracts users who do not fit the product",
+          "Leavers differ by source, intent and first-week behaviour"
+        ],
+        [
+          "H4",
+          "Users do not reach the moment where value becomes clear",
+          "Few leavers completed a key action in the first week"
+        ],
+        [
+          "H5",
+          "The catalogue runs out of relevant things for a user after the first few weeks",
+          "Usage falls after the user finishes the obvious picks"
+        ],
+        [
+          "H6",
+          "Renewal and price communication feels surprising or unfair",
+          "Complaints, reviews and interviews describe surprise"
+        ],
+        [
+          "H7",
+          "Cancelling is the only available response, as there are no flexible options",
+          "Leavers say they wanted a pause or lower tier"
+        ],
+        [
+          "H8",
+          "Life events interrupt use and the product does not adapt",
+          "Interviews mention travel, exams, work or family events"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.3 The five whys"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Step",
+          "Question and answer"
+        ],
+        [
+          "1",
+          "Why do subscribers drop at month three? Because many cancel when the standard price starts."
+        ],
+        [
+          "2",
+          "Why do they cancel at that moment? Because that is when they are reminded to decide, and many have no strong reason to stay."
+        ],
+        [
+          "3",
+          "Why do they have no strong reason to stay? Because their use faded in the weeks before and the product never became part of a routine."
+        ],
+        [
+          "4",
+          "Why did use fade? Because after the first burst of exploring, nothing guided them to the next valuable thing, and nothing reminded them what they were getting."
+        ],
+        [
+          "5",
+          "Why was nothing guiding them? Because the product was designed to win the sign-up and the first session, and not the second month."
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This moved the problem upstream. The cliff is visible at month three, but it is created in weeks two to six."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.4 Reframed problem statement"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Original brief: Reduce churn at month three, probably by adjusting the price."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Reframed problem statement: How might we help each new user reach a real moment of value and build a routine within the intro period, so that by the time the price rises they already know what the product is worth to them, while being honest and flexible with those for whom it is not the right fit?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "4.5 How might we questions"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we get a user to their first real moment of value within the first week?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we turn the first burst of use into a weekly habit?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we make the product feel valuable even in weeks when the user is busy?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we show users what they have gained before asking them to pay more?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we make the price change feel fair, expected and explained?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we give users options other than cancelling or paying in full?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we attract users who are likely to benefit and stay?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How might we win back users who left for a good reason?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "5. Research Plan and Methodology"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.1 Research objectives"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Quantify exactly where and when users disengage and leave."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Compare the behaviour of users who stay with those who leave, starting from the first session."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Understand user motivations, expectations and reasons for leaving in their own words."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Evaluate the experience of onboarding, renewal, price change and cancellation."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Understand the competitive context and the alternatives users choose."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Identify opportunities to improve retention that are ethical and affordable."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.2 Methods and why I used them"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Behavioural data tells us what users did. Interviews tell us why. Surveys tell us how common each reason is. Support and review data show what people say when nobody asks. I used all four, because each one covers what the others cannot."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Method",
+          "Purpose",
+          "Sample and output"
+        ],
+        [
+          "Stakeholder interviews",
+          "Understand strategy, constraints, past experiments and beliefs",
+          "9 people across product, growth, finance, content, support and engineering"
+        ],
+        [
+          "Funnel and cohort analysis",
+          "Map retention by cohort, source, plan and week",
+          "12 months of cohort data"
+        ],
+        [
+          "Behavioural event analysis",
+          "Find early actions that predict retention (activation)",
+          "Event data for several hundred thousand users"
+        ],
+        [
+          "Session recordings and heuristic review",
+          "See friction and confusion in onboarding, renewal and cancel flows",
+          "About 150 recordings and an expert review"
+        ],
+        [
+          "User interviews",
+          "Understand motivation, habit, value and reasons for leaving",
+          "30 interviews across four groups"
+        ],
+        [
+          "Surveys",
+          "Measure reasons and preferences at scale",
+          "Exit survey and in-app pulse survey, 2,400 responses"
+        ],
+        [
+          "Support ticket and app review mining",
+          "Learn what frustrates users without prompting",
+          "Several thousand tickets and reviews tagged by theme"
+        ],
+        [
+          "Competitive and alternatives analysis",
+          "See how others onboard, price and retain",
+          "8 subscription and rental products"
+        ],
+        [
+          "Lifecycle communications audit",
+          "Review every email, push and in-app message a user receives",
+          "All messages from sign-up to cancellation"
+        ],
+        [
+          "Concept testing and prototype testing",
+          "Test ideas and flows before building",
+          "24 participants over two rounds"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.3 Participant groups for interviews"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Group",
+          "Count",
+          "Why they matter"
+        ],
+        [
+          "Retained users past month three",
+          "8",
+          "Show what real value and habit look like"
+        ],
+        [
+          "Users who cancelled at or near month three",
+          "10",
+          "Reveal the decision moment and reasons"
+        ],
+        [
+          "Users who dropped usage but are still paying",
+          "6",
+          "Reveal silent churn before it happens"
+        ],
+        [
+          "Trial-only users who never paid",
+          "6",
+          "Show barriers and expectations at the start"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.4 Ethics and data handling"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "All participants gave consent and were told how their data would be used. Interview recordings were stored securely and anonymised. Behavioural data was analysed in aggregate and without personal identifiers wherever possible. Participants were paid for their time with credits or a small voucher that did not depend on their answers."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "5.5 Timeline"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Weeks",
+          "Activity"
+        ],
+        [
+          "1",
+          "Stakeholder interviews, data access, tracking audit, lifecycle messages inventory"
+        ],
+        [
+          "2",
+          "Funnel, cohort and event analysis, support and review mining, session recordings"
+        ],
+        [
+          "3",
+          "User interviews, exit survey design and launch, competitor analysis"
+        ],
+        [
+          "4",
+          "Synthesis, insight workshop with stakeholders, problem definition"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "6. The Research Process in Detail"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.1 Stakeholder interviews"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I interviewed nine people across the company to understand how each saw the problem. Product and growth leaders believed in the price theory. Finance worried about margin and payback. The content team pointed out that fresh, relevant content drove usage but was costly. Support said that most angry contacts were about renewal surprises and difficult cancellation. Engineers confirmed that some events were not tracked, which limited what we could measure."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The most useful finding from these conversations was a pattern of past experiments. Two earlier attempts to fix retention, a longer intro price and a larger discount at cancellation, had raised short-term retention but then led to a larger drop later. This was an early sign that price alone was not the root cause."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.2 Funnel and cohort analysis"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I built weekly retention curves for each monthly cohort and split them by acquisition source, device, plan, region and first-week behaviour. The shape was consistent. Retention fell gently in the first six weeks, steadily lost users from week six to week eight, and then dropped sharply at the first standard charge."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Cut of the data",
+          "What it showed"
+        ],
+        [
+          "By acquisition source",
+          "Users from deal-focused channels and promotions retained far worse than those from search and referrals"
+        ],
+        [
+          "By first-week behaviour",
+          "Users who did a small set of key actions in the first week retained at several times the rate of those who only browsed"
+        ],
+        [
+          "By device",
+          "App users retained better than web-only users, who were more likely to treat the product as a one-off"
+        ],
+        [
+          "By plan",
+          "Users who chose an annual or discounted bundle early retained better, though they were fewer"
+        ],
+        [
+          "By usage between weeks three and eight",
+          "Users who were inactive for two weeks or more during this window churned at about three times the average rate at month three"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "This was the first strong blow to the price theory. If price alone caused churn, users with similar engagement should have left at similar rates. They did not. Engagement before the charge was a much stronger predictor."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.3 Behavioural event analysis: finding the activation moment"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "To find what an engaged user does early, I compared the first seven days of users who were still paying at month six with those who left before month three. I tested dozens of actions and combinations, such as saving items to a list, finishing a first item, following a category, turning on reminders and returning on a second day. I looked for the action that was both common enough to matter and predictive enough to be useful."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The strongest combination was this: within seven days, the user completes at least one item, adds at least three items to a personal list and returns on at least three separate days. In the representative data, about 28 percent of trial users reached this, and those who did were several times more likely to still be paying at month three. This became the working definition of the activation moment."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "It is important to note that this is a correlation. I did not claim that causing users to do these actions would cause retention by itself. I treated it as a hypothesis to test through experiments, and I checked that the actions reflected genuine value and not just clicks."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.4 Session recordings and heuristic review"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I reviewed about 150 anonymised session recordings across onboarding, home, search, list, renewal reminder and cancellation. I also carried out an expert review against standard usability principles."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "What I observed"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The onboarding asked for payment details early and gave little help afterwards. After the first session, users landed on a generic home screen with no clear next step."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Personalisation was weak. The recommendations on the first screen were mostly popular titles, which did not match what many users said they wanted."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Reminders and notifications were mostly promotional and repeated the same message. Few helped the user continue what they had started."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The price change was mentioned in small text during sign-up and then in a reminder message close to the charge date. In between, users saw nothing about it."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The cancellation flow was reachable but required several steps and ended with a discount offer. There was no option to pause or switch to a lower plan."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Users who returned after a gap often landed in a state that felt like starting over, with no memory of what they had saved or finished."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.5 User interviews"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I interviewed 30 users in four groups. Each conversation lasted about 40 minutes. I used open questions and asked users to walk me through real moments, such as the day they signed up, their last good session, and the day they decided to stay or leave. The guide is in the appendix."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Selected participant voices (paraphrased)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"I signed up because the offer was cheap and I wanted to watch one thing. After that I did not know what else to use it for.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"The first week was great. Then work got busy and I forgot about it. When the bill came I thought, why am I paying for this?\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"Nobody told me what I would get for the higher price. I just got a message that the price was going up.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"I did not want to cancel. I wanted to pause for two months. There was no way to do that.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"I kept it because I had a list I was working through. It felt like a project, so I did not want to lose it.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"Price was not the issue. I was not using it enough to justify any price.\""
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Patterns across groups"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Group",
+          "What they said"
+        ],
+        [
+          "Retained users",
+          "Had a routine or a goal, such as a weekly slot, a personal list or a shared activity. Price felt reasonable because use was regular."
+        ],
+        [
+          "Cancelled at month three",
+          "Mostly said price, but when probed, most described a drop in use weeks before. Price was the visible reason and not the root one."
+        ],
+        [
+          "Paying but inactive",
+          "Were afraid of losing access and planned to return, but could not say when. A strong sign of silent churn."
+        ],
+        [
+          "Trial only",
+          "Many were uncomfortable adding payment details up front and left when they felt unsure about the renewal terms."
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.6 Exit and in-app surveys"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "An exit survey was shown in the cancel flow and a short pulse survey was sent to active subscribers at day 45. Together they received about 2,400 responses. The questions were short and gave a list of reasons plus an open box. Responses were weighted against what users did, because stated reasons and actual behaviour often differ."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stated reason for leaving (representative)",
+          "Share of leavers"
+        ],
+        [
+          "Too expensive for how much I use it",
+          "About 34 percent"
+        ],
+        [
+          "Price increase",
+          "About 18 percent"
+        ],
+        [
+          "Did not find enough I wanted",
+          "About 16 percent"
+        ],
+        [
+          "Was only here for one thing",
+          "About 12 percent"
+        ],
+        [
+          "Too busy or paused for life reasons",
+          "About 10 percent"
+        ],
+        [
+          "Other or unclear",
+          "About 10 percent"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Reading the first two rows together, it looks as if price explains more than half of the cancellations. But the first row says \"for how much I use it\", which is a value judgement, not a price judgement. When I matched survey responses with usage data, most of those who chose \"too expensive\" had low usage in the weeks before, which confirmed that perceived value, not the amount, was the real issue."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.7 Support ticket and app review mining"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I tagged a large sample of support tickets and app reviews by theme. The most frequent themes about retention were these."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Theme",
+          "Examples of what users said"
+        ],
+        [
+          "Surprise at the charge",
+          "Did not realise the price would rise or that the trial would turn into a paid plan"
+        ],
+        [
+          "Hard to cancel",
+          "Could not find the cancel option or had to go through several steps"
+        ],
+        [
+          "Want to pause",
+          "Asked for a break instead of cancelling"
+        ],
+        [
+          "Content not relevant",
+          "Recommendations felt generic or repeated"
+        ],
+        [
+          "Wrong plan",
+          "Wanted a cheaper tier or a single-device plan"
+        ],
+        [
+          "Positive habit stories",
+          "Users who used it weekly and praised specific features"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Complaints about renewals and cancellations were a large share of all tickets and also a source of negative public reviews, which in turn hurt sign-up conversion. This showed that retention problems feed back into acquisition."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.8 Competitive and alternatives analysis"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I reviewed eight comparable subscription or rental products on how they onboard, price, remind, retain and allow exit. I signed up for each and recorded the full lifecycle."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Pattern",
+          "Who does it well",
+          "Lesson",
+          "Risk to avoid"
+        ],
+        [
+          "Guided first week with goals",
+          "Learning and fitness apps",
+          "Habit is built by a plan and not by a library",
+          "Overloading new users with tasks"
+        ],
+        [
+          "Progress and streak mechanics",
+          "Language and reading apps",
+          "Visible progress makes quitting feel like a loss",
+          "Guilt-driven streaks that feel manipulative"
+        ],
+        [
+          "Pause and downgrade options",
+          "Several streaming and delivery services",
+          "Giving a way to pause keeps the relationship alive",
+          "Pause that is hard to find or never ends"
+        ],
+        [
+          "Annual plans with a clear saving",
+          "Productivity and reading apps",
+          "Commitment from motivated users raises retention",
+          "Pushing annual plans too early"
+        ],
+        [
+          "Value recap before renewal",
+          "Music and photo services",
+          "Showing what you got makes the price feel earned",
+          "Recaps that feel like marketing"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.9 Lifecycle communications audit"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I mapped every message a user receives, from the welcome email to the last cancellation confirmation. There were many messages in the first three days and very few between weeks three and eight, which is exactly when users start to drift. Most messages were promotional. There was no message that said \"here is what you did and here is what to do next\". The price change was announced only close to the charge date. The tone changed from friendly in the trial to formal in billing."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "6.10 Concept and prototype testing"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "With 24 participants over two rounds I tested concept cards and then low-fidelity prototypes. The early concepts included a personalised first-week plan, a weekly progress summary, a value recap with a price preview at day 45, a pause option and a lower-priced tier. Participants responded most strongly to the first-week plan, the pause option and the value recap. A discount at the point of cancelling scored poorly on trust."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "7. Synthesis: What the Research Told Us"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.1 How I analysed the data"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I put every finding, quote and data point on a note and grouped them using affinity mapping. Themes became insights. I checked each insight against at least two sources, for example one cohort cut and one interview, so that no single data point drove a decision. I then ran a half-day workshop with stakeholders to share the findings and to challenge or correct them."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.2 Key insights"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Month three is where the cliff shows, not where it starts. Most users who leave at the first standard charge had already faded in weeks three to eight."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Price is the reason users give, but perceived value is the reason that matters. Users with a routine accept the price. Users without one find any price too high."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "There is a clear activation moment. A small set of early actions predicts long-term retention, and most users never reach it because nothing guides them there."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The first week is optimised for sign-up, not for habit. The product wins the first session and then leaves the user alone."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Silent churn is the real enemy. A large group is still paying but not using, and they will leave at the first reminder."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Surprise is more damaging than the price itself. Users who understood what was coming and what they were getting were much less likely to leave angry."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Cancel is the only exit. Many users wanted a pause or a lower tier, and the product forced them to choose between all or nothing."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Not every user should be retained. Users who came for one title or one promotion are unlikely to stay. Retention efforts should focus on those who fit."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Acquisition and retention are linked. Deal-led channels bring users with weaker fit, and unhappy leavers harm public ratings and sign-ups."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.3 User segments and personas"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "From the behavioural and interview data I defined four segments. They are composites of patterns and not real individuals."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Segment 1: Habit builders"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Use the product weekly, often with a goal or a list. They reach the activation moment early and stay through the price change. Their need is to keep the routine going and to feel the product keeps improving. They are the core base to grow."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Segment 2: One-title visitors"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Join for a specific title or event, finish it and leave. They are not unhappy. They were never going to stay. The product should treat them with respect, allow easy exit, and invite them back when something relevant arrives."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Segment 3: Drifters"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Join with good intentions, enjoy the first week, then get busy. They are the largest opportunity. They need a gentle plan, reminders that help and an option to pause so that they do not cancel in frustration."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Segment 4: Price-sensitive evaluators"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Watch their spending closely and ask whether each subscription earns its place. They respond to clear value recaps, annual or lower-priced plans and honest communication. They leave when they cannot see what they are paying for."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.4 Customer journey and where it breaks"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stage",
+          "What the user does",
+          "Where it breaks",
+          "Severity"
+        ],
+        [
+          "Discover and sign up",
+          "Sees an offer and starts a trial",
+          "Offer attracts weak-fit users; terms are not clear",
+          "Medium"
+        ],
+        [
+          "First session",
+          "Explores and tries a first item",
+          "Generic recommendations; no clear next step",
+          "High"
+        ],
+        [
+          "First week",
+          "Returns a few times or not at all",
+          "No plan, weak reminders, no sense of progress",
+          "High"
+        ],
+        [
+          "Weeks three to eight",
+          "Use fades as life gets busy",
+          "Almost no communication; no help to return",
+          "High"
+        ],
+        [
+          "Price change",
+          "Gets a notice and a charge",
+          "Surprise; no value recap; no choices",
+          "Very high"
+        ],
+        [
+          "Decision",
+          "Cancels or continues",
+          "Only full price or cancel; hard to find options",
+          "High"
+        ],
+        [
+          "After leaving",
+          "Disappears",
+          "No thoughtful win-back; negative reviews",
+          "Medium"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.5 Jobs to be done"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I find something I want to do regularly, help me build a routine around it so that it becomes part of my week.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I am busy, help me keep what I have started without paying for nothing.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When the price is about to change, show me what I have gained so that I can decide with confidence.\""
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "\"When I no longer need this, let me leave easily and come back later without penalty.\""
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "7.6 The habit loop"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "To explain why some users stay, I used a simple habit model. A trigger prompts a user to act, the action is made easy, a reward follows and the user invests something, such as a list, a history or a preference, that makes the next visit more valuable. Retained users had all four parts. Users who left typically had a reward in the first session but no trigger, no investment and no plan for the next visit."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Part",
+          "Retained users",
+          "Users who left"
+        ],
+        [
+          "Trigger",
+          "Weekly time slot, a list in progress, a helpful reminder",
+          "Only promotional messages"
+        ],
+        [
+          "Action",
+          "Easy to resume where they stopped",
+          "Landed on generic screens"
+        ],
+        [
+          "Reward",
+          "Progress and finishing things",
+          "One-off enjoyment"
+        ],
+        [
+          "Investment",
+          "Lists, history, preferences",
+          "Little saved, little personalised"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "8. Defining the Opportunity"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.1 Refined problem statements"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "New users are not guided to the activation moment in their first week, so most never form a habit."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Between weeks three and eight there is no help to maintain or restore a routine, so use fades silently."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The price change arrives as a surprise without proof of value, so users decide in a moment of doubt."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Users have no option to pause or step down, so cancelling is the only way to respond to a busy period or tight budget."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Acquisition favours users who are drawn by the offer, so a large share are unlikely to retain."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.2 Design principles"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Value before price. Make sure the user has felt value before the price changes."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Help, don't nag. Every message should be useful to the user and tied to what they are doing."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "No surprises. Show the price change early, plainly and with proof of what they gained."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Give users control. Pause, downgrade and leave should be easy to find and use."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Retain the right users. Focus effort on users who fit and treat the others with respect."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Test before rollout. Every major change goes through an experiment with guardrails."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "8.3 Ideation and prioritisation"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I ran ideation workshops with product, growth, content, support and engineering. We generated about 60 ideas, grouped them by lifecycle stage and scored them on expected impact on retention, confidence from research, effort and risk to revenue or trust."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Idea",
+          "Impact",
+          "Confidence",
+          "Effort",
+          "Risk"
+        ],
+        [
+          "Personalised first-week plan guiding to the activation moment",
+          "High",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        [
+          "Helpful, behaviour-based reminders and a weekly summary",
+          "High",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        [
+          "Value recap and price preview at day 45",
+          "High",
+          "High",
+          "Low",
+          "Low"
+        ],
+        [
+          "Pause and downgrade options",
+          "High",
+          "High",
+          "Medium",
+          "Medium (revenue)"
+        ],
+        [
+          "Redesigned cancel flow with real alternatives",
+          "Medium",
+          "High",
+          "Low",
+          "Low"
+        ],
+        [
+          "Annual plan offered to engaged users at day 30 to 45",
+          "Medium",
+          "Medium",
+          "Low",
+          "Low"
+        ],
+        [
+          "Acquisition tuned for fit and an offer shown by intent",
+          "Medium",
+          "Medium",
+          "Medium",
+          "Medium (volume)"
+        ],
+        [
+          "Win-back programme triggered by relevant content",
+          "Medium",
+          "Medium",
+          "Medium",
+          "Low"
+        ],
+        [
+          "Extend the intro price by one more month",
+          "Low",
+          "Low",
+          "Low",
+          "High (margin)"
+        ],
+        [
+          "Deeper discount at the cancel screen",
+          "Low",
+          "Low",
+          "Low",
+          "High (trust and margin)"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The two options that leadership first considered, a longer intro price and a deeper discount at cancellation, scored lowest. Evidence from earlier experiments and from interviews suggested that they delay churn without creating value."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "9. Business Design and Strategy"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.1 From sign-ups to retained value"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The most important strategic shift was to change what the company counted as success. The old focus was on sign-ups and trial starts. The new focus is on the number of users who reach the activation moment and then keep a routine. This moves growth, product and finance towards the same goal."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.2 North star and supporting metrics"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Level",
+          "Metric"
+        ],
+        [
+          "North star",
+          "Active paying subscribers who use the product in at least three of the last four weeks"
+        ],
+        [
+          "Activation",
+          "Share of new users reaching the activation moment within 7 days"
+        ],
+        [
+          "Habit",
+          "Weekly active rate in weeks three to eight"
+        ],
+        [
+          "Conversion",
+          "Trial to paid conversion, tracked by segment and source"
+        ],
+        [
+          "Retention",
+          "Paid retention at months two, three, six and twelve by cohort"
+        ],
+        [
+          "Revenue",
+          "Cohort lifetime value, payback period and revenue per subscriber"
+        ],
+        [
+          "Trust",
+          "Billing complaints, cancellation ease score and public rating"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.3 The lifecycle framework"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I organised the solution as a single lifecycle with six stages. Each stage has a goal, a main experience and a measure. This helps teams see that retention is created through the whole journey, not through a last-minute offer."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Stage",
+          "Goal",
+          "Main experience",
+          "Key measure"
+        ],
+        [
+          "Acquire",
+          "Bring in users who fit",
+          "Honest offer and intent-based entry",
+          "Fit score and conversion"
+        ],
+        [
+          "Activate",
+          "Reach first value in 7 days",
+          "Personalised first-week plan",
+          "Activation rate"
+        ],
+        [
+          "Habit",
+          "Build a routine by day 45",
+          "Helpful triggers, progress, lists",
+          "Weekly active rate"
+        ],
+        [
+          "Transition",
+          "Prepare for the price change",
+          "Value recap and clear options",
+          "Day-45 to day-60 retention"
+        ],
+        [
+          "Renew",
+          "Keep users who see value",
+          "Flexible plans and fair billing",
+          "Month-three retention"
+        ],
+        [
+          "Win back",
+          "Reconnect with those who left",
+          "Relevant, respectful returns",
+          "Reactivation rate"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "9.4 Business model and packaging changes"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Besides the experience, I recommended small changes to how the product is packaged so that more users can find a plan that matches how they use it."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Element",
+          "Recommendation"
+        ],
+        [
+          "Plans",
+          "Keep the standard plan and add a lower-priced light plan with limited access or one device, and an annual plan with a visible saving"
+        ],
+        [
+          "Pause",
+          "Allow a pause of up to two months once per year, with a clear return date and a reminder before it ends"
+        ],
+        [
+          "Intro offer",
+          "Keep the intro offer but tie its messaging to the benefits the user will get, and show the standard price at sign-up in plain language"
+        ],
+        [
+          "Add-ons",
+          "Offer optional paid extras that appeal to habit builders, such as extra access or premium collections"
+        ],
+        [
+          "Referral",
+          "Give a credit to both the referrer and the friend, applied after the friend has stayed past month two"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "10. The Solution"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.1 Overview"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The solution is a connected lifecycle system with seven parts. Each addresses a specific break in the journey."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A personalised first-week plan that leads to the activation moment."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Habit loops built on helpful triggers, progress and saved investment."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Silent-churn detection and gentle recovery in weeks three to eight."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A value recap and price preview well before the first standard charge."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Flexible plans: pause, downgrade and annual."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A respectful cancellation flow and a thoughtful win-back."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Acquisition tuned to bring in users who fit."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.2 Part one: the personalised first-week plan"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "After sign-up, instead of dropping the user on a generic home screen, the product asks two or three light questions about what they are here for and how often they plan to use it. It then builds a simple first-week plan with a small number of steps that map to the activation moment: finish a first item, build a starter list of three, and come back on three days. The plan is shown as a gentle progress path, not as a checklist of chores."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Design details"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Short setup: no more than three questions, with the option to skip and let the product learn from behaviour."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Useful first recommendations: based on stated intent, with a clear reason for each suggestion."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Progress path: shows what is done, what is next and a small reward at each step, such as an unlocked collection or a note of what the user has gained."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Resume anywhere: the product remembers the user's place, so returning always feels like continuing and not restarting."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Delayed payment detail asks where possible: consider asking for payment details at the point of value instead of at the first screen, if the business case allows."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.3 Part two: habit loops"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Triggers: a weekly slot chosen by the user, plus reminders tied to what they started, such as \"you are two items from finishing your list\"."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Easy action: one tap to resume, with downloads or offline options where relevant."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Reward: visible progress, finished lists and a weekly summary of what they enjoyed."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Investment: lists, history and preferences that make the next visit better and make leaving feel like a real loss, because the user has built something."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Social element where it fits: shared lists or recommendations with a friend, which raise the chance of a shared routine."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "To keep this ethical, reminders have frequency caps and user controls. The aim is to help, not to nag. If a user turns off reminders, the product respects that."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.4 Part three: silent-churn detection and recovery"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Using the research, I defined risk signals such as no activation by day 10, no session for 10 days between weeks three and eight, or a sharp fall in weekly use. When a signal appears, the product sends a message that is useful and warm. The message depends on the signal and on the segment."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Signal",
+          "Response",
+          "Tone"
+        ],
+        [
+          "No activation by day 10",
+          "Offer to restart the plan and highlight the one next step",
+          "Encouraging"
+        ],
+        [
+          "Two weeks without a session",
+          "Show what is waiting, such as a list in progress or new additions",
+          "Helpful"
+        ],
+        [
+          "Busy period suspected (long inactivity)",
+          "Offer pause with a clear return date",
+          "Understanding"
+        ],
+        [
+          "Low use but still paying",
+          "Suggest a lighter plan",
+          "Honest"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.5 Part four: value recap and price preview"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "At about day 45, well before the first standard charge, the user sees a personal summary of what they have done: items finished, hours enjoyed, lists built and what they would have spent elsewhere, only if that comparison is true and fair. Directly below it, in the same view, the product states the date and amount of the next charge in plain language, and offers three choices: continue, switch to a lighter plan, or pause."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Why this works"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "It lets the user decide while they still feel positive about the product."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "It makes the price change expected and removes surprise."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "It gives low-use users a graceful path and prevents angry cancellations."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "It is consistent with payment rules that require clear notice before recurring debits."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "For users with very low usage, the recap is shown differently. It does not show an empty list of nothing. It offers a short guide to getting more value in the next two weeks or a lighter plan, so that the message is still honest and useful."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.6 Part five: flexible plans"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Pause: up to two months once a year, reminder before it ends, automatic resume only with clear consent."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Light plan: a lower-priced option with limits, aimed at drifters and price-sensitive evaluators."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Annual plan: offered to engaged users around days 30 to 45 with a visible saving, never forced."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Easy change: users can move between plans from one screen, without contacting support."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.7 Part six: cancellation and win-back"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The cancellation flow was redesigned to be easy and honest. It is reachable from account settings in two taps. It asks why the user is leaving in one question, then offers the option that fits that reason: pause for busy users, light plan for price-sensitive users, and a clean exit for users who are done. A discount is used rarely and only after the user has had a chance to choose a better-fitting option. Leaving never requires contacting support."
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "After a user leaves, the win-back programme is triggered by relevance and not by a calendar: a new collection that matches their history, a returning favourite, or an event. Messages are limited in number and always include an easy way to stop them. Returning users get their saved lists and history back."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.8 Part seven: acquisition for fit"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Show the standard price and renewal terms clearly at sign-up, so that users who join are informed."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Shift part of the acquisition budget towards channels that bring higher-retention users, such as search, referrals and content partnerships."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Segment the offer: use the intro price for users who show intent to use the product regularly, and a different entry for single-title visitors, such as a short pass."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Track cost per retained user and not just cost per sign-up."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.9 UX deliverables"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A lifecycle map and service blueprint showing what the user sees and what systems do at each stage."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Wireframes and a clickable prototype for onboarding, the first-week plan, the value recap, plan switching, pause and cancellation."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A notification and message framework with rules for frequency, tone and content."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A design system component set for progress, plan cards and recap views."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "An event tracking plan that defines every action needed to measure activation, habit and retention."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Copy guidelines for price, renewal and cancellation messages."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "Message tone guidelines"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Plain, specific and friendly. State the amount and date of the next charge. Avoid pressure words such as \"last chance\" for renewal messages. Avoid guilt, such as \"we miss you\" repeated many times. Always include a clear way to change or stop."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "10.10 Prototype testing"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "I tested the new onboarding and the value recap prototypes with 24 participants, including drifters and price-sensitive evaluators. Results led to several changes."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Issue found",
+          "Change made"
+        ],
+        [
+          "Users skipped setup questions when there were more than three",
+          "Reduced to three and made them optional"
+        ],
+        [
+          "The first-week plan felt like homework to some users",
+          "Rewrote it as a path with rewards, and allowed users to hide it"
+        ],
+        [
+          "Users thought the price preview was a trick",
+          "Moved it into a neutral summary view and led with the user's own activity"
+        ],
+        [
+          "Pause was not understood as free",
+          "Added a plain line stating there is no charge during a pause"
+        ],
+        [
+          "Users wanted to see what they would lose if they cancelled",
+          "Added a short note on saved lists and history that are kept for a period"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "11. Experiment Plan and Rollout"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.1 Why experiments"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The company had already tried two retention fixes that appeared to work in the short term and then failed. To avoid repeating that, every major change was planned as a controlled experiment with a clear hypothesis, a primary metric, guardrail metrics and a stop rule. Users were randomly assigned to the current experience or the new one, and results were read by cohort over a long enough period to see the effect at month three and beyond."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.2 Experiment roadmap"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "No.",
+          "Experiment",
+          "Primary metric",
+          "Guardrail"
+        ],
+        [
+          "E1",
+          "Personalised first-week plan versus the current onboarding",
+          "Activation rate within 7 days",
+          "Trial start to paid conversion must not fall"
+        ],
+        [
+          "E2",
+          "Behaviour-based reminders and weekly summary versus promotional reminders",
+          "Weekly active rate in weeks three to eight",
+          "Unsubscribe and complaint rates"
+        ],
+        [
+          "E3",
+          "Value recap and price preview at day 45 versus the standard notice",
+          "Retention at month three",
+          "Complaints and refund requests"
+        ],
+        [
+          "E4",
+          "Pause and light plan available versus not available",
+          "Share of at-risk users still subscribed at month four",
+          "Revenue per user and plan mix"
+        ],
+        [
+          "E5",
+          "Redesigned cancel flow versus current",
+          "Share choosing pause or light plan; cancel completion time",
+          "Complaints; public ratings"
+        ],
+        [
+          "E6",
+          "Annual plan offered to engaged users at day 30 to 45",
+          "Annual take-up and 12-month retention",
+          "Monthly plan conversion"
+        ],
+        [
+          "E7",
+          "Acquisition tuned for fit versus current mix",
+          "Cost per retained user",
+          "Total sign-up volume"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.3 Experiment design principles"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Run one major change per cohort wherever possible, so that effects can be read cleanly."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Predefine the sample size and run time to avoid reading results too early."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Read results by segment, because an average can hide gains for habit builders and losses for one-title visitors."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Check long-term effects, because a change that raises month-three retention but harms month-six retention is not a win."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Stop any experiment that causes a spike in complaints or a clear fall in trust."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "11.4 Rollout phases"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Phase",
+          "Timeframe",
+          "What happens"
+        ],
+        [
+          "1",
+          "Weeks 1 to 4",
+          "Fix tracking gaps, launch E1 and E2 on a small share of new users, begin E3 design and message copy"
+        ],
+        [
+          "2",
+          "Weeks 5 to 8",
+          "Launch E3 and E5, build pause and light plan, start E4 on a small share"
+        ],
+        [
+          "3",
+          "Weeks 9 to 12",
+          "Read early results, roll out winners to more users, start E6 and E7"
+        ],
+        [
+          "4",
+          "Beyond week 12",
+          "Full rollout of confirmed winners, monthly cohort reviews, win-back programme expansion"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "12. Monetisation and Unit Economics"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.1 Principles"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The goal is to increase long-term revenue by keeping more of the right users, not by charging more per user or by making it hard to leave. Monetisation changes were designed to meet three tests: they should raise lifetime value, they should not erode trust, and they should work with the payment rules that apply to recurring charges."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.2 Revenue levers"
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "1. Higher retention of habit builders and drifters"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The largest lever. Each additional user who stays past month three at the standard price is worth many times the cost of the intro months. The lifecycle redesign targets this group directly."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "2. Plan mix and a lighter tier"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A lower-priced plan keeps users who would otherwise cancel. It lowers revenue per user relative to the standard plan but is far better than losing the user entirely. It also creates an upgrade path as use grows."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "3. Annual plans"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Annual plans give a discount in exchange for commitment. They raise cash flow, reduce the number of renewal decision points and favour engaged users. They should be offered at the right moment, after the user has felt value, and not as a pressure tactic."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "4. Add-ons and premium collections"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Optional extras for users who already use the product heavily, such as premium collections, extra devices or early access. These raise revenue per user without forcing all users to pay more."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "5. Referral credits"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Referred users tend to retain better because they join with a friend's recommendation and often share routines. Credits are given only after the new user has stayed past month two, which protects the company from paying for low-fit sign-ups."
+    },
+    {
+      "style": "Heading3",
+      "type": "paragraph",
+      "text": "6. Win-back"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Returning users cost less to acquire than new ones. A relevant, well-timed return offer, such as a reduced return month tied to new content, can recover a portion of users who left for non-price reasons."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.3 Illustrative unit economics"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The following uses a simplified example per 1,000 sign-ups. Prices are assumptions: an introductory price for the first two months and a higher standard price from month three. Revenue is before costs. Figures should be replaced with the real business numbers."
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Item",
+          "Current pattern (per 1,000 sign-ups)",
+          "Target pattern (per 1,000 sign-ups)"
+        ],
+        [
+          "Paying users in month one",
+          "380",
+          "400"
+        ],
+        [
+          "Paying users in month three",
+          "118",
+          "180"
+        ],
+        [
+          "Paying users in month six",
+          "83",
+          "140"
+        ],
+        [
+          "Paying users in month twelve",
+          "65",
+          "110"
+        ],
+        [
+          "Approximate 12-month revenue per sign-up (before plan mix)",
+          "About INR 198",
+          "About INR 308"
+        ],
+        [
+          "Approximate 12-month revenue per sign-up (assuming a quarter of month-three-plus users choose a lighter plan)",
+          "Not applicable",
+          "About INR 274"
+        ],
+        [
+          "Change versus current pattern after plan mix",
+          "Baseline",
+          "About 38 percent higher"
+        ]
+      ]
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The calculation uses an intro price of about INR 49 per month for two months, a standard price of about INR 199 per month and a lighter plan at about INR 99. Even after allowing for a lighter plan, the lifetime value rises substantially because many more users cross the month-three threshold and stay."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.4 Payback and acquisition efficiency"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Because the intro months are low in revenue, payback depends on how many users survive to the standard price. Improving month-three retention shortens the payback period without any change in acquisition spend. Shifting spend towards channels with better fit lowers the cost per retained user. The finance team should track cost per retained subscriber at month three, alongside cost per sign-up."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "12.5 Protecting margin and trust"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Avoid long or deep discounts that train users to wait for offers."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Use pause and light plans instead of cancel-screen discounts as the main save mechanism."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Keep content spending tied to what drives habit, using usage data to guide choices."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Be transparent on price, renewals and changes. Trust protects long-term revenue."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Follow the rules for recurring payments, including advance notice before a debit and clear consent for any change in amount. Confirm current requirements with the payments and legal teams."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "13. Measurement and Learning Plan"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.1 Dashboard"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Metric",
+          "View",
+          "Why it matters"
+        ],
+        [
+          "Activation rate within 7 days",
+          "By source, device and segment",
+          "Leading indicator of habit"
+        ],
+        [
+          "Weekly active rate in weeks three to eight",
+          "By cohort",
+          "Detects silent churn"
+        ],
+        [
+          "Day-45 recap views and choices made",
+          "By segment",
+          "Shows how users respond to the price preview"
+        ],
+        [
+          "Month-three retention",
+          "By cohort and plan",
+          "Primary outcome"
+        ],
+        [
+          "Plan mix and pause usage",
+          "By cohort",
+          "Revenue and health of flexible options"
+        ],
+        [
+          "Cost per retained subscriber",
+          "By channel",
+          "Acquisition efficiency"
+        ],
+        [
+          "Billing and cancellation complaints",
+          "Weekly",
+          "Trust"
+        ],
+        [
+          "Win-back reactivation rate",
+          "By trigger type",
+          "Value of return programme"
+        ]
+      ]
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.2 Decision rules"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If activation rises but month-three retention does not, review whether the activation actions reflect real value or only clicks."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If month-three retention rises but month-six falls, review whether users were held by friction or by value."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If pause usage is high and few return, review the return reminder and the content waiting for them."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "If complaints rise after a change, pause the rollout and examine the messages and screens involved."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Roll out a change fully only when it improves the primary metric without harming guardrails, across most segments."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "13.3 Targets at the end of the programme"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "These are projected targets and not reported results."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Activation within the first week rising from about 28 percent to about 45 percent."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Weekly active rate in weeks three to eight improving by about a third."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Month-three paid retention rising from about 12 percent of sign-ups to 18 percent or more."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Twelve-month revenue per sign-up at least 30 percent higher after plan mix."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Billing and cancellation complaints roughly halved."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "A measurable improvement in public ratings related to billing and cancelling."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "14. Risks and Mitigation"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Risk",
+          "Why it matters",
+          "Mitigation"
+        ],
+        [
+          "Pause and light plan reduce revenue from users who would have paid full price",
+          "Some users may switch down",
+          "Test the effect on revenue per user, limit pause frequency, and measure the share who would otherwise have cancelled"
+        ],
+        [
+          "Reminders become nagging",
+          "Users may turn off notifications or leave",
+          "Frequency caps, user controls, content that is tied to real activity"
+        ],
+        [
+          "Retention tactics drift into manipulation",
+          "Harms trust, invites regulation and complaints",
+          "Clear review rules on messages and flows, no hidden options, no forced continuity, easy exit"
+        ],
+        [
+          "Short-term wins mask long-term loss",
+          "Month-three gains could fade by month six",
+          "Track cohorts for at least six to twelve months before declaring victory"
+        ],
+        [
+          "Lower sign-up volume from clearer terms",
+          "Honest terms may reduce conversion",
+          "Test the effect, weigh against retention, and judge by cost per retained subscriber"
+        ],
+        [
+          "Data and tracking gaps",
+          "Weak measurement leads to wrong conclusions",
+          "Fix the event plan first, validate events, use qualitative checks"
+        ],
+        [
+          "Content costs rise",
+          "Fresh content drives usage but is expensive",
+          "Use usage data to prioritise, invest where habit builders gather"
+        ],
+        [
+          "Regulatory and payment rules",
+          "Recurring payment and consumer protection rules govern notice, consent and design of exits",
+          "Involve legal and payments teams early and review changes against current rules"
+        ],
+        [
+          "Internal alignment",
+          "Growth, finance and content may hold different goals",
+          "Share the north star and the cohort view, hold regular joint reviews"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "15. Reflection and Learnings"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.1 What I learned as a designer"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "The visible event is not the cause. The month-three cliff is where users act, but the decision is made weeks earlier."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Stated reasons need to be checked against behaviour. \"Too expensive\" often meant \"not used enough\"."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Retention is designed from day one. The first week and the middle weeks matter more than the cancel screen."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Discounts are a weak substitute for value. They delay a decision and teach users to wait."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Giving users control raises trust. Pause and downgrade make the product feel fair, and fairness improves retention."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Not every user should be saved. Good retention work focuses on the right users and treats others with respect."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Business design and UX are one discipline. Pricing, packaging, messaging and flows all shape the same experience."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.2 What I would do differently"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Fix tracking before the first week of analysis, to shorten the diagnosis phase."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Interview more trial-only users early, to understand fit at the point of sign-up."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Test the day-45 recap even earlier, because it proved to be among the most promising ideas."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.3 Limitations of this case study"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "The numbers in this case study are representative and are used to show the method and reasoning. They are not the verified results of a real company. Prices, cohort figures, survey percentages and targets are working assumptions, and real values will differ. Rules on recurring payments and consumer protection change over time and should be confirmed with the relevant professionals before any design is launched."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "15.4 Next steps"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Fix the tracking plan and launch the first two experiments."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Build pause and the light plan for testing."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Review results monthly and decide on rollout using the decision rules."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Extend the programme to win-back and referral once the core lifecycle is working."
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "16. Questions for Discussion"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.1 Understanding the problem"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Why is \"extend the intro price\" an unreliable fix for the month-three cliff?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you tell the difference between churn caused by price and churn caused by lack of value?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which metrics would you look at in the first week of a new engagement to find where the cliff really starts?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which stakeholders could disagree with your diagnosis, and how would you bring them along?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.2 Research"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you define an activation moment, and how would you check that it is not just a vanity metric?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you recruit and interview users who have already left?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are the risks of relying on exit surveys alone?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you combine quantitative and qualitative data when they seem to disagree?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.3 Strategy and design"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you design a price change notice that is honest and still keeps users?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "When is a pause option good for the business, and when does it just delay churn?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you decide which users not to try to retain?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you prevent a retention programme from turning into dark patterns?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you design reminders that help instead of nag?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.4 Business and monetisation"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you judge whether to offer a lighter plan, given the risk that some full-price users will switch down?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would you measure to know if annual plans are helping or only pulling revenue forward?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you set the acquisition budget when you care about cost per retained user?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you decide how much to invest in content to support habit?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.5 Measurement"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How long should an experiment run before you trust the month-three result?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What guardrail metrics would you set for a change in the cancel flow?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What result would make you stop, change course or continue?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "16.6 Ethics"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Where is the line between a helpful reminder and a manipulative one?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you handle a leadership request to hide the cancel option to improve the numbers?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How can retention be improved while respecting the user's right to leave easily?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix A: Stakeholder Interview Guide"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How would you describe the retention problem in your own words?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What changes have been tried before, and what happened?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which numbers do you look at most often, and which do you trust?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What do you think brings users in, and what keeps them?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What are the limits on price, discounts, content spending and engineering time?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What worries you most about changing the model?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would success look like in six months?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix B: User Interview Guide"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Warm up"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Tell me about yourself and how you spend your free time."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Which subscriptions do you pay for right now, and which have you left?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Sign-up"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Tell me about the day you signed up. What made you start?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What did you expect to do with it?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What did you understand about the price after the trial?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Using the product"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Walk me through your first week. What did you do?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "When did you last use it, and what happened?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What does a good session look like for you?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What brings you back, and what gets in the way?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "The decision point"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Tell me about the moment you noticed the price change or the charge."
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What went through your mind? What did you do next?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would have made you stay? What would have made the decision easier?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Did you consider pausing or switching to a cheaper option? What stopped you?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Closing"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What one change would make you subscribe again?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Who else should I speak to?"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix C: Exit and Pulse Survey Questions"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Exit survey (shown during cancellation)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What is the main reason you are leaving? (Too expensive for how much I use it, price increase, not enough I wanted, here only for one thing, too busy, other)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How often did you use the product in the last month? (Never, once or twice, weekly, several times a week)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Would any of these have changed your mind? (Pause for a while, a cheaper plan, more relevant recommendations, nothing)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How easy was it to find how to cancel? (Rate 1 to 5)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "Anything else you would like to tell us?"
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "In-app pulse survey (day 45)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How valuable has this been for you so far? (Rate 1 to 5)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What do you use it for most?"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "How likely are you to continue at the standard price? (Very likely to very unlikely)"
+    },
+    {
+      "style": "ListParagraph",
+      "type": "paragraph",
+      "text": "What would make it more useful for you? (Open answer)"
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix D: Event Tracking Plan (Activation and Habit)"
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "Event",
+          "Details recorded",
+          "Used for"
+        ],
+        [
+          "Sign-up completed",
+          "Source, device, offer shown",
+          "Cohorts and fit analysis"
+        ],
+        [
+          "Setup answered or skipped",
+          "Answers, time taken",
+          "Personalisation and drop-off"
+        ],
+        [
+          "Item started and finished",
+          "Item type, duration",
+          "Activation"
+        ],
+        [
+          "Item added to list",
+          "List size",
+          "Investment and activation"
+        ],
+        [
+          "Session start",
+          "Day, time, source of trigger",
+          "Habit and trigger analysis"
+        ],
+        [
+          "Reminder sent, opened and acted on",
+          "Type, time",
+          "Message effectiveness"
+        ],
+        [
+          "Recap viewed",
+          "Choice made",
+          "Transition analysis"
+        ],
+        [
+          "Plan changed, paused or cancelled",
+          "Reason, plan",
+          "Retention and revenue"
+        ],
+        [
+          "Return after inactivity",
+          "Gap length, trigger",
+          "Win-back analysis"
+        ]
+      ]
+    },
+    {
+      "style": "Heading1",
+      "type": "paragraph",
+      "text": "Appendix E: Sample Lifecycle Messages"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "These are written in simple English. In practice they are adapted to the product, tone and language of the audience."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "First-week plan welcome"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Welcome. Here is a simple plan for your first week: finish your first pick, save three more to your list, and come back on three days. We will keep your place so you can pick up where you left off."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Gentle nudge at day ten"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "You started something good. You are one step away from finishing your first list. Here it is, ready to continue. If you are busy, you can pause for a while at no cost."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Day-45 recap and price notice"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Here is what you have done so far: the items you finished, the lists you built and the time you spent. Your plan will move to the standard price of the stated amount on the stated date. You can continue, switch to the lighter plan, or pause. No action is needed if you want to continue."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Cancellation confirmation"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "Your subscription has ended. Your lists and history will be kept for a stated period in case you want to return. You can come back at any time from your account, and we will pick up where you stopped."
+    },
+    {
+      "style": "Heading2",
+      "type": "paragraph",
+      "text": "Win-back message"
+    },
+    {
+      "style": "",
+      "type": "paragraph",
+      "text": "A collection that matches what you enjoyed has just been added. If you would like to return, your lists are waiting. You can stop these messages at any time."
+    }
+  ]
+}

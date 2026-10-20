@@ -1,11 +1,9 @@
-import canact from "../Assets/Canact.mp4"
-import meridian from "../Assets/Meridian.mp4"
+import { projectUpdates } from "./projectUpdates"
 import logiflow from "../Assets/logiflow.jpg"
 import teamio from "../Assets/teamio.png"
-import northstar from "../Assets/northstar.png"
-import { useEffect, useRef, useState } from "react"
-import { createPortal } from "react-dom"
-import { Link } from "react-router"
+import { useEffect, useRef, useState, type CSSProperties } from "react"
+import ProjectModal from "./ProjectModal"
+import { useLocation, useNavigationType } from "react-router"
 import "./ProjectRows.css"
 
 type Project = {
@@ -23,7 +21,7 @@ type Project = {
   actionFg: string
 }
 
-const PROJECTS: Project[] = [
+const EXISTING_PROJECTS: Project[] = [
   {
     num: "01",
     title: "CANACT",
@@ -41,7 +39,7 @@ const PROJECTS: Project[] = [
   },
   {
     num: "02",
-    title: "Meridian",
+    title: "Aarthik",
     kind: "Fintech Platform",
     year: "2024",
     blurb:
@@ -86,8 +84,8 @@ const PROJECTS: Project[] = [
   },
   {
     num: "05",
-    title: "NorthStar",
-    kind: "BI & Finance",
+    title: "Looma",
+    kind: "Operations & Business Dashboard",
     year: "2024",
     blurb:
       "An enterprise-grade financial command centre for real-time business intelligence, interactive dashboards, and executive decision-making.",
@@ -99,50 +97,107 @@ const PROJECTS: Project[] = [
     mutedFg: "#36353B",
     actionFg: "#36353B",
   },
+{"num": "06", "title": "Algae Tree", "kind": "Website Redesign", "year": "", "blurb": "A clearer digital story, shaped around discovery, understanding, and a more confident next step.", "image": "", "top": "#183f36", "bottom": "#dce5cf", "action": "#dce5cf", "fg": "#dce5cf", "mutedFg": "#183f36", "actionFg": "#183f36"},{"num": "07", "title": "Talio", "kind": "Website Design", "year": "", "blurb": "A focused website experience that makes a productivity platform easier to understand and explore.", "image": "", "top": "#30353d", "bottom": "#e2e5ec", "action": "#e2e5ec", "fg": "#e2e5ec", "mutedFg": "#30353d", "actionFg": "#30353d"},
 ]
 
-const MEDIA = [canact, meridian, logiflow, teamio, northstar]
+const PROJECTS: Project[] = [...EXISTING_PROJECTS, ...["08", "09", "10"].map(num => ({ ...EXISTING_PROJECTS[5], num }))].map(project => {
+  const update = projectUpdates[project.num]
+  return update ? { ...project, title: update.title, kind: update.kind, blurb: update.blurb } : project
+})
+const originalPosters = ["/project-posters/canact-mockup.webp", "/project-posters/aarthik-mockup.webp", logiflow, teamio, "/project-posters/looma-mockup.webp"]
+const POSTERS = PROJECTS.map((project, index) => projectUpdates[project.num]?.poster ?? originalPosters[index])
+
+const clamp = (v:number)=>Math.max(0,Math.min(1,v))
+const openProjectByLocation = new Map<string, string>()
 export default function WorkList() {
-  const [active,setActive]=useState<number|null>(null)
-  const preview=useRef<HTMLDivElement>(null)
-  const videos=useRef<(HTMLVideoElement|null)[]>([])
-  const target=useRef({x:0,y:0}),position=useRef({x:0,y:0})
-  const frame=useRef(0),last=useRef(0),initialized=useRef(false)
-  const move=(x:number,y:number)=>{
-    target.current={x:Math.max(216,Math.min(innerWidth-216,x)),y:Math.max(141,Math.min(innerHeight-141,y))}
-    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches
-    if(!initialized.current||reduced){position.current={...target.current};initialized.current=true}
-    const animate=(now:number)=>{
-      const dt=Math.min((now-(last.current||now-16))/1000,.05);last.current=now
-      const amount=reduced?1:1-Math.exp(-dt*12)
-      position.current.x+=(target.current.x-position.current.x)*amount
-      position.current.y+=(target.current.y-position.current.y)*amount
-      if(preview.current)preview.current.style.transform=`translate3d(${position.current.x}px,${position.current.y}px,0)`
-      frame.current=Math.hypot(target.current.x-position.current.x,target.current.y-position.current.y)>.1?requestAnimationFrame(animate):0
-    }
-    if(!frame.current){last.current=0;frame.current=requestAnimationFrame(animate)}
+  const location = useLocation()
+  const navigationType = useNavigationType()
+  const section=useRef<HTMLElement>(null)
+  const stage=useRef<HTMLDivElement>(null)
+  const backgrounds=useRef<(HTMLDivElement|null)[]>([])
+  const slots=useRef<(HTMLElement|null)[]>([])
+  const [active,setActive]=useState(0)
+  const [selected,setSelected]=useState<number | null>(null)
+  const [reduced,setReduced]=useState(()=>matchMedia("(prefers-reduced-motion: reduce)").matches)
+  useEffect(() => {
+    if (navigationType !== "POP" || !section.current?.getClientRects().length) return
+    const id = openProjectByLocation.get(location.key)
+    const index = PROJECTS.findIndex(project => project.num === id)
+    if (index >= 0) setSelected(index)
+  }, [location.key, navigationType])
+  const openProject = (index: number) => {
+    openProjectByLocation.set(location.key, PROJECTS[index].num)
+    setSelected(index)
   }
-  useEffect(()=>()=>cancelAnimationFrame(frame.current),[])
+  const closeProject = () => {
+    openProjectByLocation.delete(location.key)
+    setSelected(null)
+  }
   useEffect(()=>{
-    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches
-    videos.current.forEach((video,i)=>{if(!video)return;if(active===i&&!reduced)void video.play().catch(()=>{});else video.pause()})
-  },[active])
-  return <section id="projects" className="hover-img-container" aria-label="Selected projects">
-    <div className="hover-img-projects" onMouseLeave={()=>setActive(null)}>
-      {PROJECTS.map((project,i)=><Link key={project.num} to={`/projects/${project.num}`} className="hover-img-project"
-        onMouseEnter={e=>{setActive(i);move(e.clientX,e.clientY)}} onMouseMove={e=>move(e.clientX,e.clientY)}
-        onFocus={e=>{setActive(i);const rect=e.currentTarget.getBoundingClientRect();move(rect.left+rect.width*.62,rect.top+rect.height/2)}} onBlur={()=>setActive(null)}>
-        <h2>{project.title}</h2><p>{project.kind}</p>
-      </Link>)}
+    const el=section.current!,surface=stage.current!,media=matchMedia("(prefers-reduced-motion: reduce)")
+    let frame=0,lastActive=0
+    const update=()=>{
+      frame=0
+      if(!el.getClientRects().length)return
+      if(media.matches){slots.current.forEach(slot=>{if(slot){slot.inert=false;slot.style.transform="none";slot.style.opacity="1";slot.style.visibility="visible";slot.style.filter="none"}});return}
+      const arrival=clamp(1-el.getBoundingClientRect().top/innerHeight)
+      // Keep the heading scene visible until the first card reaches its resting position.
+      surface.style.setProperty("--reel-arrival",String(clamp((arrival-.90)/.10)))
+      const step=(el.offsetHeight-surface.clientHeight)/PROJECTS.length
+      const raw=clamp(-el.getBoundingClientRect().top/Math.max(1,step)/PROJECTS.length)*PROJECTS.length
+      const index=Math.min(PROJECTS.length-1,Math.floor(raw)),fraction=clamp((raw-index-.58)/.42)
+      const blend=fraction*fraction*(3-2*fraction)
+      const position=Math.min(PROJECTS.length-1,index+blend)
+      backgrounds.current.forEach((bg,i)=>{if(bg)bg.style.opacity=String(i===index?1:i===index+1?blend:0)})
+      const current=Math.min(PROJECTS.length-1,index+(blend>.5?1:0))
+      slots.current.forEach((slot,i)=>{
+        if(!slot)return
+        const distance=i-position,depth=Math.abs(distance)
+        const scale=1-.58*Math.min(1,depth)-.10*Math.max(0,depth-1)
+        slot.inert=i!==current
+        slot.style.transform=`translate(-50%,-50%) translateY(${distance*surface.clientHeight*.62}px) scale(${Math.max(.2,scale)})`
+        slot.style.opacity=String(Math.max(0,1-Math.min(1,depth)*.6))
+        slot.style.visibility=depth<1.8?"visible":"hidden"
+        slot.style.zIndex=String(Math.round(100-depth*10))
+        slot.style.filter=`brightness(${1-Math.min(1,depth)*.18})`
+        slot.style.setProperty("--glass-sweep", `${50 + distance * 45}%`)
+      })
+      if(current!==lastActive){lastActive=current;setActive(current)}
+    }
+    const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)}
+    const change=()=>{setReduced(media.matches);schedule()}
+    const observer=new IntersectionObserver(([entry])=>{if(entry.isIntersecting)schedule()})
+    observer.observe(el)
+    const resize=new ResizeObserver(schedule);resize.observe(surface)
+    window.addEventListener("scroll",schedule,{passive:true});window.addEventListener("resize",schedule);media.addEventListener("change",change);schedule()
+    return()=>{cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();window.removeEventListener("scroll",schedule);window.removeEventListener("resize",schedule);media.removeEventListener("change",change)}
+  },[])
+  const goTo=(index:number)=>{
+    const el=section.current!,surface=stage.current!
+    const top=scrollY+el.getBoundingClientRect().top
+    window.scrollTo({top:top+(el.offsetHeight-surface.clientHeight)/PROJECTS.length*(index+.18),behavior:reduced?"auto":"smooth"})
+  }
+  return <><section ref={section} id="projects" className="project-reel" aria-label="Selected projects" style={{"--project-count":PROJECTS.length} as CSSProperties}>
+    <div ref={stage} className="project-reel__stage">
+      <div className="project-reel__backgrounds" aria-hidden="true">{PROJECTS.map((project,i)=><div key={project.num} ref={el=>{backgrounds.current[i]=el}} className="project-reel__background" style={{backgroundImage:`url("${POSTERS[i]}")`,opacity:i===0?1:0}} />)}</div>
+      <div className="project-reel__shade" aria-hidden="true" />
+      <header className="project-reel__header"><span>Selected work</span><span>Ideas, made tangible.</span></header>
+      <div className="project-reel__track">{PROJECTS.map((project,i)=><article key={project.num} ref={el=>{slots.current[i]=el}} className="project-reel__slot" style={{"--project-image":`url("${POSTERS[i]}")`} as CSSProperties}>
+        <button type="button" onClick={() => openProject(i)} aria-haspopup="dialog" className="project-reel__project" data-cursor-hover aria-label={`Explore ${project.title}, ${project.kind}`}>
+          <span className="project-reel__category">{project.num} / {project.kind}</span>
+          <div className="project-reel__banner" style={{backgroundColor:project.top}}>
+            <img src={POSTERS[i]} alt={`${project.title} project preview`} loading={Math.abs(i-active) <= 1 ? "eager" : "lazy"} decoding="async" width="1672" height="941"/>
+            <span className="project-reel__open" aria-hidden="true">Explore project &#8599;</span>
+          </div>
+          <h2>{project.title}<span aria-hidden="true">&#8599;</span></h2>
+          <p className="project-reel__status">{projectUpdates[project.num]?.status ?? project.kind}</p>
+        </button>
+      </article>)}</div>
+      <footer className="project-reel__footer">
+        <span className="project-reel__count" aria-live="polite">{String(active+1).padStart(2,"0")} <span>/ {String(PROJECTS.length).padStart(2,"0")}</span></span>
+        <nav aria-label="Choose a project">{PROJECTS.map((project,i)=><button key={project.num} onClick={()=>goTo(i)} aria-label={`Show ${project.title}`} aria-current={active===i?"true":undefined} title={project.title}><span /></button>)}</nav>
+        <span className="project-reel__scroll">Scroll for the next perspective <span aria-hidden="true">&#8595;</span></span>
+      </footer>
     </div>
-    {createPortal(<div ref={preview} className="hover-img-preview-position" aria-hidden="true">
-      <div className={`hover-img-thumbnail-wrapper ${active!==null?"is-active":""}`}>
-        <div className="hover-img-thumbnail-reel" style={{transform:`translateY(-${(active??0)*100}%)`}}>
-          {PROJECTS.map((project,i)=><div className="hover-img-thumbnail" key={project.num}>
-            {i<2?<video ref={el=>{videos.current[i]=el}} src={MEDIA[i]} muted loop playsInline preload="none"/>:<img src={MEDIA[i]} alt="" loading="lazy"/>}
-          </div>)}
-        </div>
-      </div>
-    </div>,document.body)}
-  </section>
+  </section>{selected !== null && <ProjectModal projectId={PROJECTS[selected].num} summary={PROJECTS[selected].blurb} poster={POSTERS[selected]} onClose={closeProject} />}</>
 }

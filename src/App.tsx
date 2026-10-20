@@ -1,5 +1,5 @@
 import { bindPortfolioEffects } from "./components/portfolioAudio"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react"
 import { RouterProvider } from "react-router"
 import { router } from "./routes"
 // @ts-ignore
@@ -8,20 +8,25 @@ import "lenis/dist/lenis.css"
 import CinematicHero from "./components/CinematicHero"
 import ResumeModal from "./components/ResumeModal"
 import TextRevealSection from "./components/TextRevealSection"
+import ImageTrail from "./components/ImageTrail"
 import RippleCursor from "./components/RippleCursor"
+import NavigationScroll from "./components/NavigationScroll"
 import TunnelIntro from "./components/TunnelIntro"
 import ParticleJourney from "./components/ParticleJourney"
 import Services from "./components/Services"
+import Storytelling from "./components/Storytelling"
+import Graphics from "./components/Graphics"
+import CaseStudies from "./components/CaseStudies"
+
 import BuiltDifferent from "./components/BuiltDifferent"
-import WorkShowcase from "./components/WorkShowcase"
 import WorkList from "./components/WorkList"
+import WorkAnticipation from "./components/WorkAnticipation"
 import Footer from "./components/Footer"
 import HeroSequenceSection from "./components/ImageSequenceSection"
 
 import MobileHeroSequenceSection from "./components/mobile/MobileHeroSequenceSection"
 import MobileServices from "./components/mobile/MobileServices"
 import MobileBuiltDifferent from "./components/mobile/MobileBuiltDifferent"
-import MobileWorkShowcase from "./components/mobile/MobileWorkShowcase"
 import MobileWorkList from "./components/mobile/MobileWorkList"
 import MobileFooter from "./components/mobile/MobileFooter"
 function formatIndiaTime(date = new Date()) {
@@ -35,11 +40,15 @@ function formatIndiaTime(date = new Date()) {
 }
 
 export function Home() {
+  const homeRef = useRef<HTMLDivElement>(null)
   useEffect(() => bindPortfolioEffects(), [])
   const [indiaTime, setIndiaTime] = useState(() => formatIndiaTime())
   const [isResumeOpen, setIsResumeOpen] = useState(false)
   const [soundEnabled, setSoundEnabled] = useState(false)
-  const [entryReady, setEntryReady] = useState(window.portfolioEntered === true)
+  const [entryReady, setEntryReady] = useState(() => {
+    if (["#case-studies", "#projects", "#graphic-design"].includes(window.location.hash)) window.portfolioEntered = true
+    return window.portfolioEntered === true
+  })
 
 
   useEffect(() => {
@@ -47,20 +56,6 @@ export function Home() {
     updateClock()
     const timer = window.setInterval(updateClock, 1000)
     return () => window.clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual"
-    }
-    
-    // Always force the page to start at the very top for the cinematic intro
-    window.scrollTo(0, 0)
-    
-    // Clear any hash from the URL so it doesn't cause auto-scrolling on reload
-    if (window.location.hash) {
-      window.history.replaceState(null, "", window.location.pathname)
-    }
   }, [])
 
   useEffect(() => {
@@ -81,7 +76,7 @@ export function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-[var(--ink)] relative">
+    <div ref={homeRef} className="min-h-screen bg-black text-[var(--ink)] relative" style={{ "--portfolio-entry-opacity": entryReady ? 1 : 0 } as CSSProperties}>
       <ParticleJourney />
       {isResumeOpen && <ResumeModal onClose={() => setIsResumeOpen(false)} />}
 
@@ -93,7 +88,8 @@ export function Home() {
         data-cursor-hover
         className="fixed z-[50] flex items-center justify-center px-4 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-white backdrop-blur-md transition-all hover:bg-white hover:text-black md:text-xs"
         style={{
-          opacity: entryReady ? 1 : 0,
+          opacity: "var(--portfolio-entry-opacity, 0)",
+          transitionProperty: "background-color, color, transform",
           pointerEvents: entryReady ? "auto" : "none",
           top: "82px",
           right: "24px",
@@ -105,7 +101,7 @@ export function Home() {
         Sound {soundEnabled ? "ON" : "OFF"}
       </button>
 
-      <CinematicHero indiaTime={indiaTime} onResumeClick={() => setIsResumeOpen(true)} onEntered={() => setEntryReady(true)} />
+      <CinematicHero indiaTime={indiaTime} onResumeClick={() => setIsResumeOpen(true)} onEntered={() => setEntryReady(true)} onEntryProgress={opacity => homeRef.current?.style.setProperty("--portfolio-entry-opacity", String(opacity))} />
 
       <TunnelIntro />
 
@@ -123,9 +119,13 @@ export function Home() {
         <div className="relative z-30 bg-black">
           {/* Scroll-driven services: colored number cards + rising service cards */}
           <Services />
+          <Storytelling />
           <BuiltDifferent />
-          <WorkShowcase />
+          <WorkAnticipation />
           <WorkList />
+          <CaseStudies />
+
+          <Graphics />
           <Footer />
         </div>
       </div>
@@ -142,9 +142,13 @@ export function Home() {
         <TextRevealSection />
         <div className="relative z-30 bg-black">
           <MobileServices />
+          <Storytelling />
           <MobileBuiltDifferent />
-          <MobileWorkShowcase />
+          <WorkAnticipation />
           <MobileWorkList />
+          <CaseStudies />
+
+          <Graphics />
           <MobileFooter />
         </div>
       </div>
@@ -153,10 +157,20 @@ export function Home() {
   )
 }
 
+function CursorEffects() {
+  const pathname = useSyncExternalStore(router.subscribe, () => router.state.location.pathname)
+  const graphicPortfolio = /^\/(graphic-design|graphics)\/?$/.test(pathname)
+  return graphicPortfolio ? <ImageTrail /> : <RippleCursor />
+}
+
 export default function App() {
   useEffect(() => {
     const loader = document.getElementById("startup-loader")
     if (!loader) return
+    if (window.location.pathname !== "/") {
+      loader.remove()
+      return
+    }
     const fill = loader.querySelector(".startup-loader__fill")
     let removeTimer = 0
     const dismiss = () => {
@@ -188,7 +202,13 @@ export default function App() {
 
     if (window.location.pathname === "/" && !window.portfolioEntered) lenis.stop()
     const startScroll = () => lenis.start()
+    const restoreScroll = (event: Event) => {
+      const { y } = (event as CustomEvent<{ y: number }>).detail
+      lenis.resize()
+      lenis.scrollTo(y, { immediate: true, force: true })
+    }
     window.addEventListener("portfolio:entered", startScroll)
+    window.addEventListener("portfolio:restore-scroll", restoreScroll)
     let animationFrame = 0
     function raf(time: number) {
       lenis.raf(time)
@@ -200,9 +220,10 @@ export default function App() {
     return () => {
       cancelAnimationFrame(animationFrame)
       window.removeEventListener("portfolio:entered", startScroll)
+      window.removeEventListener("portfolio:restore-scroll", restoreScroll)
       lenis.destroy()
     }
   }, [])
 
-  return <><RouterProvider router={router} /><RippleCursor /></>
+  return <><RouterProvider router={router} /><NavigationScroll /><CursorEffects /></>
 }

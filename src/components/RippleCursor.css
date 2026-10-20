@@ -6,3 +6,8 @@
 
 .ripple-cursor-refraction { position:absolute; inset:0; pointer-events:none; display:none; }
 .ripple-cursor-filter { position:absolute; overflow:hidden; pointer-events:none; }
+[data-native-cursor],[data-native-cursor] * { cursor:auto!important; }
+[data-native-cursor] a,[data-native-cursor] button { cursor:pointer!important; }
+html:has([data-native-cursor]),html:has([data-native-cursor]) * { cursor:auto!important; }
+html:has([data-native-cursor]) .ripple-cursor-layer { display:none; }
+html:has([data-native-cursor]) [data-native-cursor] a,html:has([data-native-cursor]) [data-native-cursor] button { cursor:pointer!important; }

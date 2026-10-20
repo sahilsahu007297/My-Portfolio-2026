@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import resumePdf from "../Assets/Sahil-Sahu-Resume.pdf"
+import resumePdf from "../Sahil-Sahu-Resume-2026.pdf"
 
 interface ResumeModalProps {
   onClose: () => void
@@ -11,16 +11,20 @@ export default function ResumeModal({ onClose }: ResumeModalProps) {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose()
+      if (event.key === "Escape") {
+        if (showViewer) setShowViewer(false)
+        else onClose()
+      }
     }
 
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [onClose])
+  }, [onClose, showViewer])
 
   return (
     <div
       className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/35 p-5 backdrop-blur-sm md:p-8"
+      data-native-cursor
       role="presentation"
       onMouseDown={onClose}
     >
@@ -56,6 +60,7 @@ export default function ResumeModal({ onClose }: ResumeModalProps) {
 
         {showViewer ? (
           <div className="h-full w-full bg-[#f4f4f4] pt-14">
+            <button type="button" onClick={() => setShowViewer(false)} className="absolute left-4 top-4 text-sm text-[#3f472c] hover:underline">← Back to résumé options</button>
             <iframe 
               src={`${resumePdf}#view=FitH`} 
               className="h-full w-full border-none" 
@@ -85,7 +90,7 @@ export default function ResumeModal({ onClose }: ResumeModalProps) {
             <div className="mt-5 w-[59%] rounded-[6px] border border-[#d3d8c7] p-[5px]">
               <a
                 href={resumePdf}
-                download="Sahil_Sahu_Resume.pdf"
+                download="Sahil_Sahu_Resume_2026.pdf"
                 data-cursor-hover
                 className="flex w-full items-center justify-center rounded-[6px] bg-[#e3f5b8] py-[clamp(0.55rem,1.4vw,0.95rem)] text-[clamp(1.1rem,3.5vw,1.75rem)] leading-none transition-transform hover:scale-[0.985]"
               >

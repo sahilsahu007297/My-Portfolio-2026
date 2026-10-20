@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/graphic-design", "destination": "/index.html" },
+    { "source": "/graphics", "destination": "/index.html" },
+    { "source": "/projects", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/projects/:projectId", "destination": "/index.html" },
+    { "source": "/case-studies/:studyId", "destination": "/index.html" }
+  ]
+}

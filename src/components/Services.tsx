@@ -14,41 +14,36 @@ const SERVICES: Service[] = [
     num: "01",
     color: "#524646",
     fg: "#FCF2E5",
-    title: "I Design",
-    intro:
-      "Turning problems into purposeful products — from research, flows and UI to design systems and high-fidelity, accessible interfaces people understand, enjoy and return to.",
+    title: "Make it make sense",
+    intro: "I turn the messy middle into an experience people can navigate. Research, journeys, and interfaces work together so the useful thing is also the intuitive thing.",
   },
   {
     num: "02",
     color: "#A8A492",
     fg: "#111111",
-    title: "I Build",
-    intro:
-      "Taking ideas beyond the canvas — front-end implementation, interactive prototypes, motion and component thinking that turn design decisions into functional experiences.",
+    title: "Bring it to life",
+    intro: "A good idea deserves more than a beautiful file. I build prototypes, interactions, and front-end experiences that let teams feel a direction before they commit to it.",
   },
   {
     num: "03",
     color: "#FCF2E5",
     fg: "#111111",
-    title: "I Improve",
-    intro:
-      "Designing for what happens after users arrive — activation, conversion and retention, experimentation and journey optimization. Experiences that don't just work, they grow.",
+    title: "Make the next step easy",
+    intro: "The smallest friction can lose the biggest opportunity. I rethink activation, conversion, and return visits so customer progress and business growth move together.",
   },
   {
     num: "04",
     color: "#524646",
     fg: "#FCF2E5",
-    title: "I Strategize",
-    intro:
-      "Connecting user needs, business goals and product direction — problem framing, positioning, journey mapping and roadmaps. Deciding why it deserves to exist before building it.",
+    title: "Find the right bet",
+    intro: "Before asking what to build, I ask what is worth building. I connect customer needs, positioning, and business priorities into a direction the team can stand behind.",
   },
   {
     num: "05",
     color: "#A8A492",
     fg: "#111111",
-    title: "I Design Systems",
-    intro:
-      "Designing the structure behind the experience — design systems, information architecture, tokens and scalable patterns. Consistency across products without killing flexibility.",
+    title: "Build room to grow",
+    intro: "Consistency is what lets ambition scale. I create reusable patterns and design systems that help teams move faster while keeping the experience unmistakably theirs.",
   },
 ]
 
@@ -132,7 +127,7 @@ export default function Services() {
         <div ref={introRef} className="services-method__intro">
           <span className="services-method__eyebrow">[ My services ]</span>
           <h2>What I do.</h2>
-          <p className="services-method__summary">Design. Build. Improve. Strategize. Design systems.</p>
+          <p className="services-method__summary">I turn ambitious questions into products people choose. Here is what goes into making that happen.</p>
           <span className="services-method__hint">Scroll to explore</span>
         </div>
         <div ref={trackRef} className="services-method__track">

@@ -1,0 +1,6 @@
+artifacts/**
+output/**
+Graphic Files/**
+public/project-posters/*.png
+public/portfolio-sky-4k.png
+src/*.docx

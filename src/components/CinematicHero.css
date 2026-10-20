@@ -11,8 +11,7 @@
 .mountain-flight { position: absolute; inset: 0; }
 .mountain-flight canvas { display: block; width: 100%; height: 100%; }
 .cinematic-hero__veil { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 46%,#03060a44,transparent 65%); pointer-events: none; }
-.cinematic-hero__entrance { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 1.8s ease .5s; }
-.is-entered .cinematic-hero__entrance { opacity: 1; }
+.cinematic-hero__entrance { position: absolute; inset: 0; pointer-events: none; opacity: var(--portfolio-entry-opacity,0); }
 .cinematic-hero__intro { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px; text-align: center; gap: 28px; }
 .cinematic-eyebrow { font-size: 10px; letter-spacing: .32em; text-transform: uppercase; color: #aab8c7; }
 .cinematic-hero h1 { font-family: "Manrope", "Inter", sans-serif; font-size: clamp(42px,7.8vw,132px); font-weight: 500; letter-spacing: -.065em; line-height: 1.1; color: #cbd5df; background: linear-gradient(110deg,#8896a5 15%,#b9c5d0 35%,#fff 46%,#dce7f0 49%,#fff 51%,#a5b3c2 62%,#8794a2 85%); background-size: 260% 100%; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: name-reflection 9s ease-in-out infinite; }
@@ -57,11 +56,9 @@
  .cinematic-hero__entrance,.particle-entry { transition-duration: .1s; transition-delay: 0s; }
 }
 
-/* The startup has no navigation chrome; reveal it with the entered scene. */
-.cinematic-nav { transition: opacity 1.2s ease; }
-.cinematic-hero:not(.is-ready) .cinematic-nav { opacity: 0; visibility: hidden; }
+/* Reserve the navbar's space from the first frame; one timeline reveals all layers. */
+.cinematic-nav { opacity:var(--portfolio-entry-opacity,0); }
 .cinematic-hero__surface { transition: none; }
-.cinematic-hero:not(.is-ready) .cinematic-hero__surface { top: 0; }
 .is-waiting .cinematic-hero__surface { background: radial-gradient(ellipse at 18% 18%,#17233866,transparent 58%),radial-gradient(ellipse at 80% 70%,#17203844,transparent 60%); }
 .is-waiting .mountain-flight { opacity: .95; }
 
@@ -97,3 +94,125 @@
 /* Keep semantic text in the DOM; paint the zoom at viewport resolution. */
 .flight-headings.has-heading-canvas .flight-heading { opacity:0!important; }
 .flight-heading-canvas { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+/* An editorial caption row and a quiet, bottom-aligned signature. */
+.cinematic-hero__intro { justify-content:flex-end; align-items:stretch; gap:26px; padding:0 3.4vw 2.7vw; }
+.cinematic-hero__caption-row { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 0 20px; border-bottom:1px solid #dce5e126; }
+.cinematic-hero__role { font:400 clamp(9px,.65vw,12px)/1.5 Inter,sans-serif; letter-spacing:.16em; text-transform:uppercase; color:#a4b3b8; }
+.cinematic-hero__intro .cinematic-eyebrow { white-space:nowrap; font:400 clamp(11px,.9vw,16px)/1.5 Inter,sans-serif; letter-spacing:.015em; text-transform:none; color:#d2d9d6; margin:0; }
+.cinematic-hero__intro h1 { width:100%; white-space:nowrap; font-size:16vw; line-height:.88; letter-spacing:-.065em; text-align:left; color:#e6e9e3; background:none; -webkit-text-fill-color:currentColor; animation:none; }
+.cinematic-hero__greeting { font-style:italic; color:#aab9bc; }
+.particle-entry__identity { position:absolute; top:10%; font:10px monospace; letter-spacing:.22em; color:#a7b1b8; }
+.particle-entry__overline { margin-bottom:32px; font:12px/1.7 Georgia,serif; letter-spacing:.06em; color:#c3c7c6; }
+.particle-entry__launch-caption { margin-top:22px; font:9px monospace; letter-spacing:.16em; text-transform:uppercase; color:#c9ac83; }
+.particle-entry__quiet { margin-top:12px; }
+@media(max-width:767px) { .cinematic-hero__intro{padding:0 4vw 30px;gap:20px}.cinematic-hero__caption-row{padding-bottom:14px;justify-content:flex-end}.cinematic-hero__role{display:none}.cinematic-hero__intro .cinematic-eyebrow{font-size:2.6vw;letter-spacing:0}.cinematic-hero__intro h1{font-size:15.8vw}.particle-entry__overline{font-size:11px} }
+/* A sculptural signature: the first name sits beyond the illuminated ridgeline. */
+.cinematic-hero__intro { isolation:isolate; justify-content:center; padding:0; }
+.cinematic-hero__intro h1 { position:absolute; inset:0; margin:0; font-size:clamp(100px,19vw,310px); line-height:.9; }
+.summit-name { position:absolute; display:block; font-weight:400; will-change:transform; }
+.summit-name--back { z-index:1; top:15%; left:16%; color:#dce9e7; transform:translateY(calc(var(--summit-scroll,0px) * -.35)); }
+.summit-name--front { z-index:3; top:59%; right:12%; font-style:italic; color:#e5eeeb; text-shadow:0 8px 40px #02081180; transform:translateY(calc(var(--summit-scroll,0px) * -.8)); }
+.summit-period { color:#88aebc; }
+.signature-summit { position:absolute; z-index:2; left:50%; top:15%; width:min(83vw,1200px); height:85%; transform:translateX(-50%) translateY(calc(var(--summit-scroll,0px) * -.15)); filter:drop-shadow(0 -5px 17px #a3e0f225); pointer-events:none; }
+.cinematic-hero__intro h1 { display:contents; }
+.cinematic-hero__caption-row { position:absolute; z-index:4; left:4%; right:4%; bottom:5%; padding-bottom:14px; }
+.summit-coordinate { position:absolute; top:10%; right:5%; font:9px monospace; letter-spacing:.18em; color:#b4cbd0; writing-mode:vertical-rl; }
+.cinematic-hero__scroll { z-index:4; bottom:17%; left:5%; text-align:left; }
+.is-entered .summit-name { animation:summit-rise 2.5s cubic-bezier(.16,1,.3,1) both; }
+.is-entered .summit-name--front { animation-delay:.18s; }
+.is-entered .signature-summit { animation:summit-materialize 2.8s ease both; }
+@keyframes summit-rise { from { translate:0 170px; opacity:0; filter:blur(9px); } to { translate:0 0; opacity:1; filter:blur(0); } }
+@keyframes summit-materialize { from { opacity:0; } to { opacity:1; } }
+.flight-heading { width:min(64vw,850px); max-width:none; }
+.flight-heading h2 { font-size:clamp(28px,4.4vw,64px); line-height:1.08; }
+.flight-heading p { font-size:clamp(14px,1.25vw,18px); line-height:1.5; margin:20px auto 0; max-width:90%; }
+@media(max-width:767px) {
+ .summit-name--back { left:8%; top:23%; }
+ .summit-name--front { top:56%; right:7%; }
+ .cinematic-hero__intro h1 { font-size:25vw; }
+ .summit-name { font-size:25vw; }
+ .signature-summit { width:125vw; top:22%; height:60%; }
+ .cinematic-hero__scroll { bottom:20%; font-size:8px; }
+ .flight-heading { width:62vw; }
+ .flight-heading h2 { font-size:clamp(25px,6.6vw,42px); }
+ .flight-heading p { font-size:13px; line-height:1.5; margin-top:16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .is-entered .summit-name,.is-entered .signature-summit { animation:none; }
+ .summit-name,.signature-summit { translate:none; }
+ .cinematic-hero { height:auto; }
+ .cinematic-hero__stage { position:relative; height:auto; min-height:100vh; overflow:visible; }
+ .cinematic-hero__surface { position:relative; inset:auto; overflow:hidden; }
+ .cinematic-hero__entrance { height:85vh; position:relative; }
+ .flight-headings { position:relative; display:grid; gap:40px; padding:40px 24px 80px; }
+ .flight-headings .flight-heading,.flight-headings.has-heading-canvas .flight-heading { position:static; width:100%; opacity:1!important; visibility:visible!important; transform:none!important; }
+ .flight-heading-canvas { display:none; }
+}
+.has-fallback.cinematic-hero { height:auto; }
+.has-fallback .cinematic-hero__stage { position:relative; height:auto; }
+.has-fallback .cinematic-hero__surface { position:relative; inset:auto; }
+.has-fallback .cinematic-hero__entrance { position:relative; height:85vh; }
+.has-fallback .flight-headings { position:relative; display:grid; gap:48px; padding:40px 24px 80px; }
+.has-fallback .flight-heading { position:static; width:100%; opacity:1; visibility:visible; transform:none; }
+@media(max-width:767px) {
+ .signature-summit { top:8%; height:65%; width:140vw; mask-image:linear-gradient(#000 65%,transparent 86%); }
+}
+/* Real terrain occludes the name in WebGL; the DOM keeps its accessible heading. */
+.has-three-summit .summit-name--back { visibility:hidden; }
+.summit-name--front { font-style:normal; top:auto; bottom:15%; right:13%; font-size:clamp(100px,14vw,224px); letter-spacing:-.06em; }
+.is-entered .summit-name--front { animation:summit-rise 2.8s cubic-bezier(.16,1,.3,1) both; }
+.has-particle-banners .flight-heading { opacity:0!important; }
+@media(max-width:767px) { .summit-name--front { top:auto; bottom:24%; right:9%; font-size:23vw; } }
+@media(prefers-reduced-motion:reduce) {
+ .has-particle-banners .flight-heading { opacity:1!important; }
+ .is-entered .summit-name--front { animation:none; }
+}
+/* Two equally weighted, full-width words frame the terrain. */
+.cinematic-hero__surface{isolation:isolate}
+.hero-name-back{position:absolute;z-index:0;top:5%;left:5%;width:90%;display:flex;justify-content:space-between;font:400 min(30vw,40svh)/.9 Georgia,serif;letter-spacing:-.065em;color:#e5eeeb;pointer-events:none;opacity:calc(var(--portfolio-entry-opacity,0) * var(--hero-intro-opacity,1));transform:translateY(calc(var(--summit-scroll,0px) * -.35))}
+.mountain-flight{z-index:1;pointer-events:none}.cinematic-hero__veil{z-index:2}.cinematic-hero__entrance{z-index:3}.flight-headings{z-index:4}.particle-entry{z-index:30}
+.summit-name--back{visibility:hidden}
+.summit-name--front{display:flex;justify-content:space-between;width:90%;left:5%;right:auto;top:auto;bottom:13%;font-size:min(30vw,40svh);line-height:.9;font-style:normal;letter-spacing:-.065em}
+.is-entered .hero-name-back{animation:summit-rise 2.8s cubic-bezier(.16,1,.3,1) both}
+.summit-coordinate{display:none}
+.flight-heading{width:min(820px,84vw);max-width:84vw;left:50%;top:48%;text-shadow:0 3px 35px #03060a,0 2px 8px #03060a}
+.flight-heading h2{font-size:clamp(32px,4.2vw,62px);line-height:1.12}.flight-heading p{max-width:530px;font-size:clamp(14px,1.2vw,17px);line-height:1.7;margin:22px auto 0}
+@media(max-width:767px){.hero-name-back{top:15%;font-size:31vw}.summit-name--front{bottom:22%;font-size:31vw}.flight-heading{width:86vw;max-width:86vw}.flight-heading h2{font-size:clamp(30px,8vw,42px)}.flight-heading p{font-size:14px;max-width:92%;margin-top:20px}}
+@media(prefers-reduced-motion:reduce){.is-entered .hero-name-back{animation:none}.hero-name-back{top:calc(72px + 10vh);transform:none}.summit-name--front{font-size:30vw}.flight-headings .flight-heading{left:auto;top:auto}}
+.is-entered .hero-name-back{animation:none}
+.is-entered .hero-name-back>span{animation:summit-rise 2.8s cubic-bezier(.16,1,.3,1) both}
+.is-entered .hero-name-back>span:nth-child(2){animation-delay:60ms}.is-entered .hero-name-back>span:nth-child(3){animation-delay:120ms}.is-entered .hero-name-back>span:nth-child(4){animation-delay:180ms}.is-entered .hero-name-back>span:nth-child(5){animation-delay:240ms}
+@media(prefers-reduced-motion:reduce){.is-entered .hero-name-back>span{animation:none}}
+/* Keep the full signature legible across the landscape. */
+.hero-name-back{z-index:3}
+.cinematic-hero__scroll{left:50%;bottom:8.5%;transform:translateX(-50%);text-align:center}
+.cinematic-hero__scroll span{display:inline;margin:0 0 0 12px}
+@media(max-width:767px){.cinematic-hero__scroll{bottom:13%}}
+/* A foreground copy recedes, revealing its twin behind the actual terrain. */
+.hero-name-back{transform:translateY(calc(var(--name-bury,0)*130px)) scale(calc(1 + var(--name-bury,0)*.055));opacity:calc(var(--portfolio-entry-opacity,0)*var(--name-opacity,1))}
+.hero-name-back--occluded{z-index:0}
+.hero-name-back--front{z-index:3;opacity:calc(var(--portfolio-entry-opacity,0)*var(--name-opacity,1)*(1 - var(--name-bury,0)))}
+.flight-heading::after{content:"";display:block;width:1px;height:30px;margin:20px auto 0;background:linear-gradient(#b8d3cc80,transparent)}
+@media(prefers-reduced-motion:reduce){.hero-name-back{transform:none}.hero-name-back--occluded{display:none}.flight-heading::after{display:none}}
+/* Keep the upper letterforms above the ridge as the camera advances. */
+.hero-name-back{transform:translateY(calc(var(--name-bury,0)*-28px)) scale(calc(1 + var(--name-bury,0)*.025))}
+.summit-name--front{transform:translateY(var(--sahu-drop,0px))}
+@media(prefers-reduced-motion:reduce){.hero-name-back,.summit-name--front{transform:none}}
+.cinematic-hero__caption-row,.cinematic-hero__scroll{opacity:calc(1 - var(--name-bury,0))}
+@media(max-width:767px){.hero-name-back{transform:translateY(calc(var(--name-bury,0)*35px)) scale(calc(1 + var(--name-bury,0)*.025))}}
+@media(prefers-reduced-motion:reduce){.hero-name-back{transform:none}}
+
+.particle-entry__choices{position:static;display:flex;justify-content:center;gap:16px;align-items:center;flex-wrap:wrap}
+.particle-entry__choices button{padding:14px 22px;border-radius:999px;color:#c5cece;font:10px/1.5 monospace;letter-spacing:.03em;background:#ffffff06;border:1px solid #c5cece40;cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+.particle-entry__choices button span{margin-left:8px;opacity:.45}
+.particle-entry__choices button:hover{color:#fff;background:#ffffff12;border-color:#c5cece80}
+.particle-entry__choices button:focus-visible{outline:1px solid #b5c9c5;outline-offset:6px}
+.particle-entry__overline{opacity:.85;margin:0 0 28px;text-align:center;text-wrap:balance;font-size:clamp(15px,2vw,23px);max-width:550px}
+@media(max-width:767px){.particle-entry__choices{gap:12px}.particle-entry__choices button{font-size:9px}}
+
+/* The entry scene fills the viewport without a reserved navigation strip. */
+.is-waiting .cinematic-hero__surface{inset:0}
+.is-waiting .cinematic-nav{visibility:hidden;background:transparent;border:0}
+.particle-entry{padding:24px}
+@media(max-width:420px){.particle-entry__choices{flex-direction:column;width:100%}.particle-entry__choices button{width:min(260px,100%);font-size:10px}}

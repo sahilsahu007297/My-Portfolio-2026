@@ -6,22 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Sahil Sahu - UX Designer solving complex business problems and creating sustainable, beautiful digital experiences." />
     <title>Sahil-Sahu</title>
-    <link rel="icon" type="image/png" href="/src/Assets/Sahil-Sahu-Logo.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <style>
       #startup-loader { position: fixed; inset: 0; z-index: 2147483647; display: grid; place-items: center; background: #03060a; opacity: 1; transition: opacity .55s ease, visibility .55s ease; }
       #startup-loader.is-ready { opacity: 0; visibility: hidden; pointer-events: none; }
-      .startup-loader__circle { position: relative; isolation: isolate; width: 144px; aspect-ratio: 1; overflow: hidden; border: 1px solid #d9d9d9; border-radius: 50%; background: #050505; display: grid; place-items: center; }
-      .startup-loader__fill { position: absolute; z-index: 0; inset: 0; border-radius: inherit; background: #d9d9d9; transform: scaleY(0); transform-origin: bottom; animation: startup-loader-fill 1.2s cubic-bezier(.22,1,.36,1) forwards; }
-      .startup-loader__label { position: relative; z-index: 1; color: #fff; font: 10px Georgia, serif; letter-spacing: .06em; mix-blend-mode: difference; }
-      @keyframes startup-loader-fill { to { transform: scaleY(1); } }
-      @media (prefers-reduced-motion: reduce) { .startup-loader__fill { animation-duration: .15s; } #startup-loader { transition-duration: .1s; } }
+      .startup-loader__circle { position:relative;width:180px;aspect-ratio:1;border:1px solid #d6b98624;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#be883d18,transparent 68%); }
+      .startup-loader__circle:before,.startup-loader__circle:after { content:"";position:absolute;inset:13px;border:1px solid transparent;border-top-color:#e2c692;border-bottom-color:#e2c69245;border-radius:50%;animation:startup-orbit 2s linear infinite; }
+      .startup-loader__circle:after { inset:29px;animation-direction:reverse;animation-duration:3s;border-top-color:#fff5;transform:rotate(60deg); }
+      .startup-loader__fill { position:absolute;inset:-1px;border:1px solid transparent;border-left-color:#f6e2b9;border-radius:50%;animation:startup-loader-fill 1.5s cubic-bezier(.22,1,.36,1) forwards; }
+      .startup-loader__label { position:relative;color:#e9dcc6;font:10px monospace;letter-spacing:.3em;text-align:center;line-height:2; }
+      .startup-loader__caption { position:absolute;bottom:12%;color:#8d929a;font:9px monospace;letter-spacing:.24em;text-transform:uppercase; }
+      @keyframes startup-loader-fill { from { transform:rotate(-160deg);opacity:0 } to { transform:rotate(200deg);opacity:1 } }
+      @keyframes startup-orbit { to { rotate:360deg } }
+      @media (prefers-reduced-motion: reduce) { .startup-loader__fill { animation-duration: .15s; } .startup-loader__circle:before,.startup-loader__circle:after {animation:none} #startup-loader { transition-duration: .1s; } }
     </style>
     <!-- figma:head-end -->
   </head>
   <body>
     <!-- figma:body-start -->
     <div id="startup-loader" role="status" aria-label="Loading portfolio">
-      <div class="startup-loader__circle"><span class="startup-loader__fill"></span><span class="startup-loader__label">Loading</span></div>
+      <div class="startup-loader__circle"><span class="startup-loader__fill"></span><span class="startup-loader__label">SETTING<br>THE SCENE</span></div>
+      <span class="startup-loader__caption">Sahil Sahu / A perspective in motion</span>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

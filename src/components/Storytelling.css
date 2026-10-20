@@ -1,0 +1,13 @@
+.storytelling{position:relative;height:580vh;background:#fff;color:#142c30;--first:0;--second:0;--third:0;--rise:80px;--slide:-90px}
+.storytelling__stage{height:100svh;position:sticky;top:0;overflow:hidden}
+.storytelling__canvas{position:absolute;inset:0}.storytelling__canvas canvas{display:block}
+.storytelling__first{position:absolute;left:8%;top:25%;width:46%;opacity:var(--first);transform:translateY(var(--rise))}
+.storytelling__label{display:block;font:10px/1.6 monospace;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.storytelling h2{font:500 clamp(64px,8vw,132px)/.95 Georgia,serif;letter-spacing:-.06em}.storytelling h2 em{color:#397b83;font-weight:400}
+.storytelling p{font-size:clamp(16px,1.35vw,21px);line-height:1.65;max-width:530px;margin-top:26px;color:#476066}
+.storytelling__second{position:absolute;left:52%;right:7%;bottom:15%;opacity:var(--second);transform:translate(var(--slide),calc((1 - var(--second)) * 60px))}
+.storytelling__third{position:absolute;left:8%;width:43%;top:24%;opacity:var(--third);transform:translateY(calc((1 - var(--third)) * 65px))}.storytelling__third em{color:#397b83;font-weight:400}
+.storytelling h3{font:500 clamp(40px,5vw,80px)/1.02 Georgia,serif;letter-spacing:-.05em}.storytelling__foot{position:absolute;bottom:30px;left:8%;font:10px monospace;letter-spacing:.2em;color:#648084}
+.storytelling[data-fallback=true]{height:auto}.storytelling[data-fallback=true] .storytelling__stage{height:auto;padding:90px 8%}.storytelling[data-fallback=true] .storytelling__first,.storytelling[data-fallback=true] .storytelling__second,.storytelling[data-fallback=true] .storytelling__third{position:relative;inset:auto;width:auto;opacity:1;transform:none;margin-bottom:60px}
+@media(max-width:767px){.storytelling{height:580vh}.storytelling__first{top:12%;left:7%;width:86%}.storytelling h2{font-size:64px}.storytelling__second,.storytelling__third{left:7%;right:7%;top:8%;bottom:auto;width:auto}.storytelling h3{font-size:42px}.storytelling p{font-size:15px;line-height:1.5;margin-top:16px}.storytelling__label{margin-bottom:18px}}
+@media(prefers-reduced-motion:reduce){.storytelling{height:auto}.storytelling__stage{position:relative;height:auto;padding:80px 8%}.storytelling__canvas{display:none}.storytelling__first,.storytelling__second,.storytelling__third{position:relative;inset:auto;width:auto;opacity:1;transform:none;margin-bottom:60px}}

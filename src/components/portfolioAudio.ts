@@ -1,4 +1,3 @@
-import soundtrack from "../../.figma/portfolio sound.mp3"
 
 declare global {
   interface Window {
@@ -7,7 +6,7 @@ declare global {
     backgroundMusicState?: boolean
   }
 }
-let audio: HTMLAudioElement | undefined
+let ambience: GainNode | undefined
 let context: AudioContext | undefined
 let master: GainNode | undefined
 let echo: DelayNode | undefined
@@ -69,22 +68,61 @@ export function playPortfolioEffect(kind: "enter" | "hover" | "project" | "click
   }
 }
 
+// Original, continuous ambient score: low drone, detuned pads and filtered air.
+// Oscillators run continuously so there is no audible loop seam or extra download.
+function createAmbience() {
+  if (ambience || !context || !master || !echo) return
+  const ctx = context
+  ambience = ctx.createGain()
+  ambience.gain.value = .7
+  const warmth = ctx.createBiquadFilter()
+  warmth.type = "lowpass"; warmth.frequency.value = 750; warmth.Q.value = .35
+  ambience.connect(warmth); warmth.connect(master)
+  const space = ctx.createGain(); space.gain.value = .3
+  warmth.connect(space); space.connect(echo)
+  ;[55, 110, 164.81, 220, 261.63, 329.63].forEach((frequency, i) => {
+    const oscillator = ctx.createOscillator(), gain = ctx.createGain(), pan = ctx.createStereoPanner()
+    oscillator.type = i < 2 ? "sine" : "triangle"
+    oscillator.frequency.value = frequency
+    oscillator.detune.value = i % 2 ? 3 : -3
+    const level = i === 0 ? .055 : i === 1 ? .025 : .009
+    gain.gain.value = level
+    pan.pan.value = (i % 3 - 1) * .45
+    const breath = ctx.createOscillator(), depth = ctx.createGain()
+    breath.frequency.value = .025 + i * .007; depth.gain.value = level * .45
+    breath.connect(depth); depth.connect(gain.gain)
+    oscillator.connect(gain); gain.connect(pan); pan.connect(ambience!)
+    oscillator.start(); breath.start()
+  })
+  const buffer = ctx.createBuffer(1, ctx.sampleRate * 8, ctx.sampleRate)
+  const samples = buffer.getChannelData(0)
+  let low = 0, seed = 2026
+  for (let i = 0; i < samples.length; i++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0
+    low = .985 * low + .015 * (seed / 4294967296 * 2 - 1)
+    samples[i] = low
+  }
+  const air = ctx.createBufferSource(), filter = ctx.createBiquadFilter(), gain = ctx.createGain()
+  air.buffer = buffer; air.loop = true
+  filter.type = "lowpass"; filter.frequency.value = 480
+  gain.gain.value = .1
+  air.connect(filter); filter.connect(gain); gain.connect(ambience); air.start()
+}
+
 export function setPortfolioSound(play: boolean) {
-  if (!audio) { audio = new Audio(soundtrack); audio.loop = true; audio.volume = .16; audio.preload = "none" }
   window.toggleBackgroundMusic = setPortfolioSound
   window.backgroundMusicState = play
   if (play) {
     try {
       const ctx = engine()
+      createAmbience()
       void ctx.resume().then(() => {
         if (!window.backgroundMusicState || document.hidden) return
         master!.gain.cancelScheduledValues(ctx.currentTime)
         master!.gain.setTargetAtTime(.6, ctx.currentTime, .06)
       }).catch(() => {})
-    } catch { /* The existing soundtrack still works without Web Audio. */ }
-    if (!document.hidden) void audio.play().catch(() => {})
+    } catch { /* Keep the portfolio usable when browser audio is unavailable. */ }
   } else {
-    audio.pause()
     if (context && master) { master.gain.cancelScheduledValues(context.currentTime); master.gain.setTargetAtTime(0, context.currentTime, .02) }
   }
   window.dispatchEvent(new Event("portfolio:sound"))
@@ -94,6 +132,66 @@ export async function playEntrySound() {
   if (!window.backgroundMusicState || !context) return
   await context.resume().catch(() => {})
   playPortfolioEffect("enter")
+}
+
+let flightNoise: AudioBuffer | undefined
+
+// Soft turbine air, a low harmonic motor, and an airy dispersal. No sharp transient.
+export function createFlightSound() {
+  type Voice = { source: AudioScheduledSourceNode; gain: GainNode; filter: BiquadFilterNode; pan: StereoPannerNode; stopping: boolean }
+  const voices = new Set<Voice>()
+  let running: Voice[] | null = null, previous: number | null = null, lastBurst = -Infinity
+  const clamp = (n:number) => Math.max(0,Math.min(1,n))
+  const noise = () => {
+    if (flightNoise) return flightNoise
+    const ctx=context!;flightNoise=ctx.createBuffer(1,ctx.sampleRate*3,ctx.sampleRate)
+    const data=flightNoise.getChannelData(0);let low=0,seed=1701
+    for(let i=0;i<data.length;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const white=seed/4294967296*2-1;low=.97*low+.03*white;data[i]=low*2.5+white*.05}
+    return flightNoise
+  }
+  const voice = (frequency?:number) => {
+    const ctx=context!,gain=ctx.createGain(),filter=ctx.createBiquadFilter(),pan=ctx.createStereoPanner()
+    const source=frequency===undefined?ctx.createBufferSource():ctx.createOscillator()
+    if(source instanceof AudioBufferSourceNode){source.buffer=noise();source.loop=true}
+    else {source.type="sine";source.frequency.value=frequency!}
+    filter.type="lowpass";filter.frequency.value=650;filter.Q.value=.35;gain.gain.value=0
+    source.connect(filter);filter.connect(gain);gain.connect(pan);pan.connect(master!)
+    const item={source,gain,filter,pan,stopping:false};voices.add(item)
+    source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();pan.disconnect();voices.delete(item)}
+    source.start();return item
+  }
+  const stop = () => {
+    if(!context)return
+    const now=context.currentTime
+    for(const item of voices){if(item.stopping)continue;item.stopping=true;item.gain.gain.cancelScheduledValues(now);item.gain.gain.setTargetAtTime(0,now,.06);item.source.stop(now+.24)}
+    running=null
+  }
+  return {
+    update(progress:number){
+      const old=previous;previous=progress
+      if(!window.backgroundMusicState||document.hidden||!context||context.state!=="running"||!master||progress<19.1||progress>23){if(running||voices.size)stop();return}
+      const now=context.currentTime,lift=clamp((progress-19.1)/2.1)
+      if(!running)running=[voice(),voice(86),voice(129)]
+      const envelope=clamp(lift/.25)*(1-clamp((progress-21.05)/.9))
+      running.forEach((item,i)=>{
+        item.gain.gain.setTargetAtTime(envelope*(i===0?.085:i===1?.012:.005),now,.18)
+        item.filter.frequency.setTargetAtTime(380+Math.sin(lift*Math.PI)*720,now,.2)
+        item.pan.pan.setTargetAtTime(-.18+lift*.36,now,.2)
+        if(item.source instanceof OscillatorNode)item.source.frequency.setTargetAtTime((i===1?86:129)*(1.12-lift*.42),now,.2)
+      })
+      if(old!==null&&old>19.1&&old<21.1&&progress>=21.1&&progress<22&&performance.now()-lastBurst>6000){
+        lastBurst=performance.now()
+        const bloom=voice(),bass=voice(62)
+        for(const [item,level] of [[bloom,.06],[bass,.017]] as const){
+          item.gain.gain.linearRampToValueAtTime(level,now+.3);item.gain.gain.exponentialRampToValueAtTime(.0001,now+2.8);item.source.stop(now+2.9)
+        }
+        bloom.filter.frequency.setValueAtTime(1100,now);bloom.filter.frequency.exponentialRampToValueAtTime(180,now+2.7)
+        if(bass.source instanceof OscillatorNode)bass.source.frequency.exponentialRampToValueAtTime(42,now+2.7)
+      }
+    },
+    stop,
+    dispose:stop,
+  }
 }
 
 export function bindPortfolioEffects() {
@@ -122,15 +220,14 @@ export function bindPortfolioEffects() {
     playPortfolioEffect("glitter", glitterIndex++ % 5, event.clientX / innerWidth * 1.6 - .8)
   }
   const visibility = () => {
-    if (document.hidden) { audio?.pause(); if (context) void context.suspend().catch(() => {}) }
+    if (document.hidden) { if (context) void context.suspend().catch(() => {}) }
     else if (window.backgroundMusicState) setPortfolioSound(true)
   }
-  const ambient = window.setInterval(() => playPortfolioEffect("ambient"), 6500)
   document.addEventListener("pointerover", hover); document.addEventListener("focusin", hover)
   document.addEventListener("click", click); document.addEventListener("pointermove", glitter, { passive: true })
   document.addEventListener("visibilitychange", visibility)
   return () => {
-    clearInterval(ambient); document.removeEventListener("pointerover", hover); document.removeEventListener("focusin", hover)
+    document.removeEventListener("pointerover", hover); document.removeEventListener("focusin", hover)
     document.removeEventListener("click", click); document.removeEventListener("pointermove", glitter); document.removeEventListener("visibilitychange", visibility)
     setPortfolioSound(false)
   }

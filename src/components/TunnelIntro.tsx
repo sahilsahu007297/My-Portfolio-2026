@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import "./TunnelIntro.css"
-const STORY = ["Now, let me tell you a story.", "Once upon a time,", "a question took shape.", "Could a fighter jet move", "with the air,", "instead of against it?", "Less drag. More possibility."]
+const STORY = ["Once upon a time,", "a question took flight.", "How do you build a fighter jet?", "What must you understand first?", "How do you make complexity feel clear?", "What happens when a test fails?", "And what can this teach us about design?"]
 export default function TunnelIntro() {
   const section=useRef<HTMLElement>(null)
   useEffect(()=>{
@@ -30,7 +30,7 @@ export default function TunnelIntro() {
     update();window.addEventListener("scroll",schedule,{passive:true});window.addEventListener("resize",schedule);reduced.addEventListener("change",schedule)
     return()=>{cancelAnimationFrame(frame);window.removeEventListener("scroll",schedule);window.removeEventListener("resize",schedule);reduced.removeEventListener("change",schedule)}
   },[])
-  return <section ref={section} data-particle-tunnel className="workflow-tunnel" aria-label="A story about the design process">
+  return <section ref={section} id="about" data-particle-tunnel className="workflow-tunnel" aria-label="A story about the design process">
     <div className="workflow-tunnel__stage">{STORY.map(line=><h2 key={line} className="story-heading">{line}</h2>)}</div>
   </section>
 }

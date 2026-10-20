@@ -17,7 +17,8 @@ export default function RippleCursor() {
     let w=0,h=0,pressure=new Float32Array(),next=new Float32Array(),velocity=new Float32Array(),pixels:ImageData
     let frame=0,last=0,accumulator=0,activeUntil=0,injectUntil=0,rotation=0,seen=false
     let mx=0,my=0,sx=0,sy=0,speed=0,lastMove=0,hover=false
-    const enabled=()=>fine.matches&&!reduced.matches
+    const nativeCursorActive=()=>!!document.querySelector('[data-native-cursor]')
+    const enabled=()=>fine.matches&&!reduced.matches&&!nativeCursorActive()
     const resize=()=>{
       w=Math.ceil(innerWidth/4);h=Math.ceil(innerHeight/4);canvas.width=w;canvas.height=h
       pressure=new Float32Array(w*h);next=new Float32Array(w*h);velocity=new Float32Array(w*h);pixels=water.createImageData(w,h)
@@ -83,9 +84,11 @@ export default function RippleCursor() {
     }
     const reset=()=>{if(lens.current)lens.current.style.display="none";cancelAnimationFrame(frame);frame=0;seen=false;cursor.style.opacity="0";document.documentElement.classList.remove("has-ripple-cursor");water.clearRect(0,0,w,h);pressure.fill(0);velocity.fill(0);next.fill(0);accumulator=0}
     const click=()=>{if(enabled()&&seen){injectUntil=performance.now()+38;activeUntil=performance.now()+2200;wake()}}
+    const modalObserver=new MutationObserver(()=>{if(nativeCursorActive())reset()})
+    modalObserver.observe(document.body,{childList:true,subtree:true})
     resize();window.addEventListener("resize",resize);window.addEventListener("pointermove",move,{passive:true});window.addEventListener("pointerdown",click,{passive:true});window.addEventListener("blur",reset)
     document.documentElement.addEventListener("pointerleave",reset);document.addEventListener("visibilitychange",reset);reduced.addEventListener("change",reset);fine.addEventListener("change",reset)
-    return()=>{reset();window.removeEventListener("resize",resize);window.removeEventListener("pointermove",move);window.removeEventListener("pointerdown",click);window.removeEventListener("blur",reset);document.documentElement.removeEventListener("pointerleave",reset);document.removeEventListener("visibilitychange",reset);reduced.removeEventListener("change",reset);fine.removeEventListener("change",reset)}
+    return()=>{modalObserver.disconnect();reset();window.removeEventListener("resize",resize);window.removeEventListener("pointermove",move);window.removeEventListener("pointerdown",click);window.removeEventListener("blur",reset);document.documentElement.removeEventListener("pointerleave",reset);document.removeEventListener("visibilitychange",reset);reduced.removeEventListener("change",reset);fine.removeEventListener("change",reset)}
   },[])
   return <div className="ripple-cursor-layer" aria-hidden="true">
     <svg className="ripple-cursor-filter" width="0" height="0"><defs>

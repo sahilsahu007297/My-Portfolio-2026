@@ -79,9 +79,9 @@
   pointer-events: none;
 }
 
-.services-method__content { position: relative; max-width: 640px; }
+.services-method__content { position: relative; width:100%; max-width: 720px; container-type:inline-size; }
 .services-method__content h3 {
-  font-size: clamp(38px, 5.7vw, 100px);
+  font-size: clamp(18px, 7.1cqw, 68px);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -.055em;
@@ -107,7 +107,7 @@
 
 @media (max-width: 767px) {
   .services-method__slide { flex-basis: 88vw; width: 88vw; padding: 0 6vw; }
-  .services-method__content h3 { font-size: clamp(27px, 7.5vw, 56px); }
+  .services-method__content h3 { font-size: clamp(18px, 7.1cqw, 36px); }
   .services-method__content p { font-size: 16px; }
   .services-method__number { left: 2vw; font-size: clamp(110px, 24vh, 200px); }
 }
@@ -118,7 +118,7 @@
   .services-method__intro { position: relative; padding: 80px 24px 40px; opacity: 1 !important; transform: none !important; }
   .services-method__track { position: relative; width: 100%; flex-direction: column; transform: none !important; }
   .services-method__slide { flex: none; width: 100%; min-height: 400px; padding: 64px 8vw; }
-  .services-method__content h3 { white-space: normal; }
+  .services-method__content h3 { white-space: nowrap; }
   .services-method__content h3 span,
   .services-method__content p { opacity: 1; transform: none; transition: none; }
   .services-method__number { font-size: 240px; }
