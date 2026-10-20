@@ -7,20 +7,34 @@ export default function NavigationScroll() {
   const location = useSyncExternalStore(router.subscribe, () => router.state.location)
   const currentKey = useRef(location.key)
   const restoring = useRef(false)
+  const pendingNavigation = useRef(false)
 
   useLayoutEffect(() => {
     const save = () => {
-      if (!restoring.current) positions.set(currentKey.current, { x: scrollX, y: scrollY })
+      if (!restoring.current && !pendingNavigation.current) positions.set(currentKey.current, { x: scrollX, y: scrollY })
+    }
+    const capture = () => {
+      positions.set(currentKey.current, { x: scrollX, y: scrollY })
+      pendingNavigation.current = true
+    }
+    const captureLink = (event: MouseEvent) => {
+      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("a[href]") : null
+      if (!link || link.hasAttribute("download") || link.target === "_blank" || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
+      const url = new URL(link.href, window.location.origin)
+      if (url.origin === window.location.origin && url.pathname !== window.location.pathname) capture()
     }
     const unsubscribe = router.subscribe(state => {
       if (state.location.key !== currentKey.current) {
         save()
         currentKey.current = state.location.key
+        pendingNavigation.current = false
       }
     })
     history.scrollRestoration = "manual"
     window.addEventListener("scroll", save, { passive: true })
-    return () => { unsubscribe(); window.removeEventListener("scroll", save) }
+    window.addEventListener("portfolio:before-navigation", capture)
+    document.addEventListener("click", captureLink, true)
+    return () => { unsubscribe(); window.removeEventListener("scroll", save); window.removeEventListener("portfolio:before-navigation", capture); document.removeEventListener("click", captureLink, true) }
   }, [])
 
   useLayoutEffect(() => {
