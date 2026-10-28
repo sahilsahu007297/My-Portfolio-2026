@@ -1,56 +1,26 @@
-import { useEffect, useRef } from "react"
+﻿import { useEffect, useRef, type RefObject } from "react"
+import { smooth,clamp,type WorkflowTimeline } from "./workflowArtwork"
 import "./TextRevealSection.css"
-
-const PARAGRAPHS = [
-  "That flight began as scattered possibilities. Research gave it direction. Strategy gave it structure. Every small decision earned its place until the whole thing could take off. That is how I approach a product, too.",
-  "Before the pixels, I find the purpose: what people need, what the business must achieve, and where the two meet. Then I shape, test, and refine an experience that makes the next step clearer — and the brand harder to forget."
-]
-const WORDS = PARAGRAPHS.map(p => p.split(" "))
-
-export default function TextRevealSection() {
-  const containerRef = useRef<HTMLElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
-  const wordsRef = useRef<(HTMLSpanElement | null)[]>([])
-  useEffect(() => {
-    let frame = 0
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)")
-    const clamp = (n: number) => Math.max(0, Math.min(1, n))
-    const update = () => {
-      frame = 0
-      const section = containerRef.current
-      if (!section || !section.getClientRects().length) return
-      const progress = -section.getBoundingClientRect().top / innerHeight
-      const entrance = reduced.matches ? 1 : clamp((progress + .3) / 1.1)
-      if (textRef.current) {
-        textRef.current.style.transform = `translateY(${(1-entrance)*65}vh)`
-        textRef.current.style.opacity = String(entrance)
-      }
-      wordsRef.current.forEach((word,i) => {
-        if (!word) return
-        const first = i < WORDS[0].length
-        const index = first ? i : i-WORDS[0].length
-        const count = first ? WORDS[0].length : WORDS[1].length
-        const phase = progress - .85 - (first ? 0 : 1.15)
-        const amount = reduced.matches ? 1 : clamp((phase-index/count*.85)/.3)
-        word.style.opacity = String(.13+.87*(1-Math.pow(1-amount,3)))
-        word.style.transform = `translateY(${(1-amount)*10}px)`
+const COPY="Nothing takes flight by accident. I turn real problems into clear direction, thoughtful products, and experiences that move people forward. Every question, every prototype, every small decision brings a better outcome closer."
+const WORDS=COPY.split(" ")
+export default function TextRevealSection({timeline}:{timeline:RefObject<WorkflowTimeline>}){
+  const root=useRef<HTMLDivElement>(null),words=useRef<(HTMLSpanElement|null)[]>([])
+  useEffect(()=>{
+    const el=root.current!,media=matchMedia("(prefers-reduced-motion: reduce)");let frame=0
+    const update=()=>{frame=0
+      const p=media.matches?1:timeline.current.finale,entrance=media.matches?1:smooth(.69,.86,p),reading=media.matches?1:clamp((p-.81)/.19)
+      el.style.opacity=String(entrance);el.style.transform=`translateY(${(1-entrance)*85}vh)`;el.style.visibility=entrance>0?"visible":"hidden"
+      words.current.forEach((word,i)=>{if(!word)return
+        const t=reading*(WORDS.length+5)-i,settle=clamp((t-1.2)/2.1),hot=Math.max(0,1-Math.abs(t-.7)/1.5)
+        const muted=[72,87,94],accent=i%3?[255,166,99]:[111,221,255],white=[237,242,239]
+        const color=muted.map((c,k)=>(c+(accent[k]-c)*hot)*(1-settle)+white[k]*settle)
+        word.style.color=`rgb(${color.map(Math.round).join(",")})`
+        word.style.textShadow=hot>.05?`0 0 ${hot*12}px ${i%3?"#ffa66322":"#6fddff22"}`:"none"
       })
     }
-    const schedule = () => { if (!frame) frame=requestAnimationFrame(update) }
-    window.addEventListener("scroll",schedule,{passive:true})
-    window.addEventListener("resize",schedule)
-    reduced.addEventListener("change",schedule)
-    schedule()
-    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll",schedule);window.removeEventListener("resize",schedule);reduced.removeEventListener("change",schedule) }
-  },[])
-  return <section ref={containerRef} data-particle-outro className="particle-outro">
-    <div className="particle-outro__stage">
-      <div ref={textRef} className="particle-outro__text">
-        <h2 className="particle-outro__heading">Nothing takes flight<br /><em>by accident.</em></h2>
-        <div className="particle-outro__paragraphs">
-        {WORDS.map((words,p) => <p key={p}>{words.map((word,i) => <span key={i} ref={el => { wordsRef.current[(p ? WORDS[0].length : 0)+i]=el }}>{word}</span>)}</p>)}
-        </div>
-      </div>
-    </div>
-  </section>
+    const wake=()=>{if(!frame)frame=requestAnimationFrame(update)}
+    window.addEventListener("scroll",wake,{passive:true});window.addEventListener("resize",wake);media.addEventListener("change",wake);wake()
+    return()=>{cancelAnimationFrame(frame);window.removeEventListener("scroll",wake);window.removeEventListener("resize",wake);media.removeEventListener("change",wake)}
+  },[timeline])
+  return <div ref={root} className="flight-manifesto" aria-label="Nothing takes flight by accident"><h2>{WORDS.map((word,i)=><span key={i} ref={el=>{words.current[i]=el}}>{word}{" "}</span>)}</h2></div>
 }

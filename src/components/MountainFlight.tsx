@@ -107,8 +107,6 @@ export default function MountainFlight({progress,entry,onReady,onUnavailable}:{p
       let frame=0,time=0,last=0,visible=false,pointerX=0,pointerY=0,smoothX=0,smoothY=0,previousProgress=0,scrollEnergy=0,smoothedProgress=progress.current
       const clamp=(n:number)=>Math.max(0,Math.min(1,n))
       const headings=Array.from(host.closest(".cinematic-hero")!.querySelectorAll<HTMLElement>(".flight-heading"))
-      let headingSizes=headings.map(heading=>({width:heading.offsetWidth,height:heading.offsetHeight}))
-      const measureHeadings=()=>{headingSizes=headings.map(heading=>({width:heading.offsetWidth,height:heading.offsetHeight}))}
       const biplanes=createBiplanes(T,camera,renderer.getPixelRatio())
       host.closest(".cinematic-hero")!.classList.add("has-three-summit")
       const render=(now:number)=>{
@@ -122,29 +120,23 @@ export default function MountainFlight({progress,entry,onReady,onUnavailable}:{p
         camera.updateMatrixWorld()
         biplanes.update(p,time,e,reduced.matches)
         const opening=1-Math.pow(1-clamp((e-.12)/.88),3)
-        const occupied:{left:number;top:number;right:number;bottom:number}[]=[]
         headings.forEach((heading,i)=>{
-          // Fixed world landmarks approach the camera; scroll never relocates them.
-          const checkpoint=.20+i*.158,z=-checkpoint*760
-          const x=Math.sin(checkpoint*Math.PI*1.8+.3)*12+(innerWidth<768?2:(i%2?-20:20))
-          const landmark=new T.Vector3(x,terrainHeight(x,z,0)+22,z)
-          const depth=camera.position.z-z,distance=camera.position.distanceTo(landmark)
-          const opacity=depth>0?clamp((235-depth)/55)*clamp((depth-25)/30)*clamp((p-.075)/.035)*e:0
-          landmark.project(camera)
-          const anchorX=(landmark.x*.5+.5)*host.clientWidth
-          const anchorY=(-landmark.y*.5+.5)*host.clientHeight
-          const scale=reduced.matches?1:Math.max(.35,Math.min(2.2,115/distance))
-          const size=headingSizes[i]
-          const box={left:anchorX-size.width*scale/2,top:anchorY-size.height*scale,right:anchorX+size.width*scale/2,bottom:anchorY}
-          const overlaps=occupied.some(other=>box.left<other.right+25&&box.right>other.left-25&&box.top<other.bottom+25&&box.bottom>other.top-25)
-          const visible=opacity>0&&!overlaps
-          if(visible&&opacity>.05&&box.bottom>0&&box.top<host.clientHeight)occupied.push(box)
+          // Each landmark has its own camera pass. Perspective carries it through
+          // the viewport; there is no near-camera fade or overlap-based hiding.
+          const start=.09+i*.165,duration=.145,travel=(p-start)/duration
+          const visible=travel>=0&&travel<1
+          const t=clamp(travel),distance=Math.max(.001,1-t)
+          const scale=.34/distance
+          const side=i%2?1:-1
+          const anchorX=host.clientWidth*(.5+side*.075*(scale-.34))
+          const anchorY=host.clientHeight*(.46+.045*(scale-.34))
+          const arrival=clamp(t/.12)
           heading.style.left=`${anchorX}px`;heading.style.top=`${anchorY}px`
-          heading.style.opacity=String(visible?opacity:0)
+          heading.style.zIndex=scale<.55?"0":"4"
+          heading.style.opacity=String(visible?arrival*arrival*(3-2*arrival)*e:0)
           heading.style.visibility=visible?"visible":"hidden"
-          heading.style.transform=`translate(-50%,-100%) scale(${scale})`
-          heading.style.transformOrigin="50% 100%"
-
+          heading.style.transform=`translate(-50%,-50%) scale(${scale})`
+          heading.style.transformOrigin="50% 50%"
         })
         summitLift.value=opening*(1-clamp((p-.03)/.13))
 
@@ -163,8 +155,8 @@ export default function MountainFlight({progress,entry,onReady,onUnavailable}:{p
         if(!reduced.matches||e<1&&e>0)frame=requestAnimationFrame(render)
       }
       const sync=()=>{if(!frame&&!document.hidden&&visible){last=0;frame=requestAnimationFrame(render)}}
-      const resize=new ResizeObserver(()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();measureHeadings();sync()});resize.observe(host)
-      void document.fonts.ready.then(()=>{if(!disposed){measureHeadings();sync()}})
+      const resize=new ResizeObserver(()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();sync()});resize.observe(host)
+      void document.fonts.ready.then(()=>{if(!disposed){sync()}})
       const observer=new IntersectionObserver(([r])=>{visible=r.isIntersecting;if(visible)sync();else {cancelAnimationFrame(frame);frame=0}});observer.observe(host)
       const leave=()=>{pointerX=0;pointerY=0;sync()}
       const move=(event:PointerEvent)=>{const r=host.getBoundingClientRect();if(!visible||event.pointerType!=="mouse"||event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom){leave();return}pointerX=(event.clientX-r.left)/r.width*2-1;pointerY=(event.clientY-r.top)/r.height*2-1;sync()}

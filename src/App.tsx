@@ -7,27 +7,21 @@ import Lenis from "lenis"
 import "lenis/dist/lenis.css"
 import CinematicHero from "./components/CinematicHero"
 import ResumeModal from "./components/ResumeModal"
-import TextRevealSection from "./components/TextRevealSection"
 import ImageTrail from "./components/ImageTrail"
 import RippleCursor from "./components/RippleCursor"
 import NavigationScroll from "./components/NavigationScroll"
 import TunnelIntro from "./components/TunnelIntro"
 import ParticleJourney from "./components/ParticleJourney"
-import Services from "./components/Services"
+import AnatomyWorkflow from "./components/AnatomyWorkflow"
+import ProjectFlightMap from "./components/ProjectFlightMap"
 import Storytelling from "./components/Storytelling"
 import Graphics from "./components/Graphics"
 import CaseStudies from "./components/CaseStudies"
 
 import BuiltDifferent from "./components/BuiltDifferent"
-import WorkList from "./components/WorkList"
-import WorkAnticipation from "./components/WorkAnticipation"
 import Footer from "./components/Footer"
-import HeroSequenceSection from "./components/ImageSequenceSection"
 
-import MobileHeroSequenceSection from "./components/mobile/MobileHeroSequenceSection"
-import MobileServices from "./components/mobile/MobileServices"
 import MobileBuiltDifferent from "./components/mobile/MobileBuiltDifferent"
-import MobileWorkList from "./components/mobile/MobileWorkList"
 import MobileFooter from "./components/mobile/MobileFooter"
 function formatIndiaTime(date = new Date()) {
   return new Intl.DateTimeFormat("en-IN", {
@@ -105,52 +99,16 @@ export function Home() {
 
       <TunnelIntro />
 
-      {/* Desktop View */}
-      <div className="hidden md:block">
-        <div className="relative z-20">
-          {/* Image sequence and philosophy */}
-          <HeroSequenceSection
-            indiaTime={indiaTime}
-            onResumeClick={() => setIsResumeOpen(true)}
-          />
-        </div>
-
-        <TextRevealSection />
-        <div className="relative z-30 bg-black">
-          {/* Scroll-driven services: colored number cards + rising service cards */}
-          <Services />
-          <Storytelling />
-          <BuiltDifferent />
-          <WorkAnticipation />
-          <WorkList />
-          <CaseStudies />
-
-          <Graphics />
-          <Footer />
-        </div>
-      </div>
-
-      {/* Mobile View */}
-      <div className="block md:hidden">
-        <div className="relative z-20">
-          <MobileHeroSequenceSection
-            indiaTime={indiaTime}
-            onResumeClick={() => setIsResumeOpen(true)}
-          />
-        </div>
-
-        <TextRevealSection />
-        <div className="relative z-30 bg-black">
-          <MobileServices />
-          <Storytelling />
-          <MobileBuiltDifferent />
-          <WorkAnticipation />
-          <MobileWorkList />
-          <CaseStudies />
-
-          <Graphics />
-          <MobileFooter />
-        </div>
+      <AnatomyWorkflow />
+      <div className="relative z-30 bg-black">
+        <Storytelling />
+        <div className="hidden md:block"><BuiltDifferent /></div>
+        <div className="block md:hidden"><MobileBuiltDifferent /></div>
+        <ProjectFlightMap />
+        <CaseStudies />
+        <Graphics />
+        <div className="hidden md:block"><Footer /></div>
+        <div className="block md:hidden"><MobileFooter /></div>
       </div>
       </div>
     </div>

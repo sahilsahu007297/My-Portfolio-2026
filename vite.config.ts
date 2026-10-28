@@ -25,9 +25,19 @@ export default defineConfig(({ mode }) => {
       figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
     ],
     resolve: {
+      // Anatomy and the app must share React, including in mixed npm/pnpm installs.
+      dedupe: ['react', 'react-dom'],
       alias: {
         '@': path.resolve(__dirname, './src'),
       },
+    },
+    optimizeDeps: {
+      include: [
+        'react',
+        'react-dom/client',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+      ],
     },
     server: {
       host: '0.0.0.0',

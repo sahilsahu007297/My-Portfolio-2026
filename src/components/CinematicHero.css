@@ -216,3 +216,28 @@
 .is-waiting .cinematic-nav{visibility:hidden;background:transparent;border:0}
 .particle-entry{padding:24px}
 @media(max-width:420px){.particle-entry__choices{flex-direction:column;width:100%}.particle-entry__choices button{width:min(260px,100%);font-size:10px}}
+
+/* Letterforms held together like a single landscape. */
+.hero-name-back,.summit-name--front{font-weight:700;justify-content:center;gap:0;letter-spacing:-.075em}
+.flight-heading{width:min(460px,70vw);max-width:70vw;text-align:left;text-shadow:0 2px 18px #0008}
+.flight-heading h2{font-size:clamp(27px,3.1vw,48px);line-height:1.12;letter-spacing:-.035em;color:#e0e9e3}
+.flight-heading p{font-family:Inter,sans-serif;font-size:clamp(12px,1vw,15px);line-height:1.75;max-width:340px;margin:16px 0 0;color:#b9cbc2}
+@media(max-width:767px){.flight-heading{width:76vw;max-width:76vw}.flight-heading h2{font-size:29px}.flight-heading p{font-size:13px}}
+/* Stagger the two words: the surname sits slightly forward and to the right. */
+.hero-name-back{left:1%;width:90%;letter-spacing:-.055em;gap:.012em}
+.summit-name--front{left:11%;width:86%;letter-spacing:-.055em;gap:.016em}
+@media(max-width:767px){.hero-name-back{left:0;width:92%;gap:.008em}.summit-name--front{left:10%;width:89%;gap:.012em}}
+
+/* Fixed trail landmarks: distant lettering sits under the terrain layer. */
+.flight-headings{z-index:auto;perspective:none;transform-style:flat}
+.flight-heading{width:min(390px,66vw);max-width:66vw;text-align:left;text-shadow:0 2px 12px #03060a80}
+.flight-heading h2{font-family:"Arial Black",Impact,Inter,sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(27px,3vw,45px);line-height:.98;letter-spacing:-.045em;color:#dce1d6;text-wrap:balance;transform:skewY(-3deg);transform-origin:left bottom;background:repeating-linear-gradient(174deg,#e2e6dc 0px,#e2e6dc 6px,#b9c4b4 7px,#dce1d6 8px);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.flight-heading p{font-family:Inter,sans-serif;font-size:clamp(12px,.95vw,14px);line-height:1.65;max-width:300px;margin:19px 0 0;color:#b9c8be}
+.flight-heading::after{display:none}
+@media(max-width:767px){.flight-heading{width:60vw;max-width:60vw}.flight-heading h2{font-size:29px}.flight-heading p{font-size:12px;margin-top:14px}}
+@media(prefers-reduced-motion:reduce){.flight-heading h2{transform:none}}
+
+/* A small additional stagger and breathing room within the signature. */
+.hero-name-back{left:-1%;letter-spacing:-.045em;gap:.022em}
+.summit-name--front{left:13%;letter-spacing:-.045em;gap:.026em}
+@media(max-width:767px){.hero-name-back{left:-1%;gap:.016em}.summit-name--front{left:12%;width:87%;gap:.020em}}

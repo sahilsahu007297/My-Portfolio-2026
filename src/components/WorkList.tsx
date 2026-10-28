@@ -100,12 +100,12 @@ const EXISTING_PROJECTS: Project[] = [
 {"num": "06", "title": "Algae Tree", "kind": "Website Redesign", "year": "", "blurb": "A clearer digital story, shaped around discovery, understanding, and a more confident next step.", "image": "", "top": "#183f36", "bottom": "#dce5cf", "action": "#dce5cf", "fg": "#dce5cf", "mutedFg": "#183f36", "actionFg": "#183f36"},{"num": "07", "title": "Talio", "kind": "Website Design", "year": "", "blurb": "A focused website experience that makes a productivity platform easier to understand and explore.", "image": "", "top": "#30353d", "bottom": "#e2e5ec", "action": "#e2e5ec", "fg": "#e2e5ec", "mutedFg": "#30353d", "actionFg": "#30353d"},
 ]
 
-const PROJECTS: Project[] = [...EXISTING_PROJECTS, ...["08", "09", "10"].map(num => ({ ...EXISTING_PROJECTS[5], num }))].map(project => {
+export const PROJECTS: Project[] = [...EXISTING_PROJECTS, ...["08", "09", "10"].map(num => ({ ...EXISTING_PROJECTS[5], num }))].map(project => {
   const update = projectUpdates[project.num]
   return update ? { ...project, title: update.title, kind: update.kind, blurb: update.blurb } : project
 })
 const originalPosters = ["/project-posters/canact-mockup.webp", "/project-posters/aarthik-mockup.webp", logiflow, teamio, "/project-posters/looma-mockup.webp"]
-const POSTERS = PROJECTS.map((project, index) => projectUpdates[project.num]?.poster ?? originalPosters[index])
+export const POSTERS = PROJECTS.map((project, index) => projectUpdates[project.num]?.poster ?? originalPosters[index])
 
 const clamp = (v:number)=>Math.max(0,Math.min(1,v))
 const openProjectByLocation = new Map<string, string>()

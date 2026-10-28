@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import "./TunnelIntro.css"
-const STORY = ["Once upon a time,", "a question took flight.", "How do you build a fighter jet?", "What must you understand first?", "How do you make complexity feel clear?", "What happens when a test fails?", "And what can this teach us about design?"]
+const STORY = ["Every flight begins with a question.", "Find the signal.", "Build what moves people."]
 export default function TunnelIntro() {
   const section=useRef<HTMLElement>(null)
   useEffect(()=>{
@@ -12,7 +12,7 @@ export default function TunnelIntro() {
       if(reduced.matches)return
       const p=Math.max(0,Math.min(1,-el.getBoundingClientRect().top/Math.max(1,el.offsetHeight-innerHeight)))
       headings.forEach((heading,i)=>{
-        const start=i===0?.015:.21+(i-1)*.108,duration=i===0?.18:.105
+        const start= .04+i*.30,duration=.29
         const t=(p-start)/duration
         const approach=Math.max(0,Math.min(1,t/.44))
         const exit=Math.max(0,Math.min(1,(t-.68)/.32))

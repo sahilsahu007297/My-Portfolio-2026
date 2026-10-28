@@ -1,228 +1,32 @@
 import { useEffect, useRef } from "react"
-import { createFlightSound } from "./portfolioAudio"
 
-export default function ParticleJourney() {
-  const hostRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const host = hostRef.current!
-    host.style.backgroundColor = "#000"
-    let disposed = false, cleanup = () => {}
-    void Promise.all([import("three"), import("./particleShapes")]).then(([T, { particleShapes }]) => {
-      if (disposed) return
-      let renderer: InstanceType<typeof T.WebGLRenderer>
-      try { renderer = new T.WebGLRenderer({ alpha: true, antialias: false, powerPreference: "high-performance" }) } catch { return }
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5))
-      host.appendChild(renderer.domElement)
-      const scene = new T.Scene()
-      const camera = new T.PerspectiveCamera(45, 1, .1, 100)
-      camera.position.z = 8
-      const flightSound=createFlightSound()
-      const count = innerWidth < 768 ? 22000 : 68000
-      const { shapes, normals } = particleShapes(count)
-      const shapeAttributes=shapes.map(shape=>new T.BufferAttribute(shape,3))
-      const normalAttributes=normals.map(normal=>new T.BufferAttribute(normal,3))
-      const seeds = Float32Array.from({ length: count }, (_, i) => (i * .61803398875) % 1)
-      const tunnelSeeds = new Float32Array(count*3)
-      let randomState=4319
-      for(let i=0;i<tunnelSeeds.length;i++){randomState=(Math.imul(randomState,1664525)+1013904223)>>>0;tunnelSeeds[i]=randomState/4294967296}
-      const geometry = new T.BufferGeometry()
-      geometry.setAttribute("tunnelSeed", new T.BufferAttribute(tunnelSeeds,3))
-      geometry.setAttribute("position", shapeAttributes[0])
-      geometry.setAttribute("normal", normalAttributes[0])
-      geometry.setAttribute("seed", new T.BufferAttribute(seeds, 1))
-      geometry.setAttribute("exhaust",new T.BufferAttribute(Float32Array.from({length:count},(_,i)=>i%29===0?1:0),1))
-      geometry.setAttribute("targetPosition",shapeAttributes[1])
-      geometry.setAttribute("targetNormal",normalAttributes[1])
-      const material = new T.ShaderMaterial({
-        transparent: true, depthWrite: false, blending: T.NormalBlending,
-        uniforms: { morph:{value:0}, spread:{value:0}, cloudAmount:{value:0}, lift:{value:0}, ignition:{value:0}, drift:{value:1}, pointer:{value:new T.Vector2(99,99)}, pointerForce:{value:0}, pixelRatio: { value: renderer.getPixelRatio() }, opacity: { value: 1 }, tunnelMix: { value: 0 }, travel: { value: 0 }, thrust: { value: 0 }, galaxy: { value: 0 }, time: { value: 0 }, cameraZ: { value: 8 }, speed: { value: 0 }, afterglow: { value: 0 } },
-        vertexShader: `attribute vec3 targetPosition,targetNormal; uniform float morph,spread,cloudAmount,lift,ignition,drift,pointerForce;uniform vec2 pointer;
-        attribute float seed; attribute float exhaust; varying float vExhaust,vFlightFade; attribute vec3 tunnelSeed; varying float vSeed; varying vec2 vDirection; varying vec3 vNormal; varying vec3 vView; varying float vFog; uniform float pixelRatio,tunnelMix,travel,time,cameraZ,speed,galaxy,afterglow;
-          void main(){
-            vSeed=seed;vExhaust=exhaust;
-            vFlightFade=mix(1.-smoothstep(.86,.99,lift)*(1.-exhaust),1.,afterglow);
-            float depth=mod(tunnelSeed.y*95.-travel,95.);
-            float angle=tunnelSeed.x*6.2831853+depth*.024;
-            float radius=4.5+sin(angle*3.+depth*.105-time*.16)*.64+sin(angle*7.-depth*.065)*.19+(tunnelSeed.z-.5)*.48;
-            vec3 tube=vec3(cos(angle)*radius+sin(depth*.038)*2.0,sin(angle)*radius+sin(depth*.045+.7)*1.1,cameraZ-depth);
-            float ga=tunnelSeed.x*6.2831853+time*.035+tunnelSeed.y*4.;
-            float gr=1.+sqrt(tunnelSeed.y)*14.;
-            vec3 cloud=vec3(cos(ga)*gr,sin(ga)*gr*.55,(tunnelSeed.z-.5)*18.-8.);
-            vec3 surface=mix(position,targetPosition,morph);
-            vec3 surfaceNormal=normalize(mix(normal,targetNormal,morph));
-            surface+=surfaceNormal*(sin(surface.y*1.8+time*.65)+cos(surface.x*1.6+surface.z*1.2-time*.45))*.035*drift;
-            vec2 delta=surface.xy-pointer;float distanceToMouse=length(delta)+.001;
-            surface.xy+=delta/distanceToMouse*exp(-distanceToMouse*distanceToMouse*1.8)*.18*pointerForce;
-            float pitch=smoothstep(0.,.34,lift)*1.5707963;
-            float departure=smoothstep(.48,1.,lift);
-            surface.yz=mat2(cos(pitch),-sin(pitch),sin(pitch),cos(pitch))*surface.yz;
-            surfaceNormal.yz=mat2(cos(pitch),-sin(pitch),sin(pitch),cos(pitch))*surfaceNormal.yz;
-            surface.z-=departure*departure*75.;
-            float age=fract(seed+time*.19);
-            float travelBack=age*(2.+departure*82.);
-            float width=.22+age*age*(.1+departure*4.);
-            float curl=tunnelSeed.z*6.28318+age*5.-time*.55;
-            vec3 plume=vec3(cos(curl)*width*sqrt(tunnelSeed.y),-2.3-travelBack,sin(curl)*width*sqrt(tunnelSeed.y));
-            plume.yz=mat2(cos(pitch),-sin(pitch),sin(pitch),cos(pitch))*plume.yz;
-            plume.z-=departure*departure*75.;
-            vFlightFade*=mix(1.,smoothstep(0.,.06,age)*(1.-smoothstep(.8,1.,age)),exhaust*ignition*(1.-afterglow));
-            surface=mix(surface,plume,exhaust*ignition);
-            float angleScatter=seed*6.2831853,scatterRadius=3.+tunnelSeed.z*7.;
-            surface+=vec3(cos(angleScatter)*scatterRadius,sin(angleScatter)*scatterRadius,sin(seed*137.)*3.)*spread;
-            surface.y-=cloudAmount*4.8;
-            surface+=vec3(sin(time*.12+seed*24.)*.55,cos(time*.10+seed*31.)*.45,sin(time*.08+seed*19.)*.3)*cloudAmount;
-            vec3 p=mix(mix(surface,tube,tunnelMix),cloud,galaxy);
-            float flowTime=time*.13;
-            vec3 field=vec3((tunnelSeed.x-.5)*22.,(tunnelSeed.y-.5)*13.,(tunnelSeed.z-.5)*5.-2.);
-            field.xy+=vec2(sin(field.y*.45+flowTime+seed*6.),cos(field.x*.32-flowTime+seed*4.))*.7;
-            p=mix(p,field,afterglow);
-            vec3 tubeNormal=normalize(vec3(-cos(angle),-sin(angle),.35));
-            vNormal=normalize(normalMatrix*mix(surfaceNormal,tubeNormal,tunnelMix));
-            vec4 mv=modelViewMatrix*vec4(p,1.);vView=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;vDirection=normalize(gl_Position.xy+vec2(.001));
-            vFog=mix(1.,smoothstep(.8,5.,depth)*(1.-smoothstep(55.,95.,depth)),tunnelMix);
-            float size=mix((1.4+seed*.9)*8.,(1.6+seed*1.8)*15.,tunnelMix);
-            gl_PointSize=clamp(size*pixelRatio/max(.3,-mv.z),1.,5.)*(1.+speed*tunnelMix);
-          }`,
-        fragmentShader: `varying float vExhaust,vFlightFade; uniform float thrust; varying vec2 vDirection; varying float vSeed; varying vec3 vNormal; varying vec3 vView; varying float vFog; uniform float opacity,tunnelMix,speed,afterglow;
-          void main(){vec2 uv=gl_PointCoord-.5;float along=dot(uv,vDirection),across=dot(uv,vec2(-vDirection.y,vDirection.x));float d=length(vec2(along,across*(1.+speed*tunnelMix*2.)));if(d>.48)discard;
-          vec3 n=normalize(vNormal), light=normalize(vec3(-.6,.85,1.4));
-          float diffuse=max(dot(n,light),0.);float rim=pow(1.-abs(dot(n,vView)),3.);
-          float spec=pow(max(dot(n,normalize(light+vView)),0.),28.);
-          vec3 base=mix(vec3(.08,.16,.18),vec3(.57,.76,.77),diffuse);
-          vec3 color=base+vec3(.48,.67,.61)*spec*.8+vec3(.12,.4,.32)*rim*.4;
-          vec3 tunnelColor=mix(vec3(.10,.27,.22),vec3(.68,.86,.65),pow(fract(vSeed*37.13),2.));
-          color=mix(color,tunnelColor,tunnelMix)*(.85+vSeed*.25);
-          vec3 gold=mix(vec3(1.,.59,.16),vec3(1.,.96,.81),smoothstep(.15,.85,fract(vSeed*41.7)));
-          color=mix(color,gold,vExhaust*thrust);
-          color=mix(color,gold,afterglow);gl_FragColor=vec4(color,opacity*vFog*vFlightFade*(1.-smoothstep(.12,.48,d)));}`,
-
-
-      })
-      const points = new T.Points(geometry, material)
-      points.frustumCulled = false
-      scene.add(points)
-      const reduced = matchMedia("(prefers-reduced-motion: reduce)")
-      let section: HTMLElement | undefined, progress = 0, ended = false, frame = 0, last = 0, elapsed = 0, tunnelProgress = 0, smoothTunnel = 0, tunnelEntrance = 0, tunnelVisible = false, pointerX = 0, pointerY = 0
-      let mx = 99, my = 99, vx = 0, vy = 0
-      const clamp = (n: number) => Math.max(0, Math.min(1, n))
-      const measure = () => {
-        section = Array.from(document.querySelectorAll<HTMLElement>("[data-particle-sequence]")).find(el => el.getClientRects().length > 0)
-        if (!section) return
-        const rect = section.getBoundingClientRect()
-        progress = Math.max(0, -rect.top / innerHeight)
-        const outro = Array.from(document.querySelectorAll<HTMLElement>("[data-particle-outro]")).find(el=>el.getClientRects().length>0)
-        const outroRect = outro?.getBoundingClientRect()
-        const tunnel=document.querySelector<HTMLElement>("[data-particle-tunnel]")
-        const tr=tunnel?.getBoundingClientRect()
-        tunnelProgress=tr&&tunnel?clamp(-tr.top/Math.max(1,tunnel.offsetHeight-innerHeight)):1
-        tunnelVisible=!!tr&&tr.top<innerHeight&&tr.bottom>0
-        tunnelEntrance=tr?clamp((-tr.top/innerHeight-.12)/.35):1
-        ended = (!tunnelVisible && rect.top >= innerHeight) || (outroRect ? outroRect.bottom<=0 : rect.bottom<=0)
-        if(ended)flightSound.stop()
-        host.style.opacity = "1"
+// Tunnel only. The old ten-shape workflow is deliberately not part of this renderer.
+export default function ParticleJourney(){
+  const canvas=useRef<HTMLCanvasElement>(null)
+  useEffect(()=>{
+    const cv=canvas.current!,ctx=cv.getContext("2d");if(!ctx)return
+    const tunnel=document.querySelector<HTMLElement>("[data-particle-tunnel]");if(!tunnel)return
+    const media=matchMedia("(prefers-reduced-motion: reduce)")
+    let frame=0,visible=false,last=0,progress=0,target=0
+    const points=Array.from({length:2600},(_,i)=>({angle:i*2.39996,z:(i*.61803398875)%1,r:1+((i*.137)%1)*.22}))
+    const render=(now:number)=>{
+      frame=0;if(!visible||document.hidden)return
+      const dt=Math.min(.05,(now-(last||now))/1000);last=now;progress+=(target-progress)*(media.matches?1:1-Math.exp(-dt*9))
+      const w=innerWidth,h=innerHeight,dpr=Math.min(devicePixelRatio,1.5)
+      if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr)}
+      ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h)
+      const fade=Math.min(1,progress*9)*Math.min(1,(1-progress)*8)
+      ctx.fillStyle="#b9edff"
+      for(let layer=0;layer<2;layer++)for(const p of points){const z=((p.z-progress*(layer?2.05:2.8)+(layer?.13:0))%1+1)%1,depth=(layer?.32:.15)+z*(layer?5.2:4),radius=Math.min(w,h)*(layer?.62:.40)*p.r/depth,a=p.angle+z*.8+(layer?.09:0)
+        const x=w/2+Math.cos(a)*radius+Math.sin(z*2+progress)*w*.06,y=h/2+Math.sin(a)*radius
+        const size=Math.min(layer?2.4:3,(layer?1.2:1.5)/depth);ctx.fillStyle=layer?"#6097c6":"#c5f2ff";ctx.globalAlpha=fade*(layer?.5:1)*(.25+.65*(1-z));ctx.beginPath();ctx.arc(x,y,size,0,Math.PI*2);ctx.fill()
       }
-      const resize = () => {
-        renderer.setSize(innerWidth, innerHeight)
-        camera.aspect = innerWidth / innerHeight
-        camera.position.z = innerWidth < 768 ? 10 : 8
-        camera.updateProjectionMatrix()
-        measure()
-      }
-      const render = (time: number) => {
-        frame = 0
-        if (disposed || document.hidden || ended) return
-        const dt = Math.min((time - (last || time)) / 1000, .05); last = time
-        if (!reduced.matches) elapsed += dt
-        material.uniforms.speed.value=reduced.matches?0:Math.min(1,Math.abs(tunnelProgress-smoothTunnel)*10)
-        smoothTunnel+=(tunnelProgress-smoothTunnel)*(reduced.matches?1:1-Math.exp(-dt*7))
-        const ending=clamp((smoothTunnel-.86)/.14),settle=ending*ending*(3-2*ending)
-        const tunnelMix=reduced.matches||!tunnelVisible?0:1-settle
-        material.uniforms.galaxy.value=tunnelVisible?1-clamp((smoothTunnel-.09)/.17):0
-        material.uniforms.tunnelMix.value=tunnelMix
-        material.uniforms.travel.value=Math.min(smoothTunnel,.86)*240+elapsed*.32*(1-settle)
-        material.uniforms.time.value=elapsed
-        material.uniforms.cameraZ.value=camera.position.z
-        pointerX+=((mx===99?0:mx)-pointerX)*(1-Math.exp(-dt*3))
-        pointerY+=((my===99?0:my)-pointerY)*(1-Math.exp(-dt*3))
-        camera.position.x=reduced.matches?0:pointerX*tunnelMix*.28
-        camera.position.y=reduced.matches?0:pointerY*tunnelMix*.20
-        camera.lookAt(0,0,-14*tunnelMix)
-        const stage = clamp((progress - .8) / 1.4 / 10) * 10
-        const from = Math.min(9, Math.floor(stage)), to = Math.min(10, from + 1)
-        const fraction = stage - from
-        const blend = clamp((fraction-.72) / .28), smooth = blend * blend * (3 - 2 * blend)
-        let morph=smooth
-        const assembly=clamp((progress-16.4)/1.7), lift=clamp((progress-19.1)/2.1)
-        flightSound.update(progress)
-        material.uniforms.thrust.value=clamp(lift*6)
-        // Budget detail by viewport and interaction, restoring full surface density for the reveal.
-        const activeCount=Math.floor(count*(progress>16?1:Math.max(.6,1-material.uniforms.speed.value*.35)))
-        geometry.setDrawRange(0,activeCount)
-        const finalBurst=clamp((progress-21.1)/1.5)
-        const afterglow=finalBurst*finalBurst*(3-2*finalBurst)
-        material.uniforms.afterglow.value=afterglow
-        if(progress>15)morph=assembly*assembly*(3-2*assembly)
-        const scatter = reduced.matches ? 0 : Math.max(finalBurst,clamp((progress-14.9)/.8)*(1-assembly))
-        const spread = scatter*scatter*(3-2*scatter)
-        // Carry the jet's particles through the entire paragraph section.
-        // Keep a quiet, visible field instead of fading it away at the burst.
-        material.uniforms.opacity.value = (1-finalBurst*.76)*(tunnelVisible?tunnelEntrance:1)
-        const mobile = innerWidth < 768
-        const particleScale = progress>15 ? (mobile ? .54 : .95) : (mobile ? .43 : .69)
-        points.scale.setScalar(particleScale+(1-particleScale)*tunnelMix)
-        const reveal = clamp(progress / .8)
-        points.position.x = 0
-        points.position.y = progress>15 ? (mobile ? reveal*.7 : 0) : (1-tunnelMix)*(mobile?1.45:1.35)
-        points.rotation.y = progress>16?0:Math.sin(elapsed * .16) * .12*(1-tunnelMix)
-        points.rotation.z = progress>16?0:Math.sin(elapsed * .12) * .012*(1-tunnelMix)
-        const worldHeight = Math.tan(Math.PI / 8) * camera.position.z * 2
-        material.uniforms.pointer.value.set((mx*worldHeight*camera.aspect/2)/particleScale,(my*worldHeight/2-points.position.y)/particleScale)
-        material.uniforms.pointerForce.value=reduced.matches?0:progress>16?.08:1
-        material.uniforms.morph.value=morph
-        material.uniforms.spread.value=spread
-        material.uniforms.cloudAmount.value=finalBurst*finalBurst*(3-2*finalBurst)
-        material.uniforms.lift.value=reduced.matches?1:lift
-        material.uniforms.ignition.value=clamp(lift*8)*(1-finalBurst)
-        material.uniforms.drift.value=reduced.matches||progress>16?0:1
-        const source=progress>15?10:from,target=progress>15?11:to
-        if(geometry.getAttribute("position")!==shapeAttributes[source]){
-          geometry.setAttribute("position",shapeAttributes[source]);geometry.setAttribute("normal",normalAttributes[source])
-        }
-        if(geometry.getAttribute("targetPosition")!==shapeAttributes[target]){
-          geometry.setAttribute("targetPosition",shapeAttributes[target]);geometry.setAttribute("targetNormal",normalAttributes[target])
-        }
-        renderer.render(scene, camera)
-        if (!reduced.matches) frame = requestAnimationFrame(render)
-      }
-      const wake = () => {
-        measure()
-        if (!frame && !document.hidden && !ended) { last = 0; frame = requestAnimationFrame(render) }
-      }
-      const pointer = (e: PointerEvent) => {
-        const x = e.clientX / innerWidth * 2 - 1, y = 1-e.clientY / innerHeight*2
-        if (mx !== 99) { vx = Math.max(-.15, Math.min(.15, x-mx)); vy = Math.max(-.15, Math.min(.15, y-my)) }
-        mx=x; my=y
-      }
-      const leave = () => { mx=99; my=99 }
-      resize(); wake()
-      window.addEventListener("scroll", wake, { passive: true })
-      window.addEventListener("resize", resize)
-      window.addEventListener("pointermove", pointer, { passive: true })
-      document.documentElement.addEventListener("pointerleave", leave)
-      document.addEventListener("visibilitychange", wake)
-      reduced.addEventListener("change", wake)
-      cleanup = () => {
-        cancelAnimationFrame(frame)
-        window.removeEventListener("scroll", wake)
-        window.removeEventListener("resize", resize)
-        window.removeEventListener("pointermove", pointer)
-        document.documentElement.removeEventListener("pointerleave", leave)
-        document.removeEventListener("visibilitychange", wake)
-        reduced.removeEventListener("change", wake)
-        flightSound.dispose();geometry.dispose(); material.dispose(); renderer.dispose(); renderer.domElement.remove()
-      }
-    }).catch(() => { host.style.opacity="0" })
-    return () => { disposed=true; cleanup() }
-  }, [])
-  return <div ref={hostRef} data-particle-journey aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 bg-black" />
+      if(Math.abs(target-progress)>.0002)frame=requestAnimationFrame(render)
+    }
+    const wake=()=>{target=Math.max(0,Math.min(1,-tunnel.getBoundingClientRect().top/Math.max(1,tunnel.offsetHeight-innerHeight)));if(visible&&!frame){last=0;frame=requestAnimationFrame(render)}}
+    const observer=new IntersectionObserver(([e])=>{visible=e.isIntersecting;cv.style.opacity=visible?"1":"0";if(visible)wake();else{cancelAnimationFrame(frame);frame=0}});observer.observe(tunnel)
+    window.addEventListener("scroll",wake,{passive:true});window.addEventListener("resize",wake);document.addEventListener("visibilitychange",wake);media.addEventListener("change",wake)
+    return()=>{cancelAnimationFrame(frame);observer.disconnect();window.removeEventListener("scroll",wake);window.removeEventListener("resize",wake);document.removeEventListener("visibilitychange",wake);media.removeEventListener("change",wake)}
+  },[])
+  return <canvas ref={canvas} aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 h-screen w-full bg-black"/>
 }

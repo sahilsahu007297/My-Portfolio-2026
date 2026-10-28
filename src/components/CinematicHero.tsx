@@ -100,11 +100,11 @@ export default function CinematicHero({indiaTime,onResumeClick,onEntered,onEntry
         </div>
         <div className="flight-headings" aria-label="My approach to design">
           {[
-            {title:"Hi, I'm Sahil. I design products.",copy:"I turn a better-way hunch into something people can actually use."},
-            {title:"Professional overthinker. Useful outcome.",copy:"I ask one more why so your users don't have to ask how."},
-            {title:"Pretty is the opening line.",copy:"The real conversation is about what people need, where they get stuck, and what helps them move forward."},
-            {title:"People first. Business in the picture.",copy:"I connect user needs with business goals, then make the trade-offs count."},
-            {title:"Curiosity in. Clarity out.",copy:"From research and product strategy to the smallest interaction, I make complex products feel considered and simple."},
+            {title:"Find the real problem.",copy:"I bring product strategy and design together, from the first why to the final interaction."},
+            {title:"For the next move.",copy:"And ambitious teams turning a complex idea into a product people understand."},
+            {title:"Clear the friction.",copy:"I find where people get stuck, what matters to them, and what is worth building."},
+            {title:"Set a shared direction.",copy:"Research becomes priorities. Priorities become useful, thoughtful experiences."},
+            {title:"Make progress matter.",copy:"People find their next step. Teams make clearer decisions. Products earn a reason to return."},
           ].map((point,i)=><div id={i===0?"about":undefined} className="flight-heading" key={point.title}>
             <h2>{point.title}</h2><p>{point.copy}</p>
           </div>)}

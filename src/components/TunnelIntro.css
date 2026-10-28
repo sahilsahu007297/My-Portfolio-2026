@@ -18,3 +18,5 @@
 .workflow-tunnel { margin-top:-100vh; }
 .workflow-tunnel h2 { line-height:1.15; padding:.12em .08em; overflow:visible; text-wrap:balance; }
 @media(prefers-reduced-motion:reduce) { .workflow-tunnel { margin-top:0; } }
+
+.workflow-tunnel{height:330vh}@media(max-width:767px){.workflow-tunnel{height:300vh}}@media(prefers-reduced-motion:reduce){.workflow-tunnel{height:auto}}
