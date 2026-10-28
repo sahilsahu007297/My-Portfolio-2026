@@ -38,7 +38,8 @@ export default function NavigationScroll() {
   }, [])
 
   useLayoutEffect(() => {
-    const saved = router.state.historyAction === "POP" ? positions.get(location.key) : undefined
+    const graphicHome = /^\/(graphic-design|graphics)\/?$/.test(location.pathname) && !location.hash
+    const saved = !graphicHome && router.state.historyAction === "POP" ? positions.get(location.key) : undefined
     restoring.current = true
     let frame = 0, finished = false, settleTimer = 0
     const finish = () => {
@@ -63,7 +64,11 @@ export default function NavigationScroll() {
       } else {
         window.scrollTo({ top: 0, left: 0, behavior: "instant" })
         window.dispatchEvent(new CustomEvent("portfolio:restore-scroll", { detail: { x: 0, y: 0 } }))
-        finish()
+        // The gallery replaces a very long pinned page. Keep the reset active
+        // while its layout and Lenis dimensions settle, rather than finishing
+        // before the first resize can restore the old scroll position.
+        if (graphicHome) settle()
+        else finish()
       }
     }
     const schedule = () => { if (!frame && !finished) frame = requestAnimationFrame(restore) }
@@ -72,9 +77,10 @@ export default function NavigationScroll() {
     const timer = window.setTimeout(finish, 4000)
     window.addEventListener("wheel", finish, { passive: true, once: true })
     window.addEventListener("pointerdown", finish, { passive: true, once: true })
+    if (graphicHome) restore()
     schedule()
     return () => { cancelAnimationFrame(frame); observer.disconnect(); window.clearTimeout(timer); window.clearTimeout(settleTimer); window.removeEventListener("wheel", finish); window.removeEventListener("pointerdown", finish) }
-  }, [location.key, location.hash])
+  }, [location.key, location.hash, location.pathname])
 
   return null
 }
